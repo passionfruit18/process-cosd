@@ -153,6 +153,3 @@
 //    println "ErrorType $it: \n-- ${errorsInCOSD.get(it)?.join('\n-- ')}"
 //    println ''
 //}
-//
-//println "${DataClass.findByNameAndDataModel('Core', dm)}"
-//// check the appropriate DataClasses have the appropriate DataElements

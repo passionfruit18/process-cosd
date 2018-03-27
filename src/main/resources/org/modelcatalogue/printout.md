@@ -1,6 +1,5 @@
-# Printout from ProcessCosd
-/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/bin/java "-javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=58995:/Applications/IntelliJ IDEA.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/packager.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/tools.jar:/Users/james/Documents/work/metadata_consulting/gel/process-cosd/out/production/classes:/Users/james/Documents/work/metadata_consulting/gel/process-cosd/out/production/resources:/Users/james/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/2.4.10/4660c69a6fb68c1507d09e3de01e56bc87ffd85d/groovy-all-2.4.10.jar:/Users/james/.gradle/caches/modules-2/files-2.1/com.emmanuelrosa/frostedsheets/0.4.0/4fa593047eecb2ebc3b94ec23da4aee84271b826/frostedsheets-0.4.0.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml/3.14-beta1/b99f04deb089a65e395b3cac4d4e56f1debcb514/poi-ooxml-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/ooxml-schemas/1.3/8cae398233e86f0cccc0129709b7d0177fbec8f5/ooxml-schemas-1.3.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/3.14-beta1/4bfa85e2359dea4dd1d0ac08ec5cd8d87b6a1007/poi-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml-schemas/3.14-beta1/e44474add8ab7edb29a6721f225632c864634c22/poi-ooxml-schemas-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/com.github.virtuald/curvesapi/1.03/6b0977602901464b056959027fdf2396050f9dd2/curvesapi-1.03.jar:/Users/james/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.xmlbeans/xmlbeans/2.6.0/29e80d2dd51f9dcdef8f9ffaee0d4dc1c9bbfc87/xmlbeans-2.6.0.jar:/Users/james/.gradle/caches/modules-2/files-2.1/stax/stax-api/1.0.1/49c100caf72d658aca8e58bd74a4ba90fa2b0d70/stax-api-1.0.1.jar org.modelcatalogue.ProcessCosd
-objc[44432]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/bin/java (0x1058904c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1059584e0). One of the two will be used. Which one is undefined.
+/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/bin/java "-javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=61160:/Applications/IntelliJ IDEA.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/packager.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/tools.jar:/Users/james/Documents/work/metadata_consulting/gel/process-cosd/out/production/classes:/Users/james/Documents/work/metadata_consulting/gel/process-cosd/out/production/resources:/Users/james/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/2.4.10/4660c69a6fb68c1507d09e3de01e56bc87ffd85d/groovy-all-2.4.10.jar:/Users/james/.gradle/caches/modules-2/files-2.1/com.emmanuelrosa/frostedsheets/0.4.0/4fa593047eecb2ebc3b94ec23da4aee84271b826/frostedsheets-0.4.0.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml/3.14-beta1/b99f04deb089a65e395b3cac4d4e56f1debcb514/poi-ooxml-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/ooxml-schemas/1.3/8cae398233e86f0cccc0129709b7d0177fbec8f5/ooxml-schemas-1.3.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/3.14-beta1/4bfa85e2359dea4dd1d0ac08ec5cd8d87b6a1007/poi-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml-schemas/3.14-beta1/e44474add8ab7edb29a6721f225632c864634c22/poi-ooxml-schemas-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/com.github.virtuald/curvesapi/1.03/6b0977602901464b056959027fdf2396050f9dd2/curvesapi-1.03.jar:/Users/james/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.xmlbeans/xmlbeans/2.6.0/29e80d2dd51f9dcdef8f9ffaee0d4dc1c9bbfc87/xmlbeans-2.6.0.jar:/Users/james/.gradle/caches/modules-2/files-2.1/stax/stax-api/1.0.1/49c100caf72d658aca8e58bd74a4ba90fa2b0d70/stax-api-1.0.1.jar org.modelcatalogue.ProcessCosd
+objc[45207]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/bin/java (0x1080d34c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10819b4e0). One of the two will be used. Which one is undefined.
 # COSD Version: 7.0.6
 [Data item No., Data Item Section, Data Item Name, Data Item Description, Format, National Code, National code definition, Data Dictionary Element, Other collections, Schema Specification*]
 Data item No.:
@@ -10078,21 +10077,229 @@ new COSDEntry(dataItemNo: 'LU10390', dataItemSection: 'LUNG - SURGERY AND OTHER 
 new COSDEntry(dataItemNo: 'SK12730', dataItemSection: 'SKIN - DIAGNOSIS - MM '), new COSDEntry(dataItemNo: 'SK12740', dataItemSection: 'SKIN - DIAGNOSIS - MM '), new COSDEntry(dataItemNo: 'SK12700', dataItemSection: 'SKIN - SURGERY AND OTHER PROCEDURES - BCC, SCC & MM '),
 new COSDEntry(dataItemNo: 'SK12510', dataItemSection: 'SKIN - STAGING '), new COSDEntry(dataItemNo: 'UR15400', dataItemSection: 'UROLOGY - STAGING - TESTICULAR')]
 
-Completely new item ids: ['CR6000', 'CR6230', 'CR6490', 'CR6400', 'CR6430', 'CR6440', 'CR6450', 'CR6460', 'CR6470', 'CR6100', 'CR6110', 'CR6120', 'CR6130', 'CR6140', 'CR6150', 'CR6160', 'CR6170', 'CR6180', 'CR6190', 'CR6200', 'CR6480', 'CR6300', 'CR6010', 'CR6310', 'CR6220', 'CR6490', 'CR6410', 'CR6490', 'CR6420', 'BA3200', 'BA3210', 'CO5400', 'CT6990', 'CT7020', 'CT7200', 'CT7240', 'CT7160', 'CT7170', 'CT7180', 'CT7030', 'CT7400', 'CT7260', 'CT7270', 'CT7380', 'CT7310', 'CT7150', 'CT7070', 'CT7000', 'CT7010', 'CT7110', 'CT7190', 'CT7390', 'CT7370', 'CT7120', 'CT7130', 'CT7140', 'CT7050', 'CT7060', 'CT7040', 'CT7320', 'CT7330', 'CT7340', 'CT7350', 'CT7360', 'CT7080', 'CT7090', 'GY7460', 'GY7450', 'LU10300', 'LU10310', 'LU10340', 'LU10350', 'LU10360', 'LU10420', 'LU10370', 'LU10390', 'SK12710', 'SK12720', 'SK12730', 'SK12740', 'SK12700', 'SK12510', 'UR15400']
+Completely new item ids: ['BA3200', 'BA3210', 'CO5400', 'CR6000', 'CR6010', 'CR6100', 'CR6110', 'CR6120', 'CR6130', 'CR6140', 'CR6150', 'CR6160', 'CR6170', 'CR6180', 'CR6190', 'CR6200', 'CR6220', 'CR6230', 'CR6300', 'CR6310', 'CR6400', 'CR6410', 'CR6420', 'CR6430', 'CR6440', 'CR6450', 'CR6460', 'CR6470', 'CR6480', 'CR6490', 'CR6490', 'CR6490', 'CT6990', 'CT7000', 'CT7010', 'CT7020', 'CT7030', 'CT7040', 'CT7050', 'CT7060', 'CT7070', 'CT7080', 'CT7090', 'CT7110', 'CT7120', 'CT7130', 'CT7140', 'CT7150', 'CT7160', 'CT7170', 'CT7180', 'CT7190', 'CT7200', 'CT7240', 'CT7260', 'CT7270', 'CT7310', 'CT7320', 'CT7330', 'CT7340', 'CT7350', 'CT7360', 'CT7370', 'CT7380', 'CT7390', 'CT7400', 'GY7450', 'GY7460', 'LU10300', 'LU10310', 'LU10340', 'LU10350', 'LU10360', 'LU10370', 'LU10390', 'LU10420', 'SK12510', 'SK12700', 'SK12710', 'SK12720', 'SK12730', 'SK12740', 'UR15400']
 size: 83
+setSize: 81
 
-Deleted Item Ids: [CR0400, CR3030, CR0530, CR3060, CR0850, CR3070, BR4030, BR4040, BR4060, BR4070, BR4080, BR4090, BR4100, BR4110, BR4130, BA3130, BA3140, BA3110, BA3120, CO5010, CO5020, CO5030, CO5040, CO5060, CO5070, CO5080, CO5090, CO5100, CO5110, CO5120, CO5130, CO5140, CO5150, CO5005, CO5180, CO5230, CO5250, CT6150, CT6320, CT6730, CT6300, GY7330, GY7390, GY7210, GY7250, HA8020, HA8230, HA8690, HN9230, HN9220, HN9210, HN9200, HN9220, HN9200, LU10000, LU10020, LU10010, LU10030, SA11160, SK12020, SK12510, UG13293, UG13235, UG13110, UG13150, UG14190, UG13030, UG14410, UG13320]
+handpicked Completely New Ids: ['BA3200', 'BA3210', 'CO5400', 'CR6000', 'CR6010', 'CR6100', 'CR6110', 'CR6120', 'CR6130', 'CR6140', 'CR6150', 'CR6160', 'CR6170', 'CR6180', 'CR6190', 'CR6200', 'CR6220', 'CR6230', 'CR6300', 'CR6310', 'CR6400', 'CR6410', 'CR6420', 'CR6430', 'CR6440', 'CR6450', 'CR6460', 'CR6470', 'CR6480', 'CR6490', 'CT6990', 'CT7000', 'CT7010', 'CT7020', 'CT7030', 'CT7040', 'CT7050', 'CT7060', 'CT7070', 'CT7080', 'CT7090', 'CT7110', 'CT7120', 'CT7130', 'CT7140', 'CT7150', 'CT7160', 'CT7170', 'CT7180', 'CT7190', 'CT7200', 'CT7240', 'CT7260', 'CT7270', 'CT7310', 'CT7320', 'CT7330', 'CT7340', 'CT7350', 'CT7360', 'CT7370', 'CT7380', 'CT7390', 'CT7400', 'GY7450', 'GY7460', 'LU10300', 'LU10310', 'LU10340', 'LU10350', 'LU10360', 'LU10370', 'LU10390', 'LU10420', 'SK12510', 'SK12700', 'SK12710', 'SK12720', 'SK12730', 'SK12740', 'UR15400']
+size: 81
+
+completely new - handpicked completely new: []
+
+Deleted Item Ids: ['CR0400', 'CR3030', 'CR0530', 'CR3060', 'CR0850', 'CR3070', 'BR4030', 'BR4040', 'BR4060', 'BR4070', 'BR4080', 'BR4090', 'BR4100', 'BR4110', 'BR4130', 'BA3130', 'BA3140', 'BA3110', 'BA3120', 'CO5010', 'CO5020', 'CO5030', 'CO5040', 'CO5060', 'CO5070', 'CO5080', 'CO5090', 'CO5100', 'CO5110', 'CO5120', 'CO5130', 'CO5140', 'CO5150', 'CO5005', 'CO5180', 'CO5230', 'CO5250', 'CT6150', 'CT6320', 'CT6730', 'CT6300', 'GY7330', 'GY7390', 'GY7210', 'GY7250', 'HA8020', 'HA8230', 'HA8690', 'HN9230', 'HN9220', 'HN9210', 'HN9200', 'HN9220', 'HN9200', 'LU10000', 'LU10020', 'LU10010', 'LU10030', 'SA11160', 'SK12020', 'SK12510', 'UG13293', 'UG13235', 'UG13110', 'UG13150', 'UG14190', 'UG13030', 'UG14410', 'UG13320']
 size: 69
+setSize: 67
 
-All changed item Ids: [CR6000, CR6230, CR0400, CR3030, CR6490, CR6400, CR6430, CR6440, CR6450, CR6460, CR6470, CR6100, CR6110, CR6120, CR6130, CR6140, CR6150, CR6160, CR6170, CR6180, CR6190, CR6200, CR6480, CR6300, CR6010, CR6310, CR6220, CR0960, CR0530, CR3060, CR6490, CR6410, CR0850, CR3070, CR6490, CR6420, BR4030, BR4040, BR4060, BR4070, BR4080, BR4090, BR4100, BR4110, BR4130, BR4140, BR4160, BR4170, BR4180, BR4190, BR4200, BR4210, BR4230, BR4220, BR4300, BR4290, BR4280, BR4310, BR4240, BR4250, BR4260, BR4270, BA3130, BA3140, BA3200, BA3210, BA3110, BA3120, BA3070, BA3150, BA3160, CO5010, CO5020, CO5030, CO5040, CO5060, CO5070, CO5080, CO5090, CO5100, CO5110, CO5120, CO5130, CO5140, CO5150, CO5400, CO5005, CO5180, CO5190, CO5210, CO5230, CO5250, CO5260, CO5270, CO5280, CO5290, CO5300, CT6990, CT7020, CT7200, CT7240, CT7160, CT7170, CT7180, CT7030, CT7400, CT7260, CT7270, CT7380, CT7310, CT6210, CT7150, CT7070, CT7000, CT7010, CT7110, CT7190, CT7390, CT6150, CT7370, CT7120, CT7130, CT7140, CT6320, CT6730, CT7050, CT7060, CT7040, CT7320, CT7330, CT7340, CT7350, CT7360, CT7080, CT7090, CT6300, CT6610, CT6620, CT6630, CT6640, CT6650, CT6660, CT6670, GY7460, GY7050, GY7120, GY7130, GY7100, GY7140, GY7150, GY7170, GY7180, GY7240, GY7260, GY7270, GY7280, GY7330, GY7390, GY7450, GY7210, GY7250, GY7280, GY7220, GY7290, GY7300, GY7350, GY7310, GY7340, GY7360, GY7370, GY7020, GY7060, GY7080, GY7070, GY7090, GY7410, GY7420, GY7230, HA8020, HA8270, HA8230, HA8690, HN9230, HN9220, HN9210, HN9200, HN9220, HN9200, HN9300, HN9310, HN9320, HN9330, HN9380, HN9390, HN9400, HN9410, HN9420, HN9430, LU10300, LU10310, LU10340, LU10350, LU10000, LU10020, LU10010, LU10030, LU10360, LU10420, LU10370, LU10390, LU10090, LU10100, LU10110, LU10120, LU10130, LU10140, LU10150, LU10160, LU10170, LU10180, SA11120, SA11170, SA11130, SA11140, SA11160, SA11100, SA11220, SK12710, SK12720, SK12730, SK12740, SK12450, SK12030, SK12010, SK12700, SK12120, SK12020, SK12510, SK12510, SK12530, SK12537, SK12650, SK12660, SK12545, SK12565, SK12580, SK12590, SK12600, SK12620, SK12630, SK12430, SK12460, SK12470, SK12480, SK12490, UG13293, UG13235, UG13110, UG13150, UG14190, UG13030, UG14410, UG13320, UG14470, UG14480, UG14490, UR15400, UR15120, UR15290, UR15130, UR15140, UR15150, UR15160, UR15170, UR15180, UR15190, UR15200, UR15210, UR15220, UR15230, UR15240, UR15250, UR15260, UR15270, UR15310, CR0020, CR3170, CR0180, CR3160, CR0510, CR2070, CR3040, CR3050, CT6350, CT6750, CT6380, CT6390, CT6450, CT6470, CT6440, CT6220, CT6230, CT6240, CT6130, CT6140, CT6250, CT6710, CT6270, CT6720, CT6280, CT6290, CT6330, CT6740, CT6500, CT6510, CT6770, CT6800, CT6590, CT6560, CT6760, CT6310, CT6360, CT6460, CT6530, CT6550, CT6580, CT6520, HA8660, HA8280, HA8720, HA8290, HA8300, HA8310, HA8680, LU10070, LU10080, SK12030, SK12450, SK12630, UG13100, UG13810, UG14210, UG14230, UG13240, UG13590, UG14290, UG13090, UG13250, UG13070, UG13080, UG13560, UG13580, UR15100, UR15110]
-size: 354
+All changed item Ids: [CR6000, CR6230, CR0400, CR3030, CR6490, CR6400, CR6430, CR6440, CR6450, CR6460, CR6470, CR6100, CR6110, CR6120, CR6130, CR6140, CR6150, CR6160, CR6170, CR6180, CR6190, CR6200, CR6480, CR6300, CR6010, CR6310, CR6220, CR0960, CR0530, CR3060, CR6490, CR6410, CR0850, CR3070, CR6490, CR6420, BR4030, BR4040, BR4060, BR4070, BR4080, BR4090, BR4100, BR4110, BR4130, BR4140, BR4160, BR4170, BR4180, BR4190, BR4200, BR4210, BR4230, BR4220, BR4300, BR4290, BR4280, BR4310, BR4240, BR4250, BR4260, BR4270, BA3130, BA3140, BA3200, BA3210, BA3110, BA3120, BA3070, BA3150, BA3160, CO5010, CO5020, CO5030, CO5040, CO5060, CO5070, CO5080, CO5090, CO5100, CO5110, CO5120, CO5130, CO5140, CO5150, CO5400, CO5005, CO5180, CO5190, CO5210, CO5230, CO5250, CO5260, CO5270, CO5280, CO5290, CO5300, CT6990, CT7020, CT7200, CT7240, CT7160, CT7170, CT7180, CT7030, CT7400, CT7260, CT7270, CT7380, CT7310, CT6210, CT7150, CT7070, CT7000, CT7010, CT7110, CT7190, CT7390, CT6150, CT7370, CT7120, CT7130, CT7140, CT6320, CT6730, CT7050, CT7060, CT7040, CT7320, CT7330, CT7340, CT7350, CT7360, CT7080, CT7090, CT6300, CT6610, CT6620, CT6630, CT6640, CT6650, CT6660, CT6670, GY7460, GY7050, GY7120, GY7130, GY7100, GY7140, GY7190
+, GY7150, GY7170, GY7180, GY7240, GY7260, GY7270, GY7280, GY7330, GY7390, GY7450, GY7210, GY7250, GY7280, GY7220, GY7290, GY7300, GY7350, GY7310, GY7340, GY7360, GY7370, GY7020, GY7060, GY7080, GY7070, GY7090, GY7410, GY7420, GY7230, HA8020, HA8270, HA8230, HA8690, HN9230, HN9220, HN9210, HN9200, HN9220, HN9200, HN9300, HN9310, HN9320, HN9330, HN9380, HN9390, HN9400, HN9410, HN9420, HN9430, LU10300, LU10310, LU10340, LU10350, LU10000, LU10020, LU10010, LU10030, LU10360, LU10420, LU10370, LU10390, LU10090, LU10100, LU10110, LU10120, LU10130, LU10140, LU10150, LU10160, LU10170, LU10180, SA11120, SA11170, SA11130, SA11140, SA11160, SA11100, SA11220, SK12710, SK12720, SK12730, SK12740, SK12450, SK12030, SK12010, SK12700, SK12120, SK12020, SK12510, SK12510, SK12530, SK12537, SK12650, SK12660, SK12545, SK12565, SK12580, SK12590, SK12600, SK12620, SK12630, SK12430, SK12460, SK12470, SK12480, SK12490, UG13293, UG13235, UG13110, UG13150, UG14190, UG13030, UG14410, UG13320, UG14470, UG14480, UG14490, UR15400, UR15120, UR15290, UR15130, UR15140, UR15150, UR15160, UR15170, UR15180, UR15190, UR15200, UR15210, UR15220, UR15230, UR15240, UR15250, UR15260, UR15270, UR15310, CR0020, CR3170, CR0180, CR3160, CR0510, CR2070, CR3040, CR3050, CT6350, CT6750, CT6380, CT6390, CT6450, CT6470, CT6440, CT6220, CT6230, CT6240, CT6130, CT6140, CT6250, CT6710, CT6270, CT6720, CT6280, CT6290, CT6330, CT6740, CT6500, CT6510, CT6770, CT6800, CT6590, CT6560, CT6760, CT6310, CT6360, CT6460, CT6530, CT6550, CT6580, CT6520, HA8660, HA8280, HA8720, HA8290, HA8300, HA8310, HA8680, LU10070, LU10080, SK12030, SK12450, SK12630, UG13100, UG13810, UG14210, UG14230, UG13240, UG13590, UG14290, UG13090, UG13250, UG13070, UG13080, UG13560, UG13580, UR15100, UR15110]
+size: 355
+setSize: 346
 
-Just modified: [CR0960, BR4140, BR4160, BR4170, BR4180, BR4190, BR4200, BR4210, BR4230, BR4220, BR4300, BR4290, BR4280, BR4310, BR4240, BR4250, BR4260, BR4270, BA3070, BA3150, BA3160, CO5190, CO5210, CO5260, CO5270, CO5280, CO5290, CO5300, CT6210, CT6610, CT6620, CT6630, CT6640, CT6650, CT6660, CT6670, GY7050, GY7120, GY7130, GY7100, GY7140, GY7150, GY7170, GY7180, GY7240, GY7260, GY7270, GY7280, GY7280, GY7220, GY7290, GY7300, GY7350, GY7310, GY7340, GY7360, GY7370, GY7020, GY7060, GY7080, GY7070, GY7090, GY7410, GY7420, GY7230, HA8270, HN9300, HN9310, HN9320, HN9330, HN9380, HN9390, HN9400, HN9410, HN9420, HN9430, LU10090, LU10100, LU10110, LU10120, LU10130, LU10140, LU10150, LU10160, LU10170, LU10180, SA11120, SA11170, SA11130, SA11140, SA11100, SA11220, SK12450, SK12030, SK12010, SK12120, SK12530, SK12537, SK12650, SK12660, SK12545, SK12565, SK12580, SK12590, SK12600, SK12620, SK12630, SK12430, SK12460, SK12470, SK12480, SK12490, UG14470, UG14480, UG14490, UR15120, UR15290, UR15130, UR15140, UR15150, UR15160, UR15170, UR15180, UR15190, UR15200, UR15210, UR15220, UR15230, UR15240, UR15250, UR15260, UR15270, UR15310, CR0020, CR3170, CR0180, CR3160, CR0510, CR2070, CR3040, CR3050, CT6350, CT6750, CT6380, CT6390, CT6450, CT6470, CT6440, CT6220, CT6230, CT6240, CT6130, CT6140, CT6250, CT6710, CT6270, CT6720, CT6280, CT6290, CT6330, CT6740, CT6500, CT6510, CT6770, CT6800, CT6590, CT6560, CT6760, CT6310, CT6360, CT6460, CT6530, CT6550, CT6580, CT6520, HA8660, HA8280, HA8720, HA8290, HA8300, HA8310, HA8680, LU10070, LU10080, SK12030, SK12450, SK12630, UG13100, UG13810, UG14210, UG14230, UG13240, UG13590, UG14290, UG13090, UG13250, UG13070, UG13080, UG13560, UG13580, UR15100, UR15110]
-size: 202, should equal allChanged.size - deletedItems.size - completelyNew.size = 202
+Just modified: [CR0960, BR4140, BR4160, BR4170, BR4180, BR4190, BR4200, BR4210, BR4230, BR4220, BR4300, BR4290, BR4280, BR4310, BR4240, BR4250, BR4260, BR4270, BA3070, BA3150, BA3160, CO5190, CO5210, CO5260, CO5270, CO5280, CO5290, CO5300, CT6210, CT6610, CT6620, CT6630, CT6640, CT6650, CT6660, CT6670, GY7050, GY7120, GY7130, GY7100, GY7140, GY7190
+, GY7150, GY7170, GY7180, GY7240, GY7260, GY7270, GY7280, GY7280, GY7220, GY7290, GY7300, GY7350, GY7310, GY7340, GY7360, GY7370, GY7020, GY7060, GY7080, GY7070, GY7090, GY7410, GY7420, GY7230, HA8270, HN9300, HN9310, HN9320, HN9330, HN9380, HN9390, HN9400, HN9410, HN9420, HN9430, LU10090, LU10100, LU10110, LU10120, LU10130, LU10140, LU10150, LU10160, LU10170, LU10180, SA11120, SA11170, SA11130, SA11140, SA11100, SA11220, SK12450, SK12030, SK12010, SK12120, SK12530, SK12537, SK12650, SK12660, SK12545, SK12565, SK12580, SK12590, SK12600, SK12620, SK12630, SK12430, SK12460, SK12470, SK12480, SK12490, UG14470, UG14480, UG14490, UR15120, UR15290, UR15130, UR15140, UR15150, UR15160, UR15170, UR15180, UR15190, UR15200, UR15210, UR15220, UR15230, UR15240, UR15250, UR15260, UR15270, UR15310, CR0020, CR3170, CR0180, CR3160, CR0510, CR2070, CR3040, CR3050, CT6350, CT6750, CT6380, CT6390, CT6450, CT6470, CT6440, CT6220, CT6230, CT6240, CT6130, CT6140, CT6250, CT6710, CT6270, CT6720, CT6280, CT6290, CT6330, CT6740, CT6500, CT6510, CT6770, CT6800, CT6590, CT6560, CT6760, CT6310, CT6360, CT6460, CT6530, CT6550, CT6580, CT6520, HA8660, HA8280, HA8720, HA8290, HA8300, HA8310, HA8680, LU10070, LU10080, SK12030, SK12450, SK12630, UG13100, UG13810, UG14210, UG14230, UG13240, UG13590, UG14290, UG13090, UG13250, UG13070, UG13080, UG13560, UG13580, UR15100, UR15110]
+size: 203, should equal allChanged.size - deletedItems.size - completelyNew.size = 203
+justModifiedSetCalc size: 199
 
 handpicked deleted == program picked deleted: true
 ======
 
 ======
+# Categorize Modifications v7.0.6
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[BR4140, BR4160, BR4170, BR4180, BR4190, BR4200, BR4210, BR4230, BR4220, BR4300, BR4290, BR4280, BR4310, BR4240, BR4250, BR4260, BR4270]
+[]
+[]
+[]
+[BA3070, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ]
+[BA3150, BA3160]
+[]
+[]
+[]
+[]
+[]
+[]
+[CO5190, CO5210]
+[]
+[CO5260, CO5270, CO5280, CO5290, CO5300]
+[]
+[]
+[]
+[]
+[]
+[]
+[CT6210]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[CT6610, CT6620, CT6630, CT6640, CT6650, CT6660, CT6670]
+[]
+[GY7050, GY7120, GY7130, GY7100, GY7140, GY7190
+, GY7150, GY7170, GY7180, GY7240, GY7260, GY7270, GY7280]
+[]
+[]
+[GY7280, , , , ]
+[GY7220]
+[GY7290, GY7300, GY7350, GY7310, GY7340, GY7360, GY7370, GY7020, GY7060, GY7080, GY7070, GY7090, GY7410, GY7420, GY7230]
+[]
+[HA8270]
+[]
+[]
+[]
+[HN9300, HN9310, HN9320, HN9330, HN9380, HN9390, HN9400, HN9410, HN9420, HN9430]
+[]
+[]
+[]
+[]
+[]
+[LU10090]
+[LU10100, LU10110, LU10120, LU10130, LU10140, LU10150, LU10160, LU10170, LU10180]
+[SA11120, SA11170, SA11130, SA11140]
+[]
+[SA11100, SA11220]
+[SK12450]
+[SK12030, , , , , , ]
+[SK12010, , , , , , , , ]
+[SK12120]
+[]
+[SK12530, SK12537, SK12650, SK12660, SK12545, SK12565, SK12580, SK12590, SK12600, SK12620, SK12630, SK12430, SK12460, SK12470, SK12480, SK12490]
+[]
+[]
+[]
+[]
+[UG14470, UG14480, UG14490]
+[]
+[UR15120, UR15290, UR15130, UR15140, UR15150, UR15160, UR15170, UR15180, UR15190, UR15200, UR15210, UR15220, UR15230, UR15240, UR15250, UR15260, UR15270, UR15310]
+[]
+[]
+[CR0180]
+[]
+[CR0510, , , , , ]
+[CR2070]
+[CR3040, CR3050]
+[CT6350, CT6380, CT6390, CT6450, CT6470, CT6440, CT6220, CT6230, CT6240]
+[CT6130, CT6140]
+[CT6250, CT6270, CT6280, CT6290, CT6330, CT6500, CT6510, CT6590]
+[CT6560]
+[CT6310, CT6360, CT6460, CT6530, CT6550, CT6580, CT6520]
+[HA8660]
+[HA8280, HA8290, HA8300, HA8310]
+[LU10070, LU10080]
+[SK12030, , , , , , ]
+[SK12450]
+[]
+[UG13100, UG13810]
+[UG14210, UG14230, UG13240, UG13590, UG14290, UG13090, UG13250, UG13070, UG13080, UG13560, UG13580]
+[UR15100, UR15110]
+new ModificationGroup(ids: ['BR4140', 'BR4160', 'BR4170', 'BR4180', 'BR4190', 'BR4200', 'BR4210', 'BR4230', 'BR4220', 'BR4300', 'BR4290', 'BR4280', 'BR4310', 'BR4240', 'BR4250', 'BR4260', 'BR4270'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['BA3070'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['BA3150', 'BA3160'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CO5190', 'CO5210'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CO5260', 'CO5270', 'CO5280', 'CO5290', 'CO5300'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CT6210'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CT6610', 'CT6620', 'CT6630', 'CT6640', 'CT6650', 'CT6660', 'CT6670'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['GY7050', 'GY7120', 'GY7130', 'GY7100', 'GY7140', 'GY7190
+', 'GY7150', 'GY7170', 'GY7180', 'GY7240', 'GY7260', 'GY7270', 'GY7280'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['GY7280'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['GY7220'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['GY7290', 'GY7300', 'GY7350', 'GY7310', 'GY7340', 'GY7360', 'GY7370', 'GY7020', 'GY7060', 'GY7080', 'GY7070', 'GY7090', 'GY7410', 'GY7420', 'GY7230'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['HA8270'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['HN9300', 'HN9310', 'HN9320', 'HN9330', 'HN9380', 'HN9390', 'HN9400', 'HN9410', 'HN9420', 'HN9430'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['LU10090'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['LU10100', 'LU10110', 'LU10120', 'LU10130', 'LU10140', 'LU10150', 'LU10160', 'LU10170', 'LU10180'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['SA11120', 'SA11170', 'SA11130', 'SA11140'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['SA11100', 'SA11220'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['SK12450'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['SK12030'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['SK12010'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['SK12120'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['SK12530', 'SK12537', 'SK12650', 'SK12660', 'SK12545', 'SK12565', 'SK12580', 'SK12590', 'SK12600', 'SK12620', 'SK12630', 'SK12430', 'SK12460', 'SK12470', 'SK12480', 'SK12490'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['UG14470', 'UG14480', 'UG14490'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['UR15120', 'UR15290', 'UR15130', 'UR15140', 'UR15150', 'UR15160', 'UR15170', 'UR15180', 'UR15190', 'UR15200', 'UR15210', 'UR15220', 'UR15230', 'UR15240', 'UR15250', 'UR15260', 'UR15270', 'UR15310'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CR0180'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CR0510'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CR2070'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CR3040', 'CR3050'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CT6350', 'CT6380', 'CT6390', 'CT6450', 'CT6470', 'CT6440', 'CT6220', 'CT6230', 'CT6240'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CT6130', 'CT6140'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CT6250', 'CT6270', 'CT6280', 'CT6290', 'CT6330', 'CT6500', 'CT6510', 'CT6590'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CT6560'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['CT6310', 'CT6360', 'CT6460', 'CT6530', 'CT6550', 'CT6580', 'CT6520'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['HA8660'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['HA8280', 'HA8290', 'HA8300', 'HA8310'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['LU10070', 'LU10080'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['SK12030'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['SK12450'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['UG13100', 'UG13810'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['UG14210', 'UG14230', 'UG13240', 'UG13590', 'UG14290', 'UG13090', 'UG13250', 'UG13070', 'UG13080', 'UG13560', 'UG13580'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+new ModificationGroup(ids: ['UR15100', 'UR15110'],
+modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+Sizes: [17, 1, 2, 2, 5, 1, 7, 13, 1, 1, 15, 1, 10, 1, 9, 4, 2, 1, 1, 1, 1, 16, 3, 18, 1, 1, 1, 2, 9, 2, 8, 1, 7, 1, 4, 2, 1, 1, 2, 11, 2]
+Total modified: 189
+Total modified (remove duplicates): 186
 
 Process finished with exit code 0

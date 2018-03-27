@@ -14,6 +14,7 @@ class Config {
     List<String> handPickedDeletedItemIds
     List<String> handPickedCompletelyNewItemIds
 
+    // the following are good for
     String deletedForegroundHex = 'FFFF:0:0'
     String deletedFontColor = 'FFFF:0:0'
     String newEntryForegroundColorHex = '0:8080:0'
@@ -37,16 +38,143 @@ class HeadersMap {
     static int dataItemSection = 1
 }
 
-class ProcessCosd {
+class ModificationGroup {
+    List<String> ids
+    List<Modification> modifications
+}
 
+enum Modification {
+    NOT_LOOKED_AT_SPREADSHEET_YET,
+    MOVE_TO_CORE_PATHOLOGY,
+    // e.g. BR4140 has Data Item Section (DataClass) BREAST - PATHOLOGY which used to have parent data class
+    // Breast but now is in Core.
+    CHANGES_TO_ENUMS,
+    CHANGES_TO_SCHEMA_SPEC,
+    MANUAL,
+    UNCLEAR_FROM_SPREADSHEET
+}
+
+class ProcessCosd {
+    static final String SUBSTANTIAL_CHANGES = 'SUBSTANTIAL CHANGES'
+    static final String COSMETIC_CHANGES = 'COSMETIC  CHANGES'
+
+    static final List<ModificationGroup> COSD_v7_0_6_substantial_and_cosmetic_change_modifications = [
+            new ModificationGroup(ids: ['BR4140', 'BR4160', 'BR4170', 'BR4180', 'BR4190', 'BR4200', 'BR4210', 'BR4230', 'BR4220', 'BR4300', 'BR4290', 'BR4280', 'BR4310', 'BR4240', 'BR4250', 'BR4260', 'BR4270'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+
+            new ModificationGroup(ids: ['BA3070'],
+                    modifications: [Modification.CHANGES_TO_ENUMS]),
+
+            new ModificationGroup(ids: ['BA3150', 'BA3160'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+            new ModificationGroup(ids: ['CO5190', 'CO5210'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+            new ModificationGroup(ids: ['CO5260', 'CO5270', 'CO5280', 'CO5290', 'CO5300'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+
+            new ModificationGroup(ids: ['CT6210'],
+                    modifications: [Modification.MANUAL]),
+
+            new ModificationGroup(ids: ['CT6610', 'CT6620', 'CT6630', 'CT6640', 'CT6650', 'CT6660', 'CT6670'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+            new ModificationGroup(ids: ['GY7050', 'GY7120', 'GY7130', 'GY7100', 'GY7140', 'GY7190', 'GY7150', 'GY7170', 'GY7180', 'GY7240', 'GY7260', 'GY7270', 'GY7280'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+
+            new ModificationGroup(ids: ['GY7280'],
+                    modifications: [Modification.CHANGES_TO_ENUMS]),
+
+            new ModificationGroup(ids: ['GY7220'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY, Modification.CHANGES_TO_SCHEMA_SPEC]),
+            new ModificationGroup(ids: ['GY7290', 'GY7300', 'GY7350', 'GY7310', 'GY7340', 'GY7360', 'GY7370', 'GY7020', 'GY7060', 'GY7080', 'GY7070', 'GY7090', 'GY7410', 'GY7420', 'GY7230'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+
+            new ModificationGroup(ids: ['HA8270'],
+                    modifications: [Modification.CHANGES_TO_ENUMS]),
+
+            new ModificationGroup(ids: ['HN9300', 'HN9310', 'HN9320', 'HN9330', 'HN9380', 'HN9390', 'HN9400', 'HN9410', 'HN9420', 'HN9430'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+
+            new ModificationGroup(ids: ['LU10090'],
+                    modifications: [Modification.CHANGES_TO_ENUMS]),
+
+            new ModificationGroup(ids: ['LU10100', 'LU10110', 'LU10120', 'LU10130', 'LU10140', 'LU10150', 'LU10160', 'LU10170', 'LU10180'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+
+            new ModificationGroup(ids: ['SA11120', 'SA11170', 'SA11130', 'SA11140'],
+                    modifications: [Modification.UNCLEAR_FROM_SPREADSHEET]),
+
+            new ModificationGroup(ids: ['SA11100', 'SA11220'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+
+            new ModificationGroup(ids: ['SK12450'],
+                    modifications: [Modification.MANUAL]),
+            new ModificationGroup(ids: ['SK12030'],
+                    modifications: [Modification.MANUAL]),
+            new ModificationGroup(ids: ['SK12010'],
+                    modifications: [Modification.MANUAL]),
+
+            new ModificationGroup(ids: ['SK12120'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+            new ModificationGroup(ids: ['SK12530', 'SK12537', 'SK12650', 'SK12660', 'SK12545', 'SK12565', 'SK12580', 'SK12590', 'SK12600', 'SK12620', 'SK12630', 'SK12430', 'SK12460', 'SK12470', 'SK12480', 'SK12490'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+            new ModificationGroup(ids: ['UG14470', 'UG14480', 'UG14490'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+            new ModificationGroup(ids: ['UR15120', 'UR15290', 'UR15130', 'UR15140', 'UR15150', 'UR15160', 'UR15170', 'UR15180', 'UR15190', 'UR15200', 'UR15210', 'UR15220', 'UR15230', 'UR15240', 'UR15250', 'UR15260', 'UR15270', 'UR15310'],
+                    modifications: [Modification.MOVE_TO_CORE_PATHOLOGY]),
+            // END OF SUBSTANTIAL CHANGES
+
+            // Cosmetic Changes: Some "realigned", "regrouped"
+
+            new ModificationGroup(ids: ['CR0180'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['CR0510'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['CR2070'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['CR3040', 'CR3050'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['CT6350', 'CT6380', 'CT6390', 'CT6450', 'CT6470', 'CT6440', 'CT6220', 'CT6230', 'CT6240'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['CT6130', 'CT6140'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['CT6250', 'CT6270', 'CT6280', 'CT6290', 'CT6330', 'CT6500', 'CT6510', 'CT6590'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['CT6560'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['CT6310', 'CT6360', 'CT6460', 'CT6530', 'CT6550', 'CT6580', 'CT6520'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['HA8660'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['HA8280', 'HA8290', 'HA8300', 'HA8310'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['LU10070', 'LU10080'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['SK12030'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['SK12450'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['UG13100', 'UG13810'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['UG14210', 'UG14230', 'UG13240', 'UG13590', 'UG14290', 'UG13090', 'UG13250', 'UG13070', 'UG13080', 'UG13560', 'UG13580'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+            new ModificationGroup(ids: ['UR15100', 'UR15110'],
+                    modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+
+
+    ]
 
     static String listBroken(List<String> list, int n) {
         "[${list.collate(n)*.join(", ").join(",\n")}]"
     }
     /**
      * Notes on the fonts:
+     * (At least for COSD 7.0.6)
      * Green Foreground color index 17/hex string '0:8080:0' (e.g. CR6000) for new additions
-     * Red Font color getHexString() FFFF:0:0 (e.g. CR0400), or Red Foreground color index 10/hex string 'FFFF:0:0', (e.g. CO5230) for removals
+     * Red Font color hexString 'FFFF:0:0' (e.g. CR0400), or Red Foreground color index 10/hex string 'FFFF:0:0', (e.g. CO5230) for removals
+     * Orange Foreground color hexString 'FFFF:CCCC:9999' or Yellow 'FFFF:FFFF:0', or White 'FFFF:FFFF:FFFF', AND NOT RED FONT 'FFFF:0:0', for modifications in Substantial Changes.
+     * Yellow or White for modifications in Cosmetic Changes.
+     *
+     * COSD 8.0.1: Substantial Changes: Modifications: Have a white foreground. Some cosmetic change modifications have a green foreground!.
      */
     static void processCOSD(Config config) {
         println "# COSD Version: ${config.version}"
@@ -57,8 +185,8 @@ class ProcessCosd {
         InputStream is = ProcessCosd.class.getClassLoader().getResourceAsStream(config.workbookPath)
         FrostedWorkbook workbook = FrostedWorkbook.readXLS(is)
 
-        FrostedSheet substantialChangesSheet = workbook['SUBSTANTIAL CHANGES']
-        FrostedSheet cosmeticChangesSheet = workbook['COSMETIC  CHANGES']
+        FrostedSheet substantialChangesSheet = workbook[SUBSTANTIAL_CHANGES]
+        FrostedSheet cosmeticChangesSheet = workbook[COSMETIC_CHANGES]
         
         Closure c = { Row row ->
             println row
@@ -79,7 +207,7 @@ class ProcessCosd {
             if (cs?.fillForegroundColorColor?.hexString == config.newEntryForegroundColorHex) {
                 completelyNewItems << COSDEntry.fromRow(row)
             }
-            if (c?.stringCellValue?.matches(/[A-Z]{1,4}[0-9]{1,10}/)) { // e.g. CO12345
+            if (c?.stringCellValue?.matches(/[A-Z]{1,4}[0-9]{1,10}\s*/)) { // e.g. CO12345
                 allChangedIds << c.stringCellValue
             }
 
@@ -97,7 +225,8 @@ class ProcessCosd {
 
         completelyNewItemIds = completelyNewItems.collect {it.dataItemNo}
         println "Completely new item ids: ${completelyNewItemIds.collect {"'$it'"}.sort()}\n" +
-                "size: ${completelyNewItemIds.size()}\n"
+                "size: ${completelyNewItemIds.size()}\n" +
+                "setSize: ${completelyNewItemIds.toSet().size()}\n"
 
         List<String> handpickedCompletelyNewIds = config.handPickedCompletelyNewItemIds
         println "handpicked Completely New Ids: ${handpickedCompletelyNewIds.collect{"'$it'"}.sort()}\n" +
@@ -106,20 +235,23 @@ class ProcessCosd {
         println "completely new - handpicked completely new: ${completelyNewItemIds - handpickedCompletelyNewIds}\n"
 
         deletedItemIds.removeIf({it == ''})
-        println "Deleted Item Ids: $deletedItemIds\n" +
-                "size: ${deletedItemIds.size()}\n"
-
-
+        println "Deleted Item Ids: ${deletedItemIds.collect {"'$it'"}}\n" +
+                "size: ${deletedItemIds.size()}\n" +
+                "setSize: ${deletedItemIds.toSet().size()}\n"
 
 
         allChangedIds.removeIf({it == ''})
+        allChangedIds //<< 'GY7190' // seems this was not picked up due to a space
         println "All changed item Ids: $allChangedIds\n" +
-                "size: ${allChangedIds.size()}\n"
+                "size: ${allChangedIds.size()}\n" +
+                "setSize: ${allChangedIds.toSet().size()}\n"
 
 
-        List<String> justModified = (allChangedIds - deletedItemIds) - completelyNewItemIds//((allChangedIds.toSet() - deletedItemIds.toSet()) - completelyNewItemIds.toSet()).toList()
+        List<String> justModified = (allChangedIds - deletedItemIds) - completelyNewItemIds
+        List<String> justModifiedSetCalc = ((allChangedIds.toSet() - deletedItemIds.toSet()) - completelyNewItemIds.toSet()).toList()
         println "Just modified: $justModified\n" +
-                "size: ${justModified.size()}, should equal allChanged.size - deletedItems.size - completelyNew.size = ${allChangedIds.size() - deletedItemIds.size() - completelyNewItemIds.size()}\n"
+                "size: ${justModified.size()}, should equal allChanged.size - deletedItems.size - completelyNew.size = ${allChangedIds.size() - deletedItemIds.size() - completelyNewItemIds.size()}\n" +
+                "justModifiedSetCalc size: ${justModifiedSetCalc.size()}\n"
 
 
 
@@ -140,6 +272,100 @@ class ProcessCosd {
             }
         }
 
+    }
+
+    /**
+     * Won't work for 8.0.1 as there some cosmetic changes which are just modifications have a green foreground for the first cell of the row.
+     */
+    static void categorizeModificationsv7_0_6() {
+        
+        println "# Categorize Modifications v7.0.6"
+        InputStream is = ProcessCosd.class.getClassLoader().getResourceAsStream('org/modelcatalogue/COSD_Dataset_v7_0_6_Final.xls')
+        FrostedWorkbook workbook = FrostedWorkbook.readXLS(is)
+
+        FrostedSheet substantialChangesSheet = workbook[SUBSTANTIAL_CHANGES]
+        FrostedSheet cosmeticChangesSheet = workbook[COSMETIC_CHANGES]
+
+        List<List<Row>> rowSections = []
+
+        Iterator<Row> substantialRowIterator = substantialChangesSheet.rowIterator()
+        Iterator<Row> cosmeticRowIterator = cosmeticChangesSheet.rowIterator()
+        List<Row> currentRowSection = []
+        while (substantialRowIterator.hasNext() || cosmeticRowIterator.hasNext()) {
+            Row row = substantialRowIterator.hasNext() ? substantialRowIterator.next() : cosmeticRowIterator.next()
+            Cell c = row.getCell(HeadersMap.dataItemNo)
+            HSSFCellStyle cs = c?.getCellStyle()
+            HSSFFont font = cs?.getFont(workbook.getWorkbook())
+            HSSFColor fontColor = font?.getHSSFColor((HSSFWorkbook) workbook.getWorkbook())
+
+            if (c?.stringCellValue == 'Data item No.') {
+                rowSections << currentRowSection.collect()
+                currentRowSection = []
+            }
+            else {
+                String foregroundColor = cs?.fillForegroundColorColor?.hexString
+               if (  (foregroundColor == 'FFFF:CCCC:9999' // orange
+                      ||
+                      foregroundColor =='FFFF:FFFF:0' // yellow
+                      ||
+                      (foregroundColor == 'FFFF:FFFF:FFFF' && // white
+                                c?.stringCellValue?.matches(/\s*[A-Z]{1,3}[0-9]{1,10}\s*/)))
+                   && !(fontColor?.getHexString() == 'FFFF:0:0')) {
+                   currentRowSection << row
+               }
+            }
+            // Note GY7190 is written in the spreadsheet with a space or newline...
+
+            // The process misses 13 things from COSMETIC_CHANGES:
+
+            // CR0020
+            // CR3170
+            // CR3160
+            // CT6750, (belongs with CT6350 etc.)
+            // CT6710, CT6720, CT6740, CT6770, CT6800 (belongs with CT6250 etc.)
+            // CT6760, (belongs with CT6560)
+            // HA8720, HA8680, (belongs with HA8280 etc.)
+            // SK12630
+
+            // The program found 186 modified things (deduped), adding 13 gives 199, which is the same deduped figure calculated from all changed - deleted - completely new
+        }
+
+        // handle the edges of the iteration: need to add the last accumulated currentRowSection
+        rowSections << currentRowSection.collect()
+        currentRowSection = []
+        // and remove the first, empty, section.
+        rowSections.drop(1)
+
+        List<List<String>> idSections = rowSections.collect {
+            List<Row> section ->
+                section.collect {
+                    Row row ->
+                        Cell c = row.getCell(HeadersMap.dataItemNo)
+                        c?.stringCellValue
+                }
+        }
+
+        idSections.each {println it}
+        idSections = idSections.findAll({it})
+        idSections = idSections.collect {
+            List<Row> section ->
+                section.findAll({it})
+        }
+
+        idSections.each{
+            String readableList = "['${it.join("', '")}']"
+            println "new ModificationGroup(ids: ${readableList},\n" +
+                    "modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),"
+        }
+
+        println "Sizes: ${idSections*.size()}"
+        println "Total modified: ${idSections*.size().sum()}"
+        println "Total modified (remove duplicates): ${idSections.flatten().toSet().size()}"
+
+
+
+        //Handle this later
+//
     }
 
     static void main(String... args) {
@@ -189,5 +415,7 @@ class ProcessCosd {
         println "======\n\n======"
         Config cosd_8_0_1_config = new Config(version: "8.0.1", workbookPath: 'org/modelcatalogue/COSD_Dataset_v8_0_1_Final.xls', handPickedDeletedItemIds: [], handPickedCompletelyNewItemIds: [])
 //        processCOSD(cosd_8_0_1_config)
+
+        categorizeModificationsv7_0_6()
     }
 }
