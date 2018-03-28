@@ -1,6 +1,8 @@
 package org.modelcatalogue
 
 class ModificationData {
+
+    static String optionalSchemaSpec = 'Optional'
     /**
      * 
      * Produced from categorizeModifications method and then edited by hand
@@ -123,7 +125,7 @@ class ModificationData {
                     modifications: [new ModMoveToCorePathology(['COLORECTAL - PATHOLOGY'])]),
 
             new ModificationGroup(ids: ['CT6210'],
-                    modifications: [new ModManual('CT6210')]),
+                    modifications: [new ModManual(['CT6210'], "")]),
 
             new ModificationGroup(ids: ['CT6610', 'CT6620', 'CT6630', 'CT6640', 'CT6650', 'CT6660', 'CT6670'],
                     modifications: [new ModMoveToCorePathology(['CTYA -  RENAL PATHOLOGY (Paediatric Kidney)'])]),
@@ -139,7 +141,7 @@ class ModificationData {
 
             new ModificationGroup(ids: ['GY7220'],
                     modifications: [new ModMoveToCorePathology(['GYNAECOLOGY - PATHOLOGY -ENDOMETRIAL']),
-                                    new ModChangesToSchemaSpec('GY7220', 'Optional')]),
+                                    new ModChangesToSchemaSpec('GY7220', optionalSchemaSpec)]),
             new ModificationGroup(ids: ['GY7290', 'GY7300', 'GY7350', 'GY7310', 'GY7340', 'GY7360', 'GY7370', 'GY7020', 'GY7060', 'GY7080', 'GY7070', 'GY7090', 'GY7410', 'GY7420', 'GY7230'],
                     modifications: [new ModMoveToCorePathology(['GYNAECOLOGY - PATHOLOGY - CERVICAL',
                                                                 'GYNAECOLOGY - PATHOLOGY - NODES'])]),
@@ -172,11 +174,11 @@ class ModificationData {
                     modifications: [new ModMoveToCorePathology(['SARCOMA - PATHOLOGY - SOFT TISSUE'])]),
 
             new ModificationGroup(ids: ['SK12450'],
-                    modifications: [new ModManual('SK12450')]),
+                    modifications: [new ModManual(['SK12450'], "")]),
             new ModificationGroup(ids: ['SK12030'],
-                    modifications: [new ModManual('SK12030')]),
+                    modifications: [new ModManual(['SK12030'], "")]),
             new ModificationGroup(ids: ['SK12010'],
-                    modifications: [new ModManual('SK12010')]),
+                    modifications: [new ModManual(['SK12010'], "")]),
 
             new ModificationGroup(ids: ['SK12120'],
                     modifications: [new ModMoveToCorePathology(['SKIN - GENERAL - BCC, SCC & MM '])]),
@@ -197,47 +199,69 @@ class ModificationData {
             // Cosmetic Changes: Some "realigned", "regrouped"
 
             new ModificationGroup(ids: ['CR0020'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['CR0020'], "")]),
             new ModificationGroup(ids: ['CR3170'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['CR3170'], "")]),
             new ModificationGroup(ids: ['CR0180'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['CR0180'], "")]),
             new ModificationGroup(ids: ['CR3160'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['CR3160'], "")]),
             new ModificationGroup(ids: ['CR0510'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['CR0510'], "")]),
             new ModificationGroup(ids: ['CR2070'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['CR2070'], "")]),
+
             new ModificationGroup(ids: ['CR3040', 'CR3050'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModChangesToSchemaSpec('CR3040', optionalSchemaSpec),
+                    new ModChangesToSchemaSpec('CR3050', optionalSchemaSpec)]),
+
             new ModificationGroup(ids: ['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6470', 'CT6440', 'CT6220', 'CT6230', 'CT6240'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModNewSectionInDiseaseGroup(['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6470', 'CT6440', 'CT6220', 'CT6230', 'CT6240'],
+                            'CTYA', 'DIAGNOSIS')]),
             new ModificationGroup(ids: ['CT6130', 'CT6140'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModNewSectionInDiseaseGroup(['CT6130', 'CT6140'],
+                    'CTYA', 'SURGERY AND OTHER PROCEDURES')]),
             new ModificationGroup(ids: ['CT6710', 'CT6720', 'CT6740', 'CT6770', 'CT6800', 'CT6250', 'CT6270', 'CT6280', 'CT6290', 'CT6330', 'CT6500', 'CT6510', 'CT6590'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModNewSectionInDiseaseGroup(['CT6710', 'CT6720', 'CT6740', 'CT6770', 'CT6800', 'CT6250', 'CT6270', 'CT6280', 'CT6290', 'CT6330', 'CT6500', 'CT6510', 'CT6590'],
+                    'CTYA','STAGING')]),
+
             new ModificationGroup(ids: ['CT6560', 'CT6760'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['CT6560', 'CT6760'], "")]),
+
             new ModificationGroup(ids: ['CT6310', 'CT6360', 'CT6460', 'CT6530', 'CT6550', 'CT6580', 'CT6520'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModNewSectionInDiseaseGroup(['CT6310', 'CT6360', 'CT6460', 'CT6530', 'CT6550', 'CT6580', 'CT6520'],
+                    'CTYA', 'LABORATORY RESULTS'),
+                    new ModManual(['CT6360'], "make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS'. Yes, you have to introduce a typo.")]),
+
             new ModificationGroup(ids: ['HA8660'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['HA8660'], "")]),
             new ModificationGroup(ids: ['HA8720', 'HA8680', 'HA8280', 'HA8290', 'HA8300', 'HA8310'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModNewSectionInDiseaseGroup(['HA8720', 'HA8680', 'HA8280', 'HA8290', 'HA8300', 'HA8310'],
+                    'HAEMATOLOGY - STAGING', 'ANN ARBOR')]),
+            new ModificationGroup(ids: ['HA8240', 'HA8700', 'HA8560', 'HA8710'],
+                    modifications: [new ModManual(['HA8240', 'HA8700', 'HA8560', 'HA8710'], "Changes not listed in SUBSTANTIAL/COSMETIC CHANGES but under Haematology! They missed this out...")]),
+
             new ModificationGroup(ids: ['LU10070', 'LU10080'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModNewSectionInDiseaseGroup(['LU10070', 'LU10080'],
+                    'LUNG', 'SURGERY AND OTHER PROCEDURES')]),
             new ModificationGroup(ids: ['SK12030'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['SK12030'], "")]),
             new ModificationGroup(ids: ['SK12450'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['SK12450'], "")]),
             new ModificationGroup(ids: ['SK12630'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['SK12630'], "")]),
             new ModificationGroup(ids: ['UG13100', 'UG13810'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['UG13100', 'UG13810'], "")]),
             new ModificationGroup(ids: ['UG14210', 'UG14230', 'UG13240', 'UG13590', 'UG14290', 'UG13090', 'UG13250', 'UG13070', 'UG13080', 'UG13560', 'UG13580'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModNewSectionInDiseaseGroup(['UG14210', 'UG14230', 'UG13240', 'UG13590',  'UG13070', 'UG13080'],
+                    'UPPER GI', 'SURGICAL AND OTHER PROCEDURES'),
+                                    new ModNewSectionInDiseaseGroup(
+                                    ['UG14290', 'UG13090', 'UG13250'],
+                    'UPPER GI', 'SURGERY AND OTHER PROCEDURES'),
+                                    new ModNewSectionInDiseaseGroup(['UG13560', 'UG13580'],
+                    'UPPER GI', 'TREATMENT')]),
             new ModificationGroup(ids: ['UR15100', 'UR15110'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
+                    modifications: [new ModManual(['UR15100', 'UR15110'], "")]),
 
 
     ]

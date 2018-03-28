@@ -1,5 +1,5 @@
-/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/bin/java "-javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=61160:/Applications/IntelliJ IDEA.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/packager.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/tools.jar:/Users/james/Documents/work/metadata_consulting/gel/process-cosd/out/production/classes:/Users/james/Documents/work/metadata_consulting/gel/process-cosd/out/production/resources:/Users/james/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/2.4.10/4660c69a6fb68c1507d09e3de01e56bc87ffd85d/groovy-all-2.4.10.jar:/Users/james/.gradle/caches/modules-2/files-2.1/com.emmanuelrosa/frostedsheets/0.4.0/4fa593047eecb2ebc3b94ec23da4aee84271b826/frostedsheets-0.4.0.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml/3.14-beta1/b99f04deb089a65e395b3cac4d4e56f1debcb514/poi-ooxml-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/ooxml-schemas/1.3/8cae398233e86f0cccc0129709b7d0177fbec8f5/ooxml-schemas-1.3.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/3.14-beta1/4bfa85e2359dea4dd1d0ac08ec5cd8d87b6a1007/poi-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml-schemas/3.14-beta1/e44474add8ab7edb29a6721f225632c864634c22/poi-ooxml-schemas-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/com.github.virtuald/curvesapi/1.03/6b0977602901464b056959027fdf2396050f9dd2/curvesapi-1.03.jar:/Users/james/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.xmlbeans/xmlbeans/2.6.0/29e80d2dd51f9dcdef8f9ffaee0d4dc1c9bbfc87/xmlbeans-2.6.0.jar:/Users/james/.gradle/caches/modules-2/files-2.1/stax/stax-api/1.0.1/49c100caf72d658aca8e58bd74a4ba90fa2b0d70/stax-api-1.0.1.jar org.modelcatalogue.ProcessCosd
-objc[45207]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/bin/java (0x1080d34c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10819b4e0). One of the two will be used. Which one is undefined.
+/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/bin/java "-javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=51850:/Applications/IntelliJ IDEA.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/packager.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/tools.jar:/Users/james/Documents/work/metadata_consulting/gel/process-cosd/out/production/classes:/Users/james/Documents/work/metadata_consulting/gel/process-cosd/out/production/resources:/Users/james/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/2.4.10/4660c69a6fb68c1507d09e3de01e56bc87ffd85d/groovy-all-2.4.10.jar:/Users/james/.gradle/caches/modules-2/files-2.1/com.emmanuelrosa/frostedsheets/0.4.0/4fa593047eecb2ebc3b94ec23da4aee84271b826/frostedsheets-0.4.0.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml/3.14-beta1/b99f04deb089a65e395b3cac4d4e56f1debcb514/poi-ooxml-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/ooxml-schemas/1.3/8cae398233e86f0cccc0129709b7d0177fbec8f5/ooxml-schemas-1.3.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/3.14-beta1/4bfa85e2359dea4dd1d0ac08ec5cd8d87b6a1007/poi-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml-schemas/3.14-beta1/e44474add8ab7edb29a6721f225632c864634c22/poi-ooxml-schemas-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/com.github.virtuald/curvesapi/1.03/6b0977602901464b056959027fdf2396050f9dd2/curvesapi-1.03.jar:/Users/james/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.xmlbeans/xmlbeans/2.6.0/29e80d2dd51f9dcdef8f9ffaee0d4dc1c9bbfc87/xmlbeans-2.6.0.jar:/Users/james/.gradle/caches/modules-2/files-2.1/stax/stax-api/1.0.1/49c100caf72d658aca8e58bd74a4ba90fa2b0d70/stax-api-1.0.1.jar org.modelcatalogue.ProcessCosd
+objc[46832]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/bin/java (0x1016274c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1016ef4e0). One of the two will be used. Which one is undefined.
 # COSD Version: 7.0.6
 [Data item No., Data Item Section, Data Item Name, Data Item Description, Format, National Code, National code definition, Data Dictionary Element, Other collections, Schema Specification*]
 Data item No.:
@@ -10216,90 +10216,219 @@ handpicked deleted == program picked deleted: true
 [UG14210, UG14230, UG13240, UG13590, UG14290, UG13090, UG13250, UG13070, UG13080, UG13560, UG13580]
 [UR15100, UR15110]
 new ModificationGroup(ids: ['BR4140', 'BR4160', 'BR4170', 'BR4180', 'BR4190', 'BR4200', 'BR4210', 'BR4230', 'BR4220', 'BR4300', 'BR4290', 'BR4280', 'BR4310', 'BR4240', 'BR4250', 'BR4260', 'BR4270'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['BA3070'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['BA3150', 'BA3160'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CO5190', 'CO5210'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CO5260', 'CO5270', 'CO5280', 'CO5290', 'CO5300'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CT6210'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CT6610', 'CT6620', 'CT6630', 'CT6640', 'CT6650', 'CT6660', 'CT6670'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['GY7050', 'GY7120', 'GY7130', 'GY7100', 'GY7140', 'GY7190
 ', 'GY7150', 'GY7170', 'GY7180', 'GY7240', 'GY7260', 'GY7270', 'GY7280'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['GY7280'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['GY7220'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['GY7290', 'GY7300', 'GY7350', 'GY7310', 'GY7340', 'GY7360', 'GY7370', 'GY7020', 'GY7060', 'GY7080', 'GY7070', 'GY7090', 'GY7410', 'GY7420', 'GY7230'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['HA8270'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['HN9300', 'HN9310', 'HN9320', 'HN9330', 'HN9380', 'HN9390', 'HN9400', 'HN9410', 'HN9420', 'HN9430'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['LU10090'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['LU10100', 'LU10110', 'LU10120', 'LU10130', 'LU10140', 'LU10150', 'LU10160', 'LU10170', 'LU10180'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['SA11120', 'SA11170', 'SA11130', 'SA11140'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['SA11100', 'SA11220'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['SK12450'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['SK12030'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['SK12010'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['SK12120'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['SK12530', 'SK12537', 'SK12650', 'SK12660', 'SK12545', 'SK12565', 'SK12580', 'SK12590', 'SK12600', 'SK12620', 'SK12630', 'SK12430', 'SK12460', 'SK12470', 'SK12480', 'SK12490'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['UG14470', 'UG14480', 'UG14490'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['UR15120', 'UR15290', 'UR15130', 'UR15140', 'UR15150', 'UR15160', 'UR15170', 'UR15180', 'UR15190', 'UR15200', 'UR15210', 'UR15220', 'UR15230', 'UR15240', 'UR15250', 'UR15260', 'UR15270', 'UR15310'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CR0180'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CR0510'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CR2070'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CR3040', 'CR3050'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CT6350', 'CT6380', 'CT6390', 'CT6450', 'CT6470', 'CT6440', 'CT6220', 'CT6230', 'CT6240'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CT6130', 'CT6140'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CT6250', 'CT6270', 'CT6280', 'CT6290', 'CT6330', 'CT6500', 'CT6510', 'CT6590'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CT6560'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['CT6310', 'CT6360', 'CT6460', 'CT6530', 'CT6550', 'CT6580', 'CT6520'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['HA8660'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['HA8280', 'HA8290', 'HA8300', 'HA8310'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['LU10070', 'LU10080'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['SK12030'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['SK12450'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['UG13100', 'UG13810'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['UG14210', 'UG14230', 'UG13240', 'UG13590', 'UG14290', 'UG13090', 'UG13250', 'UG13070', 'UG13080', 'UG13560', 'UG13580'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 new ModificationGroup(ids: ['UR15100', 'UR15110'],
-modifications: [Modification.NOT_LOOKED_AT_SPREADSHEET_YET]),
+modifications: [new ModNotLookedAtSpreadsheetYet()]),
 Sizes: [17, 1, 2, 2, 5, 1, 7, 13, 1, 1, 15, 1, 10, 1, 9, 4, 2, 1, 1, 1, 1, 16, 3, 18, 1, 1, 1, 2, 9, 2, 8, 1, 7, 1, 4, 2, 1, 1, 2, 11, 2]
 Total modified: 189
 Total modified (remove duplicates): 186
+
+Modifications:
+Class: org.modelcatalogue.ModMoveToCorePathology
+org.modelcatalogue.ModMoveToCorePathology([BREAST - PATHOLOGY  ])
+org.modelcatalogue.ModMoveToCorePathology([CNS - PATHOLOGY ])
+org.modelcatalogue.ModMoveToCorePathology([COLORECTAL - PATHOLOGY])
+org.modelcatalogue.ModMoveToCorePathology([COLORECTAL - PATHOLOGY])
+org.modelcatalogue.ModMoveToCorePathology([CTYA -  RENAL PATHOLOGY (Paediatric Kidney)])
+org.modelcatalogue.ModMoveToCorePathology([GYNAECOLOGY - PATHOLOGY, GYNAECOLOGY - PATHOLOGY - FALLOPIAN TUBE, OVARIAN EPITHELIAL and PRIMARY PERITONEAL, GYNAECOLOGY - PATHOLOGY - ENDOMETRIAL])
+org.modelcatalogue.ModMoveToCorePathology([GYNAECOLOGY - PATHOLOGY -ENDOMETRIAL])
+org.modelcatalogue.ModMoveToCorePathology([GYNAECOLOGY - PATHOLOGY - CERVICAL, GYNAECOLOGY - PATHOLOGY - NODES])
+org.modelcatalogue.ModMoveToCorePathology([HEAD & NECK -PATHOLOGY - VARIOUS, HEAD & NECK -PATHOLOGY - SALIVARY, HEAD & NECK -PATHOLOGY - GENERAL and SALIVARY])
+org.modelcatalogue.ModMoveToCorePathology([LUNG - PATHOLOGY ])
+org.modelcatalogue.ModMoveToCorePathology([SARCOMA - PATHOLOGY - SOFT TISSUE])
+org.modelcatalogue.ModMoveToCorePathology([SKIN - GENERAL - BCC, SCC & MM ])
+org.modelcatalogue.ModMoveToCorePathology([SKIN - PATHOLOGY - BCC & SCC, SKIN - PATHOLOGY - SCC & MM, SKIN - PATHOLOGY - SCC, SKIN - PATHOLOGY - MM])
+org.modelcatalogue.ModMoveToCorePathology([UPPER GI -  PATHOLOGY - LIVER METS, UPPER GI - PATHOLOGY - OESOPHAGEAL AND STOMACH, UPPER GI -PATHOLOGY - OESOPHAGEAL, OG JUNCTION, PANCREAS, BILE DUCT, LCC, LIVER HCC AND LIVER METS])
+org.modelcatalogue.ModMoveToCorePathology([UROLOGY - PATHOLOGY - BLADDER, UROLOGY - PATHOLOGY - KIDNEY, UROLOGY- PATHOLOGY - PENIS, UROLOGY - PATHOLOGY - PROSTATE, UROLOGY - PATHOLOGY - TESTICULAR])
+
+Class: org.modelcatalogue.ModChangesToEnums
+org.modelcatalogue.ModChangesToEnums(BA3070, [06:Evidence of ALK rearrangement, 07:Evidence of native ALK, 08:Evidence of ATRX mutation, 09:Evidence of wt ATRX, 10:Evidence of BRAF V600E mutation, 11:Evidence of wt BRAF, 12:Evidence of KIAA1549-BRAF fusion, 13:Evidence of BRAF/RAF1 mutations, or fusions involving genes other than KIAA1549, 14:Evidence of C11orf95-RELA fusion, 15:Evidence of native C11orf95 and RELA, 16:Evidence of amplification or fusion of C19MC locus (chr.19q13.42), 17:Evidence of unaltered C19MC locus (chr.19q13.42), 18:Evidence of CDK4/6 amplification, 19:Evidence of CDK4/6 normal copy number, 20:Evidence of CDKN2A locus homozygous deletion, 21:Evidence of CDKN2A locus normal copy number, 22:Evidence of CCND1/2/3 amplification, 23:Evidence of CCND1/2/3 normal copy number, 24:Evidence of CTNNB1 mutation , 25:Evidence of wt CTNNB1, 26:Evidence of amplification of EGFR , 27:Evidence of mutation / rearrangement of EGFR, 28:Evidence of unaltered EGFR, 29:Evidence of EWSR1-FLI1 fusion, 30:Evidence of native EWSR1 and FLI1, 31:Evidence of FGFR1 mutation / rearrangement / fusion, 32:Evidence of unaltered FGFR1, 33:Evidence of H3F3A/H3F3B (H3.3) K27M mutation, 34:Evidence of H3F3A/H3F3B (H3.3) wt K27, 35:Evidence of H3F3A/H3F3B (H3.3) G34R/V mutation, 36:Evidence of H3F3A/H3F3B (H3.3) wt G34, 37:Evidence of HIST1H3B K27M mutation, 38:Evidence of HIST1H3B wt K27, 39:Evidence of HIST1H3C K27M mutation, 40:Evidence of HIST1H3C wt K27, 41:Evidence of ID2 amplification, 42:Evidence of ID2 normal copy number, 43:IDH1 (codon 132) or IDH2 (codon 172) mutation identified, 44:IDH1 (codon 132) and IDH2 (codon 172) wt confirmed, 45:Evidence of KLF4 K409Q and TRAF7 mutations, 46:Evidence of wt KLF4 and TRAF7, 47:Evidence of MAP2K1 mutation, 48:Evidence of wt MAP2K1 , 49:Evidence of MET amplification, 50:Evidence of MET normal copy number , 51:Evidence of significant MGMT promoter methylation, 52:Evidence of unmethylated MGMT promoter, 53:Evidence of MYC/MYCN amplification, 54:Evidence of MYC/MYCN normal copy number , 55:Evidence of NF1 biallelic loss / mutation, 56:Evidence of unaltered NF1, 57:Evidence of NF2 biallelic loss / mutation, 58:Evidence of unaltered NF2, 59:Evidence of NKTR fusions , 60:Evidence of native NKTR, 61:Evidence of PTEN biallelic loss / mutation, 62:Evidence of unaltered PTEN, 63:Evidence of SDHB or SDHD mutation, 64:Evidence of wt SDHB and SDHD, 65:Evidence of SHH pathway activation, 66:Evidence of normal SHH pathway, 67:Evidence of inactivation of SMARCB1 (INI1), 68:Evidence of wt SMARCB1 (INI1), 69:Evidence of inactivation of SMARCA4 , 70:Evidence of wt SMARCA4 , 71:Evidence of TERT promotor mutation , 72:Evidence of wt TERT promotor, 73:Evidence  of TP53 mutation , 74:Evidence of wt TP53, 75:Evidence of TSC1 or TSC2 mutation, 76:Evidence of wt TSC1 and TSC2, 77:Evidence of VHL mutation, 78:Evidence of wt VHL gene, 79:Evidence of WNT pathway activation, 80:Evidence of normal WNT pathway, 81:Evidence of WWTR1-CAMTA1 fusion, 82:Evidence of native WWTR1 and CAMTA1 , 83:Evidence of codeletion of chr.1p and chr.19q, 84:Evidence of total chr.1p loss but normal copy number of chr.19q, 85:Evidence of normal copy number of both chr.1p and chr.19q, 86:Evidence of monosomy chr.6, 87:Evidence of chr.6 normal copy number, 88:Evidence of polysomy chr.7, 89:Evidence of chr.7 normal copy number, 90:Evidence of loss of chr.10 or chr.10q, 91:Evidence of chr.10 normal copy number, 92:Evidence of loss of chr.22 or chr.22q, 93:Evidence of chr.22 or chr.22q normal copy number, 98:Other, 99:Not Known (Not Recorded)])
+org.modelcatalogue.ModChangesToEnums(GY7280, [P:Positive , N:Negative, X:Not sent/Not assessable])
+org.modelcatalogue.ModChangesToEnums(HA8270, [1:CNS1 ( without blasts), 2:CNS2 (< 5 WBC in the CSF with blasts), 3:CNS3 (≥5 WBC in the CSF with blasts), 4:Testes, 9:Other])
+org.modelcatalogue.ModChangesToEnums(LU10090, [3:Failed analysis, 4:Not assessed, 5:Wild type/non-sensitising mutation , 6:Sensitising/activating mutation ])
+
+Class: org.modelcatalogue.ModManual
+org.modelcatalogue.ModManual([CT6210], )
+org.modelcatalogue.ModManual([SK12450], )
+org.modelcatalogue.ModManual([SK12030], )
+org.modelcatalogue.ModManual([SK12010], )
+org.modelcatalogue.ModManual([CR0020], )
+org.modelcatalogue.ModManual([CR3170], )
+org.modelcatalogue.ModManual([CR0180], )
+org.modelcatalogue.ModManual([CR3160], )
+org.modelcatalogue.ModManual([CR0510], )
+org.modelcatalogue.ModManual([CR2070], )
+org.modelcatalogue.ModManual([CT6560, CT6760], )
+org.modelcatalogue.ModManual([CT6360], make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS')
+org.modelcatalogue.ModManual([HA8660], )
+org.modelcatalogue.ModManual([HA8240, HA8700, HA8560, HA8710], Changes not listed in SUBSTANTIAL/COSMETIC CHANGES but under Haematology! They missed this out...)
+org.modelcatalogue.ModManual([SK12030], )
+org.modelcatalogue.ModManual([SK12450], )
+org.modelcatalogue.ModManual([SK12630], )
+org.modelcatalogue.ModManual([UG13100, UG13810], )
+org.modelcatalogue.ModManual([UR15100, UR15110], )
+
+Class: org.modelcatalogue.ModChangesToSchemaSpec
+org.modelcatalogue.ModChangesToSchemaSpec(GY7220, Optional)
+org.modelcatalogue.ModChangesToSchemaSpec(CR3040, Optional)
+org.modelcatalogue.ModChangesToSchemaSpec(CR3050, Optional)
+
+Class: org.modelcatalogue.ModUnclearFromSpreadsheet
+org.modelcatalogue.ModUnclearFromSpreadsheet([SA11120, SA11170, SA11130, SA11140])
+
+Class: org.modelcatalogue.ModNewSectionInDiseaseGroup
+org.modelcatalogue.ModNewSectionInDiseaseGroup([CT6350, CT6750, CT6380, CT6390, CT6450, CT6470, CT6440, CT6220, CT6230, CT6240], CTYA, DIAGNOSIS)
+org.modelcatalogue.ModNewSectionInDiseaseGroup([CT6130, CT6140], CTYA, SURGERY AND OTHER PROCEDURES)
+org.modelcatalogue.ModNewSectionInDiseaseGroup([CT6710, CT6720, CT6740, CT6770, CT6800, CT6250, CT6270, CT6280, CT6290, CT6330, CT6500, CT6510, CT6590], CTYA, STAGING)
+org.modelcatalogue.ModNewSectionInDiseaseGroup([CT6310, CT6360, CT6460, CT6530, CT6550, CT6580, CT6520], CTYA, LABORATORY RESULTS)
+org.modelcatalogue.ModNewSectionInDiseaseGroup([HA8720, HA8680, HA8280, HA8290, HA8300, HA8310], HAEMATOLOGY - STAGING, ANN ARBOR)
+org.modelcatalogue.ModNewSectionInDiseaseGroup([LU10070, LU10080], LUNG, SURGERY AND OTHER PROCEDURES)
+org.modelcatalogue.ModNewSectionInDiseaseGroup([UG14210, UG14230, UG13240, UG13590, UG13070, UG13080], UPPER GI, SURGICAL AND OTHER PROCEDURES)
+org.modelcatalogue.ModNewSectionInDiseaseGroup([UG14290, UG13090, UG13250], UPPER GI, SURGERY AND OTHER PROCEDURES)
+org.modelcatalogue.ModNewSectionInDiseaseGroup([UG13560, UG13580], UPPER GI, TREATMENT)
+
+
+Data for modification script: 
+MoveToCorePathology Class Names:
+['BREAST - PATHOLOGY  ', 'CNS - PATHOLOGY ', 'COLORECTAL - PATHOLOGY',
+'CTYA -  RENAL PATHOLOGY (Paediatric Kidney)', 'GYNAECOLOGY - PATHOLOGY', 'GYNAECOLOGY - PATHOLOGY - CERVICAL',
+'GYNAECOLOGY - PATHOLOGY - ENDOMETRIAL', 'GYNAECOLOGY - PATHOLOGY - FALLOPIAN TUBE, OVARIAN EPITHELIAL and PRIMARY PERITONEAL', 'GYNAECOLOGY - PATHOLOGY - NODES',
+'GYNAECOLOGY - PATHOLOGY -ENDOMETRIAL', 'HEAD & NECK -PATHOLOGY - GENERAL and SALIVARY', 'HEAD & NECK -PATHOLOGY - SALIVARY',
+'HEAD & NECK -PATHOLOGY - VARIOUS', 'LUNG - PATHOLOGY ', 'SARCOMA - PATHOLOGY - SOFT TISSUE',
+'SKIN - GENERAL - BCC, SCC & MM ', 'SKIN - PATHOLOGY - BCC & SCC', 'SKIN - PATHOLOGY - MM',
+'SKIN - PATHOLOGY - SCC', 'SKIN - PATHOLOGY - SCC & MM', 'UPPER GI -  PATHOLOGY - LIVER METS',
+'UPPER GI - PATHOLOGY - OESOPHAGEAL AND STOMACH', 'UPPER GI -PATHOLOGY - OESOPHAGEAL, OG JUNCTION, PANCREAS, BILE DUCT, LCC, LIVER HCC AND LIVER METS', 'UROLOGY - PATHOLOGY - BLADDER',
+'UROLOGY - PATHOLOGY - KIDNEY', 'UROLOGY - PATHOLOGY - PROSTATE', 'UROLOGY - PATHOLOGY - TESTICULAR',
+'UROLOGY- PATHOLOGY - PENIS']
+
+new ModNewSectionInDiseaseGroup(['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6470', 'CT6440', 'CT6220', 'CT6230', 'CT6240'], 'CTYA', 'DIAGNOSIS'),
+new ModNewSectionInDiseaseGroup(['CT6130', 'CT6140'], 'CTYA', 'SURGERY AND OTHER PROCEDURES'),
+new ModNewSectionInDiseaseGroup(['CT6710', 'CT6720', 'CT6740', 'CT6770', 'CT6800', 'CT6250', 'CT6270', 'CT6280', 'CT6290', 'CT6330', 'CT6500', 'CT6510', 'CT6590'], 'CTYA', 'STAGING'),
+new ModNewSectionInDiseaseGroup(['CT6310', 'CT6360', 'CT6460', 'CT6530', 'CT6550', 'CT6580', 'CT6520'], 'CTYA', 'LABORATORY RESULTS'),
+new ModNewSectionInDiseaseGroup(['HA8720', 'HA8680', 'HA8280', 'HA8290', 'HA8300', 'HA8310'], 'HAEMATOLOGY - STAGING', 'ANN ARBOR'),
+new ModNewSectionInDiseaseGroup(['LU10070', 'LU10080'], 'LUNG', 'SURGERY AND OTHER PROCEDURES'),
+new ModNewSectionInDiseaseGroup(['UG14210', 'UG14230', 'UG13240', 'UG13590', 'UG13070', 'UG13080'], 'UPPER GI', 'SURGICAL AND OTHER PROCEDURES'),
+new ModNewSectionInDiseaseGroup(['UG14290', 'UG13090', 'UG13250'], 'UPPER GI', 'SURGERY AND OTHER PROCEDURES'),
+new ModNewSectionInDiseaseGroup(['UG13560', 'UG13580'], 'UPPER GI', 'TREATMENT'),
+
+new ModChangesToEnums('BA3070', ['06':'Evidence of ALK rearrangement', '07':'Evidence of native ALK', '08':'Evidence of ATRX mutation', '09':'Evidence of wt ATRX', '10':'Evidence of BRAF V600E mutation', '11':'Evidence of wt BRAF', '12':'Evidence of KIAA1549-BRAF fusion', '13':'Evidence of BRAF/RAF1 mutations, or fusions involving genes other than KIAA1549', '14':'Evidence of C11orf95-RELA fusion', '15':'Evidence of native C11orf95 and RELA',
+'16':'Evidence of amplification or fusion of C19MC locus (chr.19q13.42)', '17':'Evidence of unaltered C19MC locus (chr.19q13.42)', '18':'Evidence of CDK4/6 amplification', '19':'Evidence of CDK4/6 normal copy number', '20':'Evidence of CDKN2A locus homozygous deletion', '21':'Evidence of CDKN2A locus normal copy number', '22':'Evidence of CCND1/2/3 amplification', '23':'Evidence of CCND1/2/3 normal copy number', '24':'Evidence of CTNNB1 mutation ', '25':'Evidence of wt CTNNB1',
+'26':'Evidence of amplification of EGFR ', '27':'Evidence of mutation / rearrangement of EGFR', '28':'Evidence of unaltered EGFR', '29':'Evidence of EWSR1-FLI1 fusion', '30':'Evidence of native EWSR1 and FLI1', '31':'Evidence of FGFR1 mutation / rearrangement / fusion', '32':'Evidence of unaltered FGFR1', '33':'Evidence of H3F3A/H3F3B (H3.3) K27M mutation', '34':'Evidence of H3F3A/H3F3B (H3.3) wt K27', '35':'Evidence of H3F3A/H3F3B (H3.3) G34R/V mutation',
+'36':'Evidence of H3F3A/H3F3B (H3.3) wt G34', '37':'Evidence of HIST1H3B K27M mutation', '38':'Evidence of HIST1H3B wt K27', '39':'Evidence of HIST1H3C K27M mutation', '40':'Evidence of HIST1H3C wt K27', '41':'Evidence of ID2 amplification', '42':'Evidence of ID2 normal copy number', '43':'IDH1 (codon 132) or IDH2 (codon 172) mutation identified', '44':'IDH1 (codon 132) and IDH2 (codon 172) wt confirmed', '45':'Evidence of KLF4 K409Q and TRAF7 mutations',
+'46':'Evidence of wt KLF4 and TRAF7', '47':'Evidence of MAP2K1 mutation', '48':'Evidence of wt MAP2K1 ', '49':'Evidence of MET amplification', '50':'Evidence of MET normal copy number ', '51':'Evidence of significant MGMT promoter methylation', '52':'Evidence of unmethylated MGMT promoter', '53':'Evidence of MYC/MYCN amplification', '54':'Evidence of MYC/MYCN normal copy number ', '55':'Evidence of NF1 biallelic loss / mutation',
+'56':'Evidence of unaltered NF1', '57':'Evidence of NF2 biallelic loss / mutation', '58':'Evidence of unaltered NF2', '59':'Evidence of NKTR fusions ', '60':'Evidence of native NKTR', '61':'Evidence of PTEN biallelic loss / mutation', '62':'Evidence of unaltered PTEN', '63':'Evidence of SDHB or SDHD mutation', '64':'Evidence of wt SDHB and SDHD', '65':'Evidence of SHH pathway activation',
+'66':'Evidence of normal SHH pathway', '67':'Evidence of inactivation of SMARCB1 (INI1)', '68':'Evidence of wt SMARCB1 (INI1)', '69':'Evidence of inactivation of SMARCA4 ', '70':'Evidence of wt SMARCA4 ', '71':'Evidence of TERT promotor mutation ', '72':'Evidence of wt TERT promotor', '73':'Evidence  of TP53 mutation ', '74':'Evidence of wt TP53', '75':'Evidence of TSC1 or TSC2 mutation',
+'76':'Evidence of wt TSC1 and TSC2', '77':'Evidence of VHL mutation', '78':'Evidence of wt VHL gene', '79':'Evidence of WNT pathway activation', '80':'Evidence of normal WNT pathway', '81':'Evidence of WWTR1-CAMTA1 fusion', '82':'Evidence of native WWTR1 and CAMTA1 ', '83':'Evidence of codeletion of chr.1p and chr.19q', '84':'Evidence of total chr.1p loss but normal copy number of chr.19q', '85':'Evidence of normal copy number of both chr.1p and chr.19q',
+'86':'Evidence of monosomy chr.6', '87':'Evidence of chr.6 normal copy number', '88':'Evidence of polysomy chr.7', '89':'Evidence of chr.7 normal copy number', '90':'Evidence of loss of chr.10 or chr.10q', '91':'Evidence of chr.10 normal copy number', '92':'Evidence of loss of chr.22 or chr.22q', '93':'Evidence of chr.22 or chr.22q normal copy number', '98':'Other', '99':'Not Known (Not Recorded)']),
+new ModChangesToEnums('GY7280', ['P':'Positive ', 'N':'Negative', 'X':'Not sent/Not assessable']),
+new ModChangesToEnums('HA8270', ['1':'CNS1 ( without blasts)', '2':'CNS2 (< 5 WBC in the CSF with blasts)', '3':'CNS3 (≥5 WBC in the CSF with blasts)', '4':'Testes', '9':'Other']),
+new ModChangesToEnums('LU10090', ['3':'Failed analysis', '4':'Not assessed', '5':'Wild type/non-sensitising mutation ', '6':'Sensitising/activating mutation ']),
+
+Change GY7220's schema spec to Optional
+Change CR3040's schema spec to Optional
+Change CR3050's schema spec to Optional
+
+Must do [CT6210] manually. Comment: 
+Must do [SK12450] manually. Comment: 
+Must do [SK12030] manually. Comment: 
+Must do [SK12010] manually. Comment: 
+Must do [CR0020] manually. Comment: 
+Must do [CR3170] manually. Comment: 
+Must do [CR0180] manually. Comment: 
+Must do [CR3160] manually. Comment: 
+Must do [CR0510] manually. Comment: 
+Must do [CR2070] manually. Comment: 
+Must do [CT6560, CT6760] manually. Comment: 
+Must do [CT6360] manually. Comment: make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS'
+Must do [HA8660] manually. Comment: 
+Must do [HA8240, HA8700, HA8560, HA8710] manually. Comment: Changes not listed in SUBSTANTIAL/COSMETIC CHANGES but under Haematology! They missed this out...
+Must do [SK12030] manually. Comment: 
+Must do [SK12450] manually. Comment: 
+Must do [SK12630] manually. Comment: 
+Must do [UG13100, UG13810] manually. Comment: 
+Must do [UR15100, UR15110] manually. Comment: 
+
+Unclear what to do with [SA11120, SA11170, SA11130, SA11140]
+
+
 
 Process finished with exit code 0

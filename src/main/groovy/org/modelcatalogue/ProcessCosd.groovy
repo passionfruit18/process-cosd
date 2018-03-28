@@ -280,6 +280,10 @@ class ProcessCosd {
         println "${listBroken((moveToCorePathologyClassNames.collect {"'$it'"}), 3)}"
         println ''
 
+        List<ModNewSectionInDiseaseGroup> newSectionInDiseaseGroupList = modificationLists.modNewSectionInDiseaseGroupList()
+        newSectionInDiseaseGroupList.each {println "new ModNewSectionInDiseaseGroup(['${it.cosdIds.join("', '")}'], '$it.newSectionNamePart1', '$it.newSectionNamePart2'),"}
+        println ''
+
         List<ModChangesToEnums> changesToEnums = modificationLists.modChangesToEnumsList()
         changesToEnums.each{change ->
             println "new ModChangesToEnums('${change.cosdId}', ${listBroken((change.newEnums.collect{k,v -> "'$k':'$v'"}), 10)}),"
@@ -294,7 +298,7 @@ class ProcessCosd {
 
         List<ModManual> manualChanges = modificationLists.modManualList()
         manualChanges.each {
-            println "Must do ${it.cosdId} manually"
+            println "Must do ${it.cosdIds} manually. Comment: ${it.comment}"
         }
         println ''
 
