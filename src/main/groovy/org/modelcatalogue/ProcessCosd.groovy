@@ -1,6 +1,5 @@
 package org.modelcatalogue
 import com.emmanuelrosa.frostedsheets.*
-import groovy.transform.Immutable
 import org.apache.poi.hssf.usermodel.HSSFCellStyle
 import org.apache.poi.hssf.usermodel.HSSFFont
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
@@ -9,8 +8,11 @@ import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.RichTextString
 import org.apache.poi.ss.usermodel.Row
 
-class Config {
-    String version
+/**
+ * Configuration for processing COSD spreadsheet
+ */
+class ProcessCOSDConfig {
+    String cosdVersion
     String workbookPath
     List<String> handPickedDeletedItemIds
     List<String> handPickedCompletelyNewItemIds
@@ -21,6 +23,10 @@ class Config {
     String newEntryForegroundColorHex = '0:8080:0'
 }
 
+/**
+ * Very basic representation of COSDEntry. May be expanded if we want to automatically collect other data.
+ * Actually the only barrier to collecting ALL the information is that automatically collecting enumerations would be a bit involved.
+ */
 class COSDEntry {
     String dataItemNo
     String dataItemSection
@@ -39,166 +45,24 @@ class HeadersMap {
     static int dataItemSection = 1
 }
 
-class ModificationGroup {
-    List<String> ids
-    List<Modification> modifications
-}
 
-trait Modification {
-    //abstract void produceGroovyCodeOrModificationInstructions(List<String> ids, List<String> groovyCodeStrings, List<String> modificationInstructions, String dataModelName)
-}
 
-@Immutable
-/**
- * The data class with the given name will be moved under the 'Core' DataClass.
- */
-class MoveToCorePathology implements Modification {
-    String dataClassName
-}
-
-class NotLookedAtSpreadsheetYet implements Modification {
-
-}
-
-class ChangesToEnums implements Modification {
-
-}
-
-class ChangesToSchemaSpec implements Modification {
-
-}
-
-class Manual implements Modification {
-
-}
-
-class UnclearFromSpreadsheet implements Modification {
-
-}
 
 
 class ProcessCosd {
     static final String SUBSTANTIAL_CHANGES = 'SUBSTANTIAL CHANGES'
     static final String COSMETIC_CHANGES = 'COSMETIC  CHANGES'
 
-    static final List<ModificationGroup> COSD_v7_0_6_substantial_and_cosmetic_change_modifications = [
-            new ModificationGroup(ids: ['BR4140', 'BR4160', 'BR4170', 'BR4180', 'BR4190', 'BR4200', 'BR4210', 'BR4230', 'BR4220', 'BR4300', 'BR4290', 'BR4280', 'BR4310', 'BR4240', 'BR4250', 'BR4260', 'BR4270'],
-                    modifications: [new MoveToCorePathology('BREAST - PATHOLOGY  ')]),
 
-            new ModificationGroup(ids: ['BA3070'],
-                    modifications: [new ChangesToEnums()]),
-
-            new ModificationGroup(ids: ['BA3150', 'BA3160'],
-                    modifications: [new MoveToCorePathology('CNS - PATHOLOGY ')]),
-            new ModificationGroup(ids: ['CO5190', 'CO5210'],
-                    modifications: [new MoveToCorePathology('COLORECTAL - PATHOLOGY')]),
-            new ModificationGroup(ids: ['CO5260', 'CO5270', 'CO5280', 'CO5290', 'CO5300'],
-                    modifications: [new MoveToCorePathology('COLORECTAL - PATHOLOGY')]),
-
-            new ModificationGroup(ids: ['CT6210'],
-                    modifications: [new Manual()]),
-
-            new ModificationGroup(ids: ['CT6610', 'CT6620', 'CT6630', 'CT6640', 'CT6650', 'CT6660', 'CT6670'],
-                    modifications: [new MoveToCorePathology('CTYA -  RENAL PATHOLOGY (Paediatric Kidney)')]),
-            new ModificationGroup(ids: ['GY7050', 'GY7120', 'GY7130', 'GY7100', 'GY7140', 'GY7190', 'GY7150', 'GY7170', 'GY7180', 'GY7240', 'GY7260', 'GY7270', 'GY7280'],
-                    modifications: [new MoveToCorePathology()]),
-
-            new ModificationGroup(ids: ['GY7280'],
-                    modifications: [new ChangesToEnums()]),
-
-            new ModificationGroup(ids: ['GY7220'],
-                    modifications: [new MoveToCorePathology(), new ChangesToSchemaSpec()]),
-            new ModificationGroup(ids: ['GY7290', 'GY7300', 'GY7350', 'GY7310', 'GY7340', 'GY7360', 'GY7370', 'GY7020', 'GY7060', 'GY7080', 'GY7070', 'GY7090', 'GY7410', 'GY7420', 'GY7230'],
-                    modifications: [new MoveToCorePathology()]),
-
-            new ModificationGroup(ids: ['HA8270'],
-                    modifications: [new ChangesToEnums()]),
-
-            new ModificationGroup(ids: ['HN9300', 'HN9310', 'HN9320', 'HN9330', 'HN9380', 'HN9390', 'HN9400', 'HN9410', 'HN9420', 'HN9430'],
-                    modifications: [new MoveToCorePathology()]),
-
-            new ModificationGroup(ids: ['LU10090'],
-                    modifications: [new ChangesToEnums()]),
-
-            new ModificationGroup(ids: ['LU10100', 'LU10110', 'LU10120', 'LU10130', 'LU10140', 'LU10150', 'LU10160', 'LU10170', 'LU10180'],
-                    modifications: [new MoveToCorePathology()]),
-
-            new ModificationGroup(ids: ['SA11120', 'SA11170', 'SA11130', 'SA11140'],
-                    modifications: [new UnclearFromSpreadsheet()]),
-
-            new ModificationGroup(ids: ['SA11100', 'SA11220'],
-                    modifications: [new MoveToCorePathology()]),
-
-            new ModificationGroup(ids: ['SK12450'],
-                    modifications: [new Manual()]),
-            new ModificationGroup(ids: ['SK12030'],
-                    modifications: [new Manual()]),
-            new ModificationGroup(ids: ['SK12010'],
-                    modifications: [new Manual()]),
-
-            new ModificationGroup(ids: ['SK12120'],
-                    modifications: [new MoveToCorePathology()]),
-            new ModificationGroup(ids: ['SK12530', 'SK12537', 'SK12650', 'SK12660', 'SK12545', 'SK12565', 'SK12580', 'SK12590', 'SK12600', 'SK12620', 'SK12630', 'SK12430', 'SK12460', 'SK12470', 'SK12480', 'SK12490'],
-                    modifications: [new MoveToCorePathology()]),
-            new ModificationGroup(ids: ['UG14470', 'UG14480', 'UG14490'],
-                    modifications: [new MoveToCorePathology()]),
-            new ModificationGroup(ids: ['UR15120', 'UR15290', 'UR15130', 'UR15140', 'UR15150', 'UR15160', 'UR15170', 'UR15180', 'UR15190', 'UR15200', 'UR15210', 'UR15220', 'UR15230', 'UR15240', 'UR15250', 'UR15260', 'UR15270', 'UR15310'],
-                    modifications: [new MoveToCorePathology()]),
-            // END OF SUBSTANTIAL CHANGES
-
-            // Cosmetic Changes: Some "realigned", "regrouped"
-
-            new ModificationGroup(ids: ['CR0020'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR3170'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR0180'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR3160'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR0510'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR2070'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR3040', 'CR3050'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6470', 'CT6440', 'CT6220', 'CT6230', 'CT6240'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT6130', 'CT6140'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT6710', 'CT6720', 'CT6740', 'CT6770', 'CT6800', 'CT6250', 'CT6270', 'CT6280', 'CT6290', 'CT6330', 'CT6500', 'CT6510', 'CT6590'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT6560', 'CT6760'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT6310', 'CT6360', 'CT6460', 'CT6530', 'CT6550', 'CT6580', 'CT6520'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['HA8660'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['HA8720', 'HA8680', 'HA8280', 'HA8290', 'HA8300', 'HA8310'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['LU10070', 'LU10080'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['SK12030'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['SK12450'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['SK12630'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['UG13100', 'UG13810'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['UG14210', 'UG14230', 'UG13240', 'UG13590', 'UG14290', 'UG13090', 'UG13250', 'UG13070', 'UG13080', 'UG13560', 'UG13580'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['UR15100', 'UR15110'],
-                    modifications: [new NotLookedAtSpreadsheetYet()]),
-
-
-    ]
 
     static String listBroken(List<String> list, int n) {
         "[${list.collate(n)*.join(", ").join(",\n")}]"
     }
     /**
-     * Notes on the fonts:
+     *
+     * Process COSD spreadsheet and printout stats and lists of COSD ids: completely new, deleted, all changed, modified.
+     *
+     * Notes on the fonts/styling used to indicate addition/deletion/modification:
      * (At least for COSD 7.0.6)
      * Green Foreground color index 17/hex string '0:8080:0' (e.g. CR6000) for new additions
      * Red Font color hexString 'FFFF:0:0' (e.g. CR0400), or Red Foreground color index 10/hex string 'FFFF:0:0', (e.g. CO5230) for removals
@@ -207,8 +71,8 @@ class ProcessCosd {
      *
      * COSD 8.0.1: Substantial Changes: Modifications: Have a white foreground. Some cosmetic change modifications have a green foreground!.
      */
-    static void processCOSD(Config config) {
-        println "# COSD Version: ${config.version}"
+    static void processCOSD(ProcessCOSDConfig config) {
+        println "# COSD Version: ${config.cosdVersion}"
         List<String> deletedItemIds = []
         List<String> allChangedIds = []
         List<String> completelyNewItemIds = []
@@ -306,6 +170,7 @@ class ProcessCosd {
     }
 
     /**
+     * Go through 7.0.6 spreadsheet and find modifications and printout/produce machine-readable/source-code representations of templates for ModificationGroups
      * Won't work for 8.0.1 as there some cosmetic changes which are just modifications have a green foreground for the first cell of the row.
      */
     static void categorizeModificationsv7_0_6() {
@@ -345,20 +210,7 @@ class ProcessCosd {
                    currentRowSection << row
                }
             }
-            // Note GY7190 is written in the spreadsheet with a space or newline...
 
-            // The process misses 13 things from COSMETIC_CHANGES:
-
-            // CR0020
-            // CR3170
-            // CR3160
-            // CT6750, (belongs with CT6350 etc.)
-            // CT6710, CT6720, CT6740, CT6770, CT6800 (belongs with CT6250 etc.)
-            // CT6760, (belongs with CT6560)
-            // HA8720, HA8680, (belongs with HA8280 etc.)
-            // SK12630
-
-            // The program found 186 modified things (deduped), adding 13 gives 199, which is the same deduped figure calculated from all changed - deleted - completely new
         }
 
         // handle the edges of the iteration: need to add the last accumulated currentRowSection
@@ -386,12 +238,15 @@ class ProcessCosd {
         idSections.each{
             String readableList = "['${it.join("', '")}']"
             println "new ModificationGroup(ids: ${readableList},\n" +
-                    "modifications: [new NotLookedAtSpreadsheetYet()]),"
+                    "modifications: [new ModNotLookedAtSpreadsheetYet()]),"
         }
 
         println "Sizes: ${idSections*.size()}"
         println "Total modified: ${idSections*.size().sum()}"
         println "Total modified (remove duplicates): ${idSections.flatten().toSet().size()}"
+        
+
+        println ''
 
 
 
@@ -399,8 +254,61 @@ class ProcessCosd {
 //
     }
 
+    /**
+     * Printout modification data in a way that helps scripting
+     */
+    static void modificationScriptFromDatav7_0_6() {
+        List<ModificationGroup> modificationGroups = ModificationData.getCOSD_v7_0_6_substantial_and_cosmetic_change_modifications()
+//        List<Modification> modifications = modificationGroups.collect {it.modifications}.flatten()
+//        Map<Class<Modification>, List<Modification>> modificationsGroupedByType = modifications.groupBy {it.getClass()}
+        ModificationLists modificationLists = ModificationLists.from(modificationGroups)
+        println "Modifications:"
+        modificationLists.modificationsGroupedByType.each {clazz, modifications2 ->
+            println "Class: ${clazz.name}"
+            modifications2.each {modification ->
+                println "${modification.toString()}"
+            }
+            println ''
+        }
+        println ''
+
+        println "Data for modification script: "
+
+        List<ModMoveToCorePathology> moveToCorePathologyModifications = modificationLists.modMoveToCorePathologyList()
+        List<String> moveToCorePathologyClassNames = moveToCorePathologyModifications.collect {it.dataClassNames}.flatten().unique().sort()
+        println "MoveToCorePathology Class Names:"
+        println "${listBroken((moveToCorePathologyClassNames.collect {"'$it'"}), 3)}"
+        println ''
+
+        List<ModChangesToEnums> changesToEnums = modificationLists.modChangesToEnumsList()
+        changesToEnums.each{change ->
+            println "new ModChangesToEnums('${change.cosdId}', ${listBroken((change.newEnums.collect{k,v -> "'$k':'$v'"}), 10)}),"
+        }
+        println ''
+
+        List<ModChangesToSchemaSpec> schemaSpecChanges = modificationLists.modChangesToSchemaSpecList()
+        schemaSpecChanges.each {
+            println "Change ${it.cosdId}'s schema spec to ${it.change}"
+        }
+        println ''
+
+        List<ModManual> manualChanges = modificationLists.modManualList()
+        manualChanges.each {
+            println "Must do ${it.cosdId} manually"
+        }
+        println ''
+
+        List<ModUnclearFromSpreadsheet> unclears = modificationLists.modUnclearFromSpreadsheetList()
+        unclears.each {println "Unclear what to do with ${it.cosdIds}"}
+        println ''
+
+
+        List<ModNotLookedAtSpreadsheetYet> notLookedYet = modificationLists.modNotLookedAtSpreadsheetYetList()
+        notLookedYet.each{println "Not determined what to do with ${it}"}
+        println ''
+    }
     static void main(String... args) {
-        Config cosd_7_0_6_config = new Config(version: "7.0.6", workbookPath: 'org/modelcatalogue/COSD_Dataset_v7_0_6_Final.xls',
+        ProcessCOSDConfig cosd_7_0_6_config = new ProcessCOSDConfig(cosdVersion: "7.0.6", workbookPath: 'org/modelcatalogue/COSD_Dataset_v7_0_6_Final.xls',
         handPickedDeletedItemIds: ["CR0400", "CR3030",
                                    "CR0530", "CR3060",
                                    "CR0850", "CR3070",
@@ -446,9 +354,10 @@ class ProcessCosd {
 
         processCOSD(cosd_7_0_6_config)
         println "======\n\n======"
-        Config cosd_8_0_1_config = new Config(version: "8.0.1", workbookPath: 'org/modelcatalogue/COSD_Dataset_v8_0_1_Final.xls', handPickedDeletedItemIds: [], handPickedCompletelyNewItemIds: [])
+        ProcessCOSDConfig cosd_8_0_1_config = new ProcessCOSDConfig(cosdVersion: "8.0.1", workbookPath: 'org/modelcatalogue/COSD_Dataset_v8_0_1_Final.xls', handPickedDeletedItemIds: [], handPickedCompletelyNewItemIds: [])
 //        processCOSD(cosd_8_0_1_config)
 
         categorizeModificationsv7_0_6()
+        modificationScriptFromDatav7_0_6()
     }
 }
