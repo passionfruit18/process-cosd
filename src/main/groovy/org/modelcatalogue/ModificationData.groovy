@@ -5,10 +5,10 @@ class ModificationData {
     static String optionalSchemaSpec = 'Optional'
     /**
      * 
-     * Produced from categorizeModifications method and then edited by hand
+     * Produced from categorizeModifications method, which analysed the spreadsheet, and then edited by hand
      * // Note GY7190 is written in the spreadsheet with a space or newline...
 
-     // The process misses 13 things from COSMETIC_CHANGES:
+     // The method missed 13 things from COSMETIC_CHANGES:
 
      // CR0020
      // CR3170
@@ -20,6 +20,9 @@ class ModificationData {
      // SK12630
 
      // The program found 186 modified things (deduped), adding 13 gives 199, which is the same deduped figure calculated from all changed - deleted - completely new
+
+     // Also, the editors forgot to put some changes from Haematology (['HA8240', 'HA8700', 'HA8560', 'HA8710']) into COSMETIC_CHANGES.
+
      */
     static final List<ModificationGroup> COSD_v7_0_6_substantial_and_cosmetic_change_modifications = [
             new ModificationGroup(ids: ['BR4140', 'BR4160', 'BR4170', 'BR4180', 'BR4190', 'BR4200', 'BR4210', 'BR4230', 'BR4220', 'BR4300', 'BR4290', 'BR4280', 'BR4310', 'BR4240', 'BR4250', 'BR4260', 'BR4270'],
