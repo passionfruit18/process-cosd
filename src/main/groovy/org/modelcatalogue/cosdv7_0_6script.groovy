@@ -1,11 +1,13 @@
 //import org.modelcatalogue.core.*
-//// COSD 7.0.6 check newly added items
-//// using data from ProcessCosd
+//println "COSD 7.0.6 check newly added items, do deletions, modifications using data from ProcessCosd"
+//println "# Check Additions\n=================\n"
 //
 //class COSDEntry {
 //    String dataItemNo
 //    String dataItemSection
 //}
+//
+//// DATA PROCESSED FROM SPREADSHEET
 //List<COSDEntry> newlyAddedItems = [new COSDEntry(dataItemNo: 'CR6000', dataItemSection: 'CORE - IMAGING (ULTRASOUND)'), new COSDEntry(dataItemNo: 'CR6230', dataItemSection: 'CORE - DIAGNOSIS'), new COSDEntry(dataItemNo: 'CR6490', dataItemSection: 'CORE - DIAGNOSIS'),
 //                                   new COSDEntry(dataItemNo: 'CR6400', dataItemSection: 'CORE - DIAGNOSIS'), new COSDEntry(dataItemNo: 'CR6430', dataItemSection: 'CORE - PERSON OBSERVATION'), new COSDEntry(dataItemNo: 'CR6440', dataItemSection: 'CORE - PERSON OBSERVATION'),
 //                                   new COSDEntry(dataItemNo: 'CR6450', dataItemSection: 'CORE - PERSON OBSERVATION'), new COSDEntry(dataItemNo: 'CR6460', dataItemSection: 'CORE - PERSON OBSERVATION'), new COSDEntry(dataItemNo: 'CR6470', dataItemSection: 'CORE - CANCER CARE PLAN'),
@@ -96,7 +98,7 @@
 //    return stringBuilder.toString();
 //}
 //
-//println "${camelize("HEAD & NECK")}"
+//println "camelize('HEAD & NECK) should be: 'Head & Neck' and is: '${camelize("HEAD & NECK")}'"
 //
 //String getParentClassName(String dataClassName) {
 //
@@ -148,7 +150,157 @@
 //
 //}
 //
-//println "Errors:"
+//boolean doDeletions = false
+//println "# Do Deletions: ${doDeletions ? 'Yes' : 'No'}\n====================\n"
+//
+//// DATA PROCESSED FROM SPREADSHEET
+//List<String> itemsToDeleteIds = ['CR0400', 'CR3030', 'CR0530', 'CR3060', 'CR0850', 'CR3070', 'BR4030', 'BR4040', 'BR4060', 'BR4070', 'BR4080', 'BR4090', 'BR4100', 'BR4110', 'BR4130', 'BA3130', 'BA3140', 'BA3110', 'BA3120', 'CO5010', 'CO5020', 'CO5030', 'CO5040', 'CO5060', 'CO5070', 'CO5080', 'CO5090', 'CO5100', 'CO5110', 'CO5120', 'CO5130', 'CO5140', 'CO5150', 'CO5005', 'CO5180', 'CO5230', 'CO5250', 'CT6150', 'CT6320', 'CT6730', 'CT6300', 'GY7330', 'GY7390', 'GY7210', 'GY7250', 'HA8020', 'HA8230', 'HA8690', 'HN9230', 'HN9220', 'HN9210', 'HN9200', 'HN9220', 'HN9200', 'LU10000', 'LU10020', 'LU10010', 'LU10030', 'SA11160', 'SK12020', 'SK12510', 'UG13293', 'UG13235', 'UG13110', 'UG13150', 'UG14190', 'UG13030', 'UG14410', 'UG13320']
+//itemsToDeleteIds.each {id ->
+//    if (!(id in cosd7deIds)) {
+//        println "Item to delete $id not found in data model"
+//    }
+//}
+//
+//List<DataElement> dataElementsToDelete = cosd7des.findAll {de ->
+//    cosdId(de) in itemsToDeleteIds
+//}
+//
+//DataElement firstToBeDeleted = dataElementsToDelete[0]
+//println "firstToBeDeleted's (${firstToBeDeleted.name}) outgoingRelationships: ${firstToBeDeleted.outgoingRelationships}"
+//println "firstToBeDeleted's incomingRelationships: ${firstToBeDeleted.incomingRelationships}"
+//
+//void deleteCatalogueElement(CatalogueElement ce) {
+//    ce.deleteRelationships()
+//    ce.delete(flush:true)
+//}
+//
+//if (doDeletions) {
+//    dataElementsToDelete.each {deleteCatalogueElement(it)}
+//}
+//
+//println "# Do Modifications\n==================\n"
+//
+//// DATA PROCESSED FROM SPREADSHEET
+//List<String> dataClassNamesMoveToCore = ['BREAST - PATHOLOGY  ', 'CNS - PATHOLOGY ', 'COLORECTAL - PATHOLOGY',
+//                                         'CTYA -  RENAL PATHOLOGY (Paediatric Kidney)', 'GYNAECOLOGY - PATHOLOGY', 'GYNAECOLOGY - PATHOLOGY - CERVICAL',
+//                                         'GYNAECOLOGY - PATHOLOGY - ENDOMETRIAL', 'GYNAECOLOGY - PATHOLOGY - FALLOPIAN TUBE, OVARIAN EPITHELIAL and PRIMARY PERITONEAL', 'GYNAECOLOGY - PATHOLOGY - NODES',
+//                                         'GYNAECOLOGY - PATHOLOGY -ENDOMETRIAL', 'HEAD & NECK -PATHOLOGY - GENERAL and SALIVARY', 'HEAD & NECK -PATHOLOGY - SALIVARY',
+//                                         'HEAD & NECK -PATHOLOGY - VARIOUS', 'LUNG - PATHOLOGY ', 'SARCOMA - PATHOLOGY - SOFT TISSUE',
+//                                         'SKIN - GENERAL - BCC, SCC & MM ', 'SKIN - PATHOLOGY - BCC & SCC', 'SKIN - PATHOLOGY - MM',
+//                                         'SKIN - PATHOLOGY - SCC', 'SKIN - PATHOLOGY - SCC & MM', 'UPPER GI -  PATHOLOGY - LIVER METS',
+//                                         'UPPER GI - PATHOLOGY - OESOPHAGEAL AND STOMACH', 'UPPER GI -PATHOLOGY - OESOPHAGEAL, OG JUNCTION, PANCREAS, BILE DUCT, LCC, LIVER HCC AND LIVER METS', 'UROLOGY - PATHOLOGY - BLADDER',
+//                                         'UROLOGY - PATHOLOGY - KIDNEY', 'UROLOGY - PATHOLOGY - PROSTATE', 'UROLOGY - PATHOLOGY - TESTICULAR',
+//                                         'UROLOGY- PATHOLOGY - PENIS']
+//
+//println "## Move DataClasses to Core\n=================\n"
+//DataClass core = DataClass.findByNameAndDataModel('Core', dm)
+//if (!core) {
+//    println "Modifications: No Core DataClass found"
+//}
+//else {
+//
+//    dataClassNamesMoveToCore.each {dataClassName ->
+//        DataClass dataClassToMove = DataClass.findByNameAndDataModel(dataClassName, dm)
+//        if (!dataClassToMove) {
+//            println "Modifications: Didn't find Data Class with name ${dataClassName}"
+//        }
+//        else {
+//            List<Relationship> parents = dataClassToMove.getIncomingRelationshipsByType(RelationshipType.hierarchyType)
+//            if (parents.size() != 1) {
+//                println "Modifications: Data Class ${dataClassName} has not one but ${parents.size()} parents!"
+//            }
+//            else {
+//                Relationship parentR = parents[0]
+//                parentR.source = core
+//                parentR.save(flush:true)
+//            }
+//        }
+//    }
+//}
+//
+//@Immutable
+///**
+// * e.g. processing ModNewSectionInDiseaseGroup(['CT6230', 'CT6240'], 'DIAGNOSIS') should
+// * for each dataElement find the containing dataClass starting with newSectionNamePart1, e.g. "CTYA - ACUTE...",
+// * and then create/find a data class involving newSectionNamePart2,
+// * e.g. "CTYA - DIAGNOSIS - ACUTE...", and then move the dataElement
+// * where CTYA is newSectionNamePart1,
+// * DIAGNOSIS is newSectionNamePart2.
+// */
+//class ModNewSectionInDiseaseGroup implements Modification {
+//    List<String> cosdIds
+//    String newSectionNamePart1
+//    String newSectionNamePart2
+//}
+//
+//
+//@Immutable
+///**
+// * Enums changed for entry #cosdId to #newEnums. Erase the old enums and insert the new enums.
+// */
+//class ModChangesToEnums implements Modification {
+//    String cosdId
+//    Map<String, String> newEnums
+//}
+//
+//// DATA PROCESSED FROM SPREADSHEET
+//List<ModNewSectionInDiseaseGroup> modNewSectionInDiseaseGroupList = [new ModNewSectionInDiseaseGroup(['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6470', 'CT6440', 'CT6220', 'CT6230', 'CT6240'], 'CTYA', 'DIAGNOSIS'),
+//                                                                     new ModNewSectionInDiseaseGroup(['CT6130', 'CT6140'], 'CTYA', 'SURGERY AND OTHER PROCEDURES'),
+//                                                                     new ModNewSectionInDiseaseGroup(['CT6710', 'CT6720', 'CT6740', 'CT6770', 'CT6800', 'CT6250', 'CT6270', 'CT6280', 'CT6290', 'CT6330', 'CT6500', 'CT6510', 'CT6590'], 'CTYA', 'STAGING'),
+//                                                                     new ModNewSectionInDiseaseGroup(['CT6310', 'CT6360', 'CT6460', 'CT6530', 'CT6550', 'CT6580', 'CT6520'], 'CTYA', 'LABORATORY RESULTS'),
+//                                                                     new ModNewSectionInDiseaseGroup(['HA8720', 'HA8680', 'HA8280', 'HA8290', 'HA8300', 'HA8310'], 'HAEMATOLOGY - STAGING', 'ANN ARBOR'),
+//                                                                     new ModNewSectionInDiseaseGroup(['LU10070', 'LU10080'], 'LUNG', 'SURGERY AND OTHER PROCEDURES'),
+//                                                                     new ModNewSectionInDiseaseGroup(['UG14210', 'UG14230', 'UG13240', 'UG13590', 'UG13070', 'UG13080'], 'UPPER GI', 'SURGICAL AND OTHER PROCEDURES'),
+//                                                                     new ModNewSectionInDiseaseGroup(['UG14290', 'UG13090', 'UG13250'], 'UPPER GI', 'SURGERY AND OTHER PROCEDURES'),
+//                                                                     new ModNewSectionInDiseaseGroup(['UG13560', 'UG13580'], 'UPPER GI', 'TREATMENT')]
+//// TODO: process these according to comment above class definition
+//
+//// DATA PROCESSED FROM SPREADSHEET
+//List<ModChangesToEnums> modChangesToEnumsList = [new ModChangesToEnums('BA3070', ['06':'Evidence of ALK rearrangement', '07':'Evidence of native ALK', '08':'Evidence of ATRX mutation', '09':'Evidence of wt ATRX', '10':'Evidence of BRAF V600E mutation', '11':'Evidence of wt BRAF', '12':'Evidence of KIAA1549-BRAF fusion', '13':'Evidence of BRAF/RAF1 mutations, or fusions involving genes other than KIAA1549', '14':'Evidence of C11orf95-RELA fusion', '15':'Evidence of native C11orf95 and RELA',
+//                                                                                  '16':'Evidence of amplification or fusion of C19MC locus (chr.19q13.42)', '17':'Evidence of unaltered C19MC locus (chr.19q13.42)', '18':'Evidence of CDK4/6 amplification', '19':'Evidence of CDK4/6 normal copy number', '20':'Evidence of CDKN2A locus homozygous deletion', '21':'Evidence of CDKN2A locus normal copy number', '22':'Evidence of CCND1/2/3 amplification', '23':'Evidence of CCND1/2/3 normal copy number', '24':'Evidence of CTNNB1 mutation ', '25':'Evidence of wt CTNNB1',
+//                                                                                  '26':'Evidence of amplification of EGFR ', '27':'Evidence of mutation / rearrangement of EGFR', '28':'Evidence of unaltered EGFR', '29':'Evidence of EWSR1-FLI1 fusion', '30':'Evidence of native EWSR1 and FLI1', '31':'Evidence of FGFR1 mutation / rearrangement / fusion', '32':'Evidence of unaltered FGFR1', '33':'Evidence of H3F3A/H3F3B (H3.3) K27M mutation', '34':'Evidence of H3F3A/H3F3B (H3.3) wt K27', '35':'Evidence of H3F3A/H3F3B (H3.3) G34R/V mutation',
+//                                                                                  '36':'Evidence of H3F3A/H3F3B (H3.3) wt G34', '37':'Evidence of HIST1H3B K27M mutation', '38':'Evidence of HIST1H3B wt K27', '39':'Evidence of HIST1H3C K27M mutation', '40':'Evidence of HIST1H3C wt K27', '41':'Evidence of ID2 amplification', '42':'Evidence of ID2 normal copy number', '43':'IDH1 (codon 132) or IDH2 (codon 172) mutation identified', '44':'IDH1 (codon 132) and IDH2 (codon 172) wt confirmed', '45':'Evidence of KLF4 K409Q and TRAF7 mutations',
+//                                                                                  '46':'Evidence of wt KLF4 and TRAF7', '47':'Evidence of MAP2K1 mutation', '48':'Evidence of wt MAP2K1 ', '49':'Evidence of MET amplification', '50':'Evidence of MET normal copy number ', '51':'Evidence of significant MGMT promoter methylation', '52':'Evidence of unmethylated MGMT promoter', '53':'Evidence of MYC/MYCN amplification', '54':'Evidence of MYC/MYCN normal copy number ', '55':'Evidence of NF1 biallelic loss / mutation',
+//                                                                                  '56':'Evidence of unaltered NF1', '57':'Evidence of NF2 biallelic loss / mutation', '58':'Evidence of unaltered NF2', '59':'Evidence of NKTR fusions ', '60':'Evidence of native NKTR', '61':'Evidence of PTEN biallelic loss / mutation', '62':'Evidence of unaltered PTEN', '63':'Evidence of SDHB or SDHD mutation', '64':'Evidence of wt SDHB and SDHD', '65':'Evidence of SHH pathway activation',
+//                                                                                  '66':'Evidence of normal SHH pathway', '67':'Evidence of inactivation of SMARCB1 (INI1)', '68':'Evidence of wt SMARCB1 (INI1)', '69':'Evidence of inactivation of SMARCA4 ', '70':'Evidence of wt SMARCA4 ', '71':'Evidence of TERT promotor mutation ', '72':'Evidence of wt TERT promotor', '73':'Evidence  of TP53 mutation ', '74':'Evidence of wt TP53', '75':'Evidence of TSC1 or TSC2 mutation',
+//                                                                                  '76':'Evidence of wt TSC1 and TSC2', '77':'Evidence of VHL mutation', '78':'Evidence of wt VHL gene', '79':'Evidence of WNT pathway activation', '80':'Evidence of normal WNT pathway', '81':'Evidence of WWTR1-CAMTA1 fusion', '82':'Evidence of native WWTR1 and CAMTA1 ', '83':'Evidence of codeletion of chr.1p and chr.19q', '84':'Evidence of total chr.1p loss but normal copy number of chr.19q', '85':'Evidence of normal copy number of both chr.1p and chr.19q',
+//                                                                                  '86':'Evidence of monosomy chr.6', '87':'Evidence of chr.6 normal copy number', '88':'Evidence of polysomy chr.7', '89':'Evidence of chr.7 normal copy number', '90':'Evidence of loss of chr.10 or chr.10q', '91':'Evidence of chr.10 normal copy number', '92':'Evidence of loss of chr.22 or chr.22q', '93':'Evidence of chr.22 or chr.22q normal copy number', '98':'Other', '99':'Not Known (Not Recorded)']),
+//                                                 new ModChangesToEnums('GY7280', ['P':'Positive ', 'N':'Negative', 'X':'Not sent/Not assessable']),
+//                                                 new ModChangesToEnums('HA8270', ['1':'CNS1 ( without blasts)', '2':'CNS2 (< 5 WBC in the CSF with blasts)', '3':'CNS3 (≥5 WBC in the CSF with blasts)', '4':'Testes', '9':'Other']),
+//                                                 new ModChangesToEnums('LU10090', ['3':'Failed analysis', '4':'Not assessed', '5':'Wild type/non-sensitising mutation ', '6':'Sensitising/activating mutation '])]
+//// TODO: process these according to comment above class definition
+//
+///*
+//Things which must be done manually:
+//
+//Change GY7220's schema spec to Optional
+//Change CR3040's schema spec to Optional
+//Change CR3050's schema spec to Optional
+//
+//Must do [CT6210] manually. Comment:
+//Must do [SK12450] manually. Comment:
+//Must do [SK12030] manually. Comment:
+//Must do [SK12010] manually. Comment:
+//Must do [CR0020] manually. Comment:
+//Must do [CR3170] manually. Comment:
+//Must do [CR0180] manually. Comment:
+//Must do [CR3160] manually. Comment:
+//Must do [CR0510] manually. Comment:
+//Must do [CR2070] manually. Comment:
+//Must do [CT6560, CT6760] manually. Comment:
+//Must do [CT6360] manually. Comment: make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS'
+//Must do [HA8660] manually. Comment:
+//Must do [HA8240, HA8700, HA8560, HA8710] manually. Comment: Changes not listed in SUBSTANTIAL/COSMETIC CHANGES but under Haematology! They missed this out...
+//Must do [SK12030] manually. Comment:
+//Must do [SK12450] manually. Comment:
+//Must do [SK12630] manually. Comment:
+//Must do [UG13100, UG13810] manually. Comment:
+//Must do [UR15100, UR15110] manually. Comment:
+//
+//Unclear what to do with [SA11120, SA11170, SA11130, SA11140]
+//*/
+//
+//println "# Errors:\n=======\n"
 //ErrorType.values().each {
 //    println "ErrorType $it: \n-- ${errorsInCOSD.get(it)?.join('\n-- ')}"
 //    println ''

@@ -255,7 +255,7 @@ class ProcessCosd {
     }
 
     /**
-     * Printout modification data in a way that helps scripting
+     * Printout modification data (ModificationGroups) in a way that helps scripting, as lists of Modifications
      */
     static void modificationScriptFromDatav7_0_6() {
         List<ModificationGroup> modificationGroups = ModificationData.getCOSD_v7_0_6_substantial_and_cosmetic_change_modifications()
