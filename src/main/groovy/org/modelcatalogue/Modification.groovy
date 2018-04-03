@@ -32,6 +32,17 @@ class ModNewSectionInDiseaseGroup implements Modification {
     String newSectionNamePart2
 }
 
+@Immutable
+/**
+ * TODO: Use this
+ * Not using this yet, but it could be for some of those which are currently ModManual e.g. from data class SKIN - PATHOLOGY - MM to SKIN - DIAGNOSIS - MM
+ */
+class ModRealignSecondLevel implements Modification {
+    List<String> cosdIds
+    String oldSecondLevelSection
+    String newSecondLevelSection
+}
+
 
 @Immutable
 /**

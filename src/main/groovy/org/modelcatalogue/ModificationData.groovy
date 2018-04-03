@@ -23,6 +23,21 @@ class ModificationData {
 
      // Also, the editors forgot to put some changes from Haematology (['HA8240', 'HA8700', 'HA8560', 'HA8710']) into COSMETIC_CHANGES.
 
+     Also, the following CT6*** items were not found in the catalogue, as they are listed with their HA8*** ids:
+
+     Data Element CT6720 not found (ANN ARBOR STAGE DATE) (HA8720)
+     Data Element CT6270 not found (ANN ARBOR STAGE) (HA8280)
+     Data Element CT6280 not found (ANN ARBOR SYMPTOMS) (HA8290)
+     Data Element CT6290 not found (ANN ARBOR EXTRANODALITY) (HA8300)
+
+     These were put into a separate modification group.
+
+     Similarly
+
+     Data Element CT6470 not found (SARCOMA TUMOUR SITE (BONE)) (SA11000)
+     Data Element CT6440 not found (SARCOMA TUMOUR SUBSITE (BONE)) (SA11010)
+     Data Element CT6220 not found (WHITE BLOOD CELL COUNT (HIGHEST PRE TREATMENT)) (HA8150)
+
      */
     static final List<ModificationGroup> COSD_v7_0_6_substantial_and_cosmetic_change_modifications = [
             new ModificationGroup(ids: ['BR4140', 'BR4160', 'BR4170', 'BR4180', 'BR4190', 'BR4200', 'BR4210', 'BR4230', 'BR4220', 'BR4300', 'BR4290', 'BR4280', 'BR4310', 'BR4240', 'BR4250', 'BR4260', 'BR4270'],
@@ -127,8 +142,6 @@ class ModificationData {
             new ModificationGroup(ids: ['CO5260', 'CO5270', 'CO5280', 'CO5290', 'CO5300'],
                     modifications: [new ModMoveToCorePathology(['COLORECTAL - PATHOLOGY'])]),
 
-            new ModificationGroup(ids: ['CT6210'],
-                    modifications: [new ModManual(['CT6210'], "")]),
 
             new ModificationGroup(ids: ['CT6610', 'CT6620', 'CT6630', 'CT6640', 'CT6650', 'CT6660', 'CT6670'],
                     modifications: [new ModMoveToCorePathology(['CTYA -  RENAL PATHOLOGY (Paediatric Kidney)'])]),
@@ -150,7 +163,10 @@ class ModificationData {
                                                                 'GYNAECOLOGY - PATHOLOGY - NODES'])]),
 
             new ModificationGroup(ids: ['HA8270'],
-                    modifications: [new ModChangesToEnums('HA8270', ['1':'CNS1 ( without blasts)',
+                    modifications: [
+                            new ModNewSectionInDiseaseGroup(['HA8270'], // standing in for CT6210
+                                    'CTYA', 'DIAGNOSIS'),
+                            new ModChangesToEnums('HA8270', ['1':'CNS1 ( without blasts)',
                                                                      '2':'CNS2 (< 5 WBC in the CSF with blasts)',
                                                                      '3':'CNS3 (≥5 WBC in the CSF with blasts)',
                                                                      '4':'Testes',
@@ -177,11 +193,20 @@ class ModificationData {
                     modifications: [new ModMoveToCorePathology(['SARCOMA - PATHOLOGY - SOFT TISSUE'])]),
 
             new ModificationGroup(ids: ['SK12450'],
-                    modifications: [new ModManual(['SK12450'], "")]),
+                    modifications: [new ModManual(['SK12450'], "Move to 'SKIN - DIAGNOSIS - MM' Data Class (Second level re-aligned to DIAGNOSIS from PATHOLOGY)")]),
             new ModificationGroup(ids: ['SK12030'],
-                    modifications: [new ModManual(['SK12030'], "")]),
+                    modifications: [new ModManual(['SK12030'], "Move to 'SKIN - DIAGNOSIS - BCC, SCC & MM ' Data Class (Second level re-aligned to DIAGNOSIS from GENERAL)")]),
             new ModificationGroup(ids: ['SK12010'],
-                    modifications: [new ModManual(['SK12010'], "")]),
+                    modifications: [new ModManual(['SK12010'], "Move to 'SKIN - SURGERY AND OTHER PROCEDURES - BCC, SCC & MM ' Data Class  (Second level re-aligned to SURGERY AND OTHER PROCEDURES from GENERAL)"),
+                    new ModChangesToEnums('SK12010', ['NU':'NURSE',
+                                           'TS':'TRAINEE SPECIALIST DOCTOR',
+                                           'CS':'CONSULTANT SURGEON (other than Plastic Surgeon)',
+                                           'CD':'CONSULTANT DERMATOLOGIST',
+                                           'CPS':'CONSULTANT PLASTIC SURGEON',
+                                           'HP':'HOSPITAL PRACTITIONER',
+                                           'SI':'GP WITH SPECIAL INTEREST',
+                                           'GP':'GENERAL PRACTITIONER',
+                                           'OO':'OTHER'])]),
 
             new ModificationGroup(ids: ['SK12120'],
                     modifications: [new ModMoveToCorePathology(['SKIN - GENERAL - BCC, SCC & MM '])]),
@@ -202,34 +227,38 @@ class ModificationData {
             // Cosmetic Changes: Some "realigned", "regrouped"
 
             new ModificationGroup(ids: ['CR0020'],
-                    modifications: [new ModManual(['CR0020'], "")]),
+                    modifications: [new ModManual(['CR0020'], "format 'max an20'")]),
             new ModificationGroup(ids: ['CR3170'],
-                    modifications: [new ModManual(['CR3170'], "")]),
+                    modifications: [new ModChangesToEnums('CR3170', ['1':'Male',
+                                                                     '2':'Female',
+                                                                     '9':'Indeterminate (Unable to be classified as either male or female) ',
+                                                                     'X':'Not Known (PERSON STATED GENDER CODE not recorded)'])]),
             new ModificationGroup(ids: ['CR0180'],
-                    modifications: [new ModManual(['CR0180'], "")]),
+                    modifications: [new ModManual(['CR0180'], "Data Dictionary Name change to 'MORPHOLOGY (ICD-O DIAGNOSIS)'")]),
             new ModificationGroup(ids: ['CR3160'],
-                    modifications: [new ModManual(['CR3160'], "")]),
+                    modifications: [new ModManual(['CR3160'], "format 'max an60'")]),
             new ModificationGroup(ids: ['CR0510'],
-                    modifications: [new ModManual(['CR0510'], "")]),
+                    modifications: [new ModManual(['CR0510'], "Move to 'CORE - DIAGNOSIS' Data Class (Second level re-aligned to DIAGNOSIS from CANCER CARE PLAN)")]),
             new ModificationGroup(ids: ['CR2070'],
-                    modifications: [new ModManual(['CR2070'], "")]),
+                    modifications: [new ModManual(['CR2070'], "description changed to 'The AJCC (Skin) or UICC edition number used for Tumour, Node and Metastasis (TNM) staging for cancer diagnosis.'")]),
 
             new ModificationGroup(ids: ['CR3040', 'CR3050'],
                     modifications: [new ModChangesToSchemaSpec('CR3040', optionalSchemaSpec),
                     new ModChangesToSchemaSpec('CR3050', optionalSchemaSpec)]),
 
-            new ModificationGroup(ids: ['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6470', 'CT6440', 'CT6220', 'CT6230', 'CT6240'],
-                    modifications: [new ModNewSectionInDiseaseGroup(['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6470', 'CT6440', 'CT6220', 'CT6230', 'CT6240'],
+            new ModificationGroup(ids: ['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6230', 'CT6240'] + ['SA11000', 'SA11010', 'HA8150'],
+                    modifications: [new ModNewSectionInDiseaseGroup(['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6230', 'CT6240'] + ['SA11000', 'SA11010', 'HA8150'],
                             'CTYA', 'DIAGNOSIS')]),
             new ModificationGroup(ids: ['CT6130', 'CT6140'],
                     modifications: [new ModNewSectionInDiseaseGroup(['CT6130', 'CT6140'],
                     'CTYA', 'SURGERY AND OTHER PROCEDURES')]),
-            new ModificationGroup(ids: ['CT6710', 'CT6720', 'CT6740', 'CT6770', 'CT6800', 'CT6250', 'CT6270', 'CT6280', 'CT6290', 'CT6330', 'CT6500', 'CT6510', 'CT6590'],
-                    modifications: [new ModNewSectionInDiseaseGroup(['CT6710', 'CT6720', 'CT6740', 'CT6770', 'CT6800', 'CT6250', 'CT6270', 'CT6280', 'CT6290', 'CT6330', 'CT6500', 'CT6510', 'CT6590'],
+
+            new ModificationGroup(ids: ['CT6710',  'CT6740', 'CT6770', 'CT6800', 'CT6250',  'CT6330', 'CT6500', 'CT6510', 'CT6590'] + ['HA8720', 'HA8280', 'HA8290', 'HA8300'],
+                    modifications: [new ModNewSectionInDiseaseGroup(['CT6710',  'CT6740', 'CT6770', 'CT6800', 'CT6250',  'CT6330', 'CT6500', 'CT6510', 'CT6590'] + ['HA8720', 'HA8280', 'HA8290', 'HA8300'],
                     'CTYA','STAGING')]),
 
             new ModificationGroup(ids: ['CT6560', 'CT6760'],
-                    modifications: [new ModManual(['CT6560', 'CT6760'], "")]),
+                    modifications: [new ModManual(['CT6560', 'CT6760'], "section, name, description, national codes")]),
 
             new ModificationGroup(ids: ['CT6310', 'CT6360', 'CT6460', 'CT6530', 'CT6550', 'CT6580', 'CT6520'],
                     modifications: [new ModNewSectionInDiseaseGroup(['CT6310', 'CT6360', 'CT6460', 'CT6530', 'CT6550', 'CT6580', 'CT6520'],
@@ -237,7 +266,7 @@ class ModificationData {
                     new ModManual(['CT6360'], "make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS'. Yes, you have to introduce a typo.")]),
 
             new ModificationGroup(ids: ['HA8660'],
-                    modifications: [new ModManual(['HA8660'], "")]),
+                    modifications: [new ModManual(['HA8660'], "data type 'Range 0.0 to 999.9  (to 1dp)'")]),
             new ModificationGroup(ids: ['HA8720', 'HA8680', 'HA8280', 'HA8290', 'HA8300', 'HA8310'],
                     modifications: [new ModNewSectionInDiseaseGroup(['HA8720', 'HA8680', 'HA8280', 'HA8290', 'HA8300', 'HA8310'],
                     'HAEMATOLOGY - STAGING', 'ANN ARBOR')]),
@@ -248,13 +277,13 @@ class ModificationData {
                     modifications: [new ModNewSectionInDiseaseGroup(['LU10070', 'LU10080'],
                     'LUNG', 'SURGERY AND OTHER PROCEDURES')]),
             new ModificationGroup(ids: ['SK12030'],
-                    modifications: [new ModManual(['SK12030'], "")]),
+                    modifications: [new ModManual(['SK12030'], "Move to 'SKIN - DIAGNOSIS - BCC, SCC & MM ' (Second level re-aligned to DIAGNOSIS from GENERAL)")]),
             new ModificationGroup(ids: ['SK12450'],
-                    modifications: [new ModManual(['SK12450'], "")]),
+                    modifications: [new ModManual(['SK12450'], "Move to 'SKIN - DIAGNOSIS - MM ' (Second level re-aligned to DIAGNOSIS from PATHOLOGY")]),
             new ModificationGroup(ids: ['SK12630'],
-                    modifications: [new ModManual(['SK12630'], "")]),
+                    modifications: [new ModManual(['SK12630'], "Description changed to 'Breslow thickness in mm, can be recorded to nearest 0.01mm where clinically appropriate'")]),
             new ModificationGroup(ids: ['UG13100', 'UG13810'],
-                    modifications: [new ModManual(['UG13100', 'UG13810'], "")]),
+                    modifications: [new ModManual(['UG13100', 'UG13810'], "Move to 'UPPER GI - SURGICAL AND OTHER PROCEDURES' (second level realigned to '- SURGICAL AND OTHER PROCEDURES' from '-SURGICAL PROCEDURES')")]),
             new ModificationGroup(ids: ['UG14210', 'UG14230', 'UG13240', 'UG13590', 'UG14290', 'UG13090', 'UG13250', 'UG13070', 'UG13080', 'UG13560', 'UG13580'],
                     modifications: [new ModNewSectionInDiseaseGroup(['UG14210', 'UG14230', 'UG13240', 'UG13590',  'UG13070', 'UG13080'],
                     'UPPER GI', 'SURGICAL AND OTHER PROCEDURES'),
@@ -264,8 +293,9 @@ class ModificationData {
                                     new ModNewSectionInDiseaseGroup(['UG13560', 'UG13580'],
                     'UPPER GI', 'TREATMENT')]),
             new ModificationGroup(ids: ['UR15100', 'UR15110'],
-                    modifications: [new ModManual(['UR15100', 'UR15110'], "")]),
-
+                    modifications: [new ModManual(['UR15100', 'UR15110'], "descriptions changed")]),
+            new ModificationGroup(ids: ['UG14210', 'UG14230', 'UG13240', 'UG13590'],
+                    modifications: [new ModManual(['UG14210', 'UG14230', 'UG13240', 'UG13590'], "Script messed these up")])
 
     ]
 }

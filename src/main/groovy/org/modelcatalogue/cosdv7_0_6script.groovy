@@ -1,10 +1,24 @@
 //import org.modelcatalogue.core.*
+//import groovy.transform.Immutable
+//import org.hibernate.*
+//
+////SessionFactory sessionFactory = ctx.getBean('sessionFactory')
+////Session currentSession = sessionFactory.getCurrentSession()
+//
 //println "COSD 7.0.6 check newly added items, do deletions, modifications using data from ProcessCosd"
 //println "# Check Additions\n=================\n"
 //
 //class COSDEntry {
 //    String dataItemNo
 //    String dataItemSection
+//}
+//
+//Object scriptConfig = new Object() {
+//    boolean doAdditionChecks = false
+//    boolean doDeletions = false
+//    boolean doMoveDataClassesToCore = false
+//    boolean doNewSectionsInDiseaseGroups = false
+//    boolean doChangesToEnums = true
 //}
 //
 //// DATA PROCESSED FROM SPREADSHEET
@@ -60,26 +74,16 @@
 //    errorsMap.put(errorType, errors)
 //
 //}
-//String cosdId(CatalogueElement ce) {
-//    ce.ext['Data Item No'] ?: ce.ext['Data item No.']
+//String getCosdId(CatalogueElement ce) {
+//    ce?.ext['Data Item No'] ?: ce?.ext['Data item No.']
 //}
 //List<String> cosd7deIds = cosd7des.collect {
 //
-//    String id = cosdId(it)
+//    String id = getCosdId(it)
 //    if (!id) {printError("$it does not have COSD id", ErrorType.NO_COSD_ID, errorsInCOSD)}
 //    id
 //}
 //println "\n\n"
-//
-//
-//println "check all data elements were added by COSD id"
-//newlyAddedIds.each {id ->
-//    if (!(id in cosd7deIds)) {
-//        printError("Data Element id $id was not added", ErrorType.DATA_ELEMENT_NOT_ADDED, errorsInCOSD)
-//    }
-//}
-//println "\n\n"
-//
 //
 //String camelize(String source) {
 //    StringBuilder stringBuilder = new StringBuilder();
@@ -98,7 +102,7 @@
 //    return stringBuilder.toString();
 //}
 //
-//println "camelize('HEAD & NECK) should be: 'Head & Neck' and is: '${camelize("HEAD & NECK")}'"
+//println "camelize('HEAD & NECK) should be: 'Head & Neck' and is: '${camelize("HEAD & NECK")}'\n"
 //
 //String getParentClassName(String dataClassName) {
 //
@@ -107,76 +111,107 @@
 //    parentClassName = uncamelizedParentClasses[parentClassName] ?: camelize(parentClassName)
 //}
 //
-//Map<String, List<COSDEntry>> newlyAddedItemsBySection = newlyAddedItems.groupBy{it.dataItemSection}
-//
-//println "check all DataClasses were added, they have the right parents, "
-//newlyAddedItemsBySection.each {className, cosdEntries ->
-//    DataClass dc = DataClass.findByNameAndDataModel(className, dm)
-//    println "found data class ${dc.name}"
-//    println dc
-//
-//    println ''
-//    if (!dc) {
-//        printError("No data class found with name $className", ErrorType.DATA_CLASS_NOT_ADDED, errorsInCOSD)
+//if (scriptConfig.doAdditionChecks) {
+//    println "## Check all data elements were added by COSD id\n================================================\n"
+//    newlyAddedIds.each {id ->
+//        if (!(id in cosd7deIds)) {
+//            printError("Data Element id $id was not added", ErrorType.DATA_ELEMENT_NOT_ADDED, errorsInCOSD)
+//        }
 //    }
-//    else {
+//    println "\n\n"
 //
-//        String parentClassName = getParentClassName(className)
-//        println "parentClassName: ${parentClassName}"
-//        DataClass parentDC = DataClass.findByNameAndDataModel(parentClassName, dm)
-//        List<CatalogueElement> parentChildren = parentDC.getOutgoingRelationshipsByType(RelationshipType.hierarchyType)*.destination
-//        println "parent's children: ${parentChildren.take(3)}..."
+//
+//
+//
+//
+//
+//    Map<String, List<COSDEntry>> newlyAddedItemsBySection = newlyAddedItems.groupBy{it.dataItemSection}
+//
+//    println "## Check all DataClasses were added & they have the right parents\n=================================================================\n"
+//    newlyAddedItemsBySection.each {className, cosdEntries ->
+//        DataClass dc = DataClass.findByNameAndDataModel(className, dm)
+//        println "found data class ${dc.name}"
+//        println dc
 //
 //        println ''
-//        boolean classHasParent = dc in parentChildren
-//
-//        if (!classHasParent) {
-//            printError("dataClass ${dc} is not child of the right parent", ErrorType.DATA_CLASS_NOT_RIGHT_PARENT, errorsInCOSD)
+//        if (!dc) {
+//            printError("No data class found with name $className", ErrorType.DATA_CLASS_NOT_ADDED, errorsInCOSD)
 //        }
 //        else {
-//            println "data class is child of the parent it is meant to have: ${classHasParent}"
-//        }
 //
-//        List<CatalogueElement> dcDEs = dc.getOutgoingRelationshipsByType(RelationshipType.containmentType)*.destination
-//        List<String> dcDECOSDIds = dcDEs.collect{cosdId(it)}
-//        cosdEntries.each {
-//            if (!(it.dataItemNo in dcDECOSDIds)) {
-//                printError("COSD Entry ${it.dataItemNo} not found in its data class ${dc}", ErrorType.DATA_CLASS_MISSING_DATA_ELEMENTS, errorsInCOSD)
+//            String parentClassName = getParentClassName(className)
+//            println "parentClassName: ${parentClassName}"
+//            DataClass parentDC = DataClass.findByNameAndDataModel(parentClassName, dm)
+//            List<CatalogueElement> parentChildren = parentDC.getOutgoingRelationshipsByType(RelationshipType.hierarchyType)*.destination
+//            println "parent's children: ${parentChildren.take(3)}..."
+//
+//            println ''
+//            boolean classHasParent = dc in parentChildren
+//
+//            if (!classHasParent) {
+//                printError("dataClass ${dc} is not child of the right parent", ErrorType.DATA_CLASS_NOT_RIGHT_PARENT, errorsInCOSD)
+//            }
+//            else {
+//                println "data class is child of the parent it is meant to have: ${classHasParent}"
+//            }
+//
+//            List<CatalogueElement> dcDEs = dc.getOutgoingRelationshipsByType(RelationshipType.containmentType)*.destination
+//            List<String> dcDECOSDIds = dcDEs.collect{getCosdId(it)}
+//            cosdEntries.each {
+//                if (!(it.dataItemNo in dcDECOSDIds)) {
+//                    printError("COSD Entry ${it.dataItemNo} not found in its data class ${dc}", ErrorType.DATA_CLASS_MISSING_DATA_ELEMENTS, errorsInCOSD)
+//                }
 //            }
 //        }
+//
+//        println "===\n\n"
+//
+//
+//
 //    }
-//
-//    println "===\n\n"
-//
+//}
+//else {
 //}
 //
-//boolean doDeletions = false
+//boolean doDeletions = scriptConfig.doDeletions
 //println "# Do Deletions: ${doDeletions ? 'Yes' : 'No'}\n====================\n"
 //
 //// DATA PROCESSED FROM SPREADSHEET
 //List<String> itemsToDeleteIds = ['CR0400', 'CR3030', 'CR0530', 'CR3060', 'CR0850', 'CR3070', 'BR4030', 'BR4040', 'BR4060', 'BR4070', 'BR4080', 'BR4090', 'BR4100', 'BR4110', 'BR4130', 'BA3130', 'BA3140', 'BA3110', 'BA3120', 'CO5010', 'CO5020', 'CO5030', 'CO5040', 'CO5060', 'CO5070', 'CO5080', 'CO5090', 'CO5100', 'CO5110', 'CO5120', 'CO5130', 'CO5140', 'CO5150', 'CO5005', 'CO5180', 'CO5230', 'CO5250', 'CT6150', 'CT6320', 'CT6730', 'CT6300', 'GY7330', 'GY7390', 'GY7210', 'GY7250', 'HA8020', 'HA8230', 'HA8690', 'HN9230', 'HN9220', 'HN9210', 'HN9200', 'HN9220', 'HN9200', 'LU10000', 'LU10020', 'LU10010', 'LU10030', 'SA11160', 'SK12020', 'SK12510', 'UG13293', 'UG13235', 'UG13110', 'UG13150', 'UG14190', 'UG13030', 'UG14410', 'UG13320']
 //itemsToDeleteIds.each {id ->
-//    if (!(id in cosd7deIds)) {
-//        println "Item to delete $id not found in data model"
+//    if (id in cosd7deIds) {
+//        println "Item to delete $id found in data model"
+//    }
+//    else {
+//        println "Item to delete $id NOT found in data model"
+//
 //    }
 //}
 //
 //List<DataElement> dataElementsToDelete = cosd7des.findAll {de ->
-//    cosdId(de) in itemsToDeleteIds
+//    getCosdId(de) in itemsToDeleteIds
 //}
 //
+///* // for investigative purposes
 //DataElement firstToBeDeleted = dataElementsToDelete[0]
 //println "firstToBeDeleted's (${firstToBeDeleted.name}) outgoingRelationships: ${firstToBeDeleted.outgoingRelationships}"
 //println "firstToBeDeleted's incomingRelationships: ${firstToBeDeleted.incomingRelationships}"
+//*/
 //
 //void deleteCatalogueElement(CatalogueElement ce) {
 //    ce.deleteRelationships()
 //    ce.delete(flush:true)
+//    println "deleted ${ce.id}, COSD ID ${getCosdId(ce)}"
 //}
 //
 //if (doDeletions) {
 //    dataElementsToDelete.each {deleteCatalogueElement(it)}
 //}
+//else {
+//    println "Skipping deletions"
+//}
+//
+//println ''
 //
 //println "# Do Modifications\n==================\n"
 //
@@ -192,31 +227,42 @@
 //                                         'UROLOGY - PATHOLOGY - KIDNEY', 'UROLOGY - PATHOLOGY - PROSTATE', 'UROLOGY - PATHOLOGY - TESTICULAR',
 //                                         'UROLOGY- PATHOLOGY - PENIS']
 //
-//println "## Move DataClasses to Core\n=================\n"
-//DataClass core = DataClass.findByNameAndDataModel('Core', dm)
-//if (!core) {
-//    println "Modifications: No Core DataClass found"
-//}
-//else {
+//println "## Move DataClasses to Core\n===========================\n"
+//if (scriptConfig.doMoveDataClassesToCore) {
 //
-//    dataClassNamesMoveToCore.each {dataClassName ->
-//        DataClass dataClassToMove = DataClass.findByNameAndDataModel(dataClassName, dm)
-//        if (!dataClassToMove) {
-//            println "Modifications: Didn't find Data Class with name ${dataClassName}"
-//        }
-//        else {
-//            List<Relationship> parents = dataClassToMove.getIncomingRelationshipsByType(RelationshipType.hierarchyType)
-//            if (parents.size() != 1) {
-//                println "Modifications: Data Class ${dataClassName} has not one but ${parents.size()} parents!"
+//    DataClass core = DataClass.findByNameAndDataModel('Core', dm)
+//    if (!core) {
+//        println "Modifications: No Core DataClass found"
+//    }
+//    else {
+//
+//        dataClassNamesMoveToCore.each {dataClassName ->
+//            DataClass dataClassToMove = DataClass.findByNameAndDataModel(dataClassName, dm)
+//            if (!dataClassToMove) {
+//                println "Modifications: Didn't find Data Class with name ${dataClassName}"
 //            }
 //            else {
-//                Relationship parentR = parents[0]
-//                parentR.source = core
-//                parentR.save(flush:true)
+//                List<Relationship> parentRs = dataClassToMove.getIncomingRelationshipsByType(RelationshipType.hierarchyType)
+//                if (parentRs.size() != 1) {
+//                    println "Modifications: Data Class ${dataClassName} has not one but ${parentRs.size()} parents!"
+//                }
+//                else {
+//                    Relationship parentR = parentRs[0]
+//                    parentR.source = core
+//                    parentR.save(flush:true)
+//                    println "Moved DataClass ${dataClassName} to Core"
+//                }
 //            }
 //        }
 //    }
 //}
+//else {
+//    println "Skipping modifications: moving DataClasses to Core"
+//}
+//
+//println ''
+//
+//trait Modification {}
 //
 //@Immutable
 ///**
@@ -243,17 +289,117 @@
 //    Map<String, String> newEnums
 //}
 //
+//println "## New Sections for Disease Groups\n==================================\n"
 //// DATA PROCESSED FROM SPREADSHEET
-//List<ModNewSectionInDiseaseGroup> modNewSectionInDiseaseGroupList = [new ModNewSectionInDiseaseGroup(['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6470', 'CT6440', 'CT6220', 'CT6230', 'CT6240'], 'CTYA', 'DIAGNOSIS'),
+//List<ModNewSectionInDiseaseGroup> modNewSectionInDiseaseGroupList = [new ModNewSectionInDiseaseGroup(['HA8270'], 'CTYA', 'DIAGNOSIS'),
+//                                                                     new ModNewSectionInDiseaseGroup(['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6230', 'CT6240', 'SA11000', 'SA11010', 'HA8150'], 'CTYA', 'DIAGNOSIS'),
 //                                                                     new ModNewSectionInDiseaseGroup(['CT6130', 'CT6140'], 'CTYA', 'SURGERY AND OTHER PROCEDURES'),
-//                                                                     new ModNewSectionInDiseaseGroup(['CT6710', 'CT6720', 'CT6740', 'CT6770', 'CT6800', 'CT6250', 'CT6270', 'CT6280', 'CT6290', 'CT6330', 'CT6500', 'CT6510', 'CT6590'], 'CTYA', 'STAGING'),
+//                                                                     new ModNewSectionInDiseaseGroup(['CT6710', 'CT6740', 'CT6770', 'CT6800', 'CT6250', 'CT6330', 'CT6500', 'CT6510', 'CT6590', 'HA8720', 'HA8280', 'HA8290', 'HA8300'], 'CTYA', 'STAGING'),
 //                                                                     new ModNewSectionInDiseaseGroup(['CT6310', 'CT6360', 'CT6460', 'CT6530', 'CT6550', 'CT6580', 'CT6520'], 'CTYA', 'LABORATORY RESULTS'),
 //                                                                     new ModNewSectionInDiseaseGroup(['HA8720', 'HA8680', 'HA8280', 'HA8290', 'HA8300', 'HA8310'], 'HAEMATOLOGY - STAGING', 'ANN ARBOR'),
 //                                                                     new ModNewSectionInDiseaseGroup(['LU10070', 'LU10080'], 'LUNG', 'SURGERY AND OTHER PROCEDURES'),
 //                                                                     new ModNewSectionInDiseaseGroup(['UG14210', 'UG14230', 'UG13240', 'UG13590', 'UG13070', 'UG13080'], 'UPPER GI', 'SURGICAL AND OTHER PROCEDURES'),
 //                                                                     new ModNewSectionInDiseaseGroup(['UG14290', 'UG13090', 'UG13250'], 'UPPER GI', 'SURGERY AND OTHER PROCEDURES'),
-//                                                                     new ModNewSectionInDiseaseGroup(['UG13560', 'UG13580'], 'UPPER GI', 'TREATMENT')]
+//                                                                     new ModNewSectionInDiseaseGroup(['UG13560', 'UG13580'], 'UPPER GI', 'TREATMENT'),]
 //// TODO: process these according to comment above class definition
+//
+//if (scriptConfig.doNewSectionsInDiseaseGroups) {
+//    DataElement de = null
+//    for (ModNewSectionInDiseaseGroup modNewSection: modNewSectionInDiseaseGroupList) {
+//        for (String cosdId: modNewSection.cosdIds) {
+//            de = cosd7des.find {getCosdId(it) == cosdId}
+//            if (de) {
+//                println "-- Data Element ${de.name} with cosdID ${cosdId}"
+//                List<Relationship> containingRs = de.getIncomingRelationshipsByType(RelationshipType.containmentType)
+//                containingRs.each {println "----- '${it.source.name}' contains data element"}
+//
+//
+//                // find the data class matching newSectionNamePart1
+//                String onePartPrefix = "${modNewSection.newSectionNamePart1}"
+//                Relationship containingRelationship = containingRs.find({it?.source.name.matches(/${onePartPrefix}.*/)})
+//                DataClass containingDC = (DataClass) containingRelationship?.source
+//                if (containingDC) {
+//                    println "-- found containingDC with name '${containingDC.name}' matching onePartPrefix '${onePartPrefix}'"
+//
+//                    String twoPartPrefix = "${modNewSection.newSectionNamePart1} - ${modNewSection.newSectionNamePart2}"
+//                    println "-- twoPartPrefix: '${twoPartPrefix}'"
+//
+//                    if (containingDC.name.matches("${twoPartPrefix}.*")) {
+//                        println "-- Data Element already in new section data class whose name matches twoPartPrefix '${twoPartPrefix}'"
+//                    }
+//                    else {
+//                        String newSectionDataClassName = containingDC.name.replaceAll(/${onePartPrefix}/, twoPartPrefix)
+//                        DataClass newSectionDataClass = DataClass.findByNameAndDataModel(newSectionDataClassName, dm)
+//                        /*try {
+//                             newSectionDataClass = currentSession.merge(DataClass.findByNameAndDataModel(newSectionDataClassName, dm))
+//                        }
+//                        catch (IllegalArgumentException iae) {
+//                            if (iae.message.matches("attempt to create merge event.*")) {
+//                                newSectionDataClass = null
+//                            }
+//                            else {
+//                                throw iae
+//                            }
+//                        }*/
+//
+//                        if (newSectionDataClass) {
+//                            println "-- Found newSectionDataClass with name '${newSectionDataClassName}'"
+//
+//                        }
+//                        else {
+//                            println "-- Didn't find newSectionDataClass with name '${newSectionDataClassName}', creating new"
+//                            newSectionDataClass = new DataClass(name: newSectionDataClassName, dataModel: dm)
+//
+//                            saveCatalogueElement(newSectionDataClass)
+//
+//                            println "Adding ${newSectionDataClass.name} to the right parent"
+//
+//                            newSectionDataClass.addToChildOf(parentDC)
+//                            saveCatalogueElement(newSectionDataClass)
+//
+//                        }
+//                        println "-- Changing relationship to have newSectionDataClass as source"
+//                        containingRelationship.source = newSectionDataClass
+//
+//                    }
+//
+//                    println ''
+//                }
+//                else {
+//                    println "-- No containing DC matching ${modNewSection.newSectionNamePart1} found"
+//                }
+//
+//
+//
+//
+//
+//            }
+//            else {
+//                println "Data Element ${cosdId} not found"
+//            }
+//            println '==============\n'
+//        }
+//    }
+//}
+//else {
+//    println "Skipping modifications: newSectionsInDiseaseGroups"
+//}
+//println ''
+//
+//void saveCatalogueElement(CatalogueElement ce) {
+//    try {ce.save(flush:true)
+//    }
+//    catch (IllegalArgumentException iae) {
+//        if (iae.message.matches("Unable to convert.*to JSON")) {
+//            // ignore these exceptions
+//        }
+//        else {
+//            throw iae
+//        }
+//    }
+//}
+//println "## Changes to Enums\n===================\n"
+//
 //
 //// DATA PROCESSED FROM SPREADSHEET
 //List<ModChangesToEnums> modChangesToEnumsList = [new ModChangesToEnums('BA3070', ['06':'Evidence of ALK rearrangement', '07':'Evidence of native ALK', '08':'Evidence of ATRX mutation', '09':'Evidence of wt ATRX', '10':'Evidence of BRAF V600E mutation', '11':'Evidence of wt BRAF', '12':'Evidence of KIAA1549-BRAF fusion', '13':'Evidence of BRAF/RAF1 mutations, or fusions involving genes other than KIAA1549', '14':'Evidence of C11orf95-RELA fusion', '15':'Evidence of native C11orf95 and RELA',
@@ -267,41 +413,76 @@
 //                                                                                  '86':'Evidence of monosomy chr.6', '87':'Evidence of chr.6 normal copy number', '88':'Evidence of polysomy chr.7', '89':'Evidence of chr.7 normal copy number', '90':'Evidence of loss of chr.10 or chr.10q', '91':'Evidence of chr.10 normal copy number', '92':'Evidence of loss of chr.22 or chr.22q', '93':'Evidence of chr.22 or chr.22q normal copy number', '98':'Other', '99':'Not Known (Not Recorded)']),
 //                                                 new ModChangesToEnums('GY7280', ['P':'Positive ', 'N':'Negative', 'X':'Not sent/Not assessable']),
 //                                                 new ModChangesToEnums('HA8270', ['1':'CNS1 ( without blasts)', '2':'CNS2 (< 5 WBC in the CSF with blasts)', '3':'CNS3 (≥5 WBC in the CSF with blasts)', '4':'Testes', '9':'Other']),
-//                                                 new ModChangesToEnums('LU10090', ['3':'Failed analysis', '4':'Not assessed', '5':'Wild type/non-sensitising mutation ', '6':'Sensitising/activating mutation '])]
+//                                                 new ModChangesToEnums('LU10090', ['3':'Failed analysis', '4':'Not assessed', '5':'Wild type/non-sensitising mutation ', '6':'Sensitising/activating mutation ']),
+//                                                 new ModChangesToEnums('SK12010', ['NU':'NURSE', 'TS':'TRAINEE SPECIALIST DOCTOR', 'CS':'CONSULTANT SURGEON (other than Plastic Surgeon)', 'CD':'CONSULTANT DERMATOLOGIST', 'CPS':'CONSULTANT PLASTIC SURGEON', 'HP':'HOSPITAL PRACTITIONER', 'SI':'GP WITH SPECIAL INTEREST', 'GP':'GENERAL PRACTITIONER', 'OO':'OTHER']),
+//                                                 new ModChangesToEnums('CR3170', ['1':'Male', '2':'Female', '9':'Indeterminate (Unable to be classified as either male or female) ', 'X':'Not Known (PERSON STATED GENDER CODE not recorded)']),
+//]
 //// TODO: process these according to comment above class definition
 //
-///*
-//Things which must be done manually:
+//if (scriptConfig.doChangesToEnums) {
+//
+//    for (ModChangesToEnums modChangesToEnums: modChangesToEnumsList) {
+//        String cosdId = modChangesToEnums.cosdId
+//        DataElement de = cosd7des.find({getCosdId(it) == cosdId})
+//        if (de) {
+//            println "Data Element ${de.name} found with id ${cosdId}"
+//            // WRONG:
+//            //de.ext = modChangesToEnums.newEnums
+//            //de.save(flush:true)
+//            if (de?.dataType instanceof EnumeratedType) {
+//                EnumeratedType eT = (EnumeratedType) de.dataType
+//                eT.setEnumerations(modChangesToEnums.newEnums)
+//                saveCatalogueElement(eT)
+//                println "EnumeratedType modified"
+//            }
+//            else {
+//                println "${cosdId} data element does not have an enumeratedType, please make one"
+//            }
+//        }
+//        else {
+//            println "Data Element with id ${cosdId} not found"
+//        }
+//    }
+//}
+//else {
+//    println "Skipping Changes to Enums"
+//}
+//println ''
+//
+//println """
+//## Things which must be done manually:
+//======================================
 //
 //Change GY7220's schema spec to Optional
 //Change CR3040's schema spec to Optional
 //Change CR3050's schema spec to Optional
 //
-//Must do [CT6210] manually. Comment:
-//Must do [SK12450] manually. Comment:
-//Must do [SK12030] manually. Comment:
-//Must do [SK12010] manually. Comment:
-//Must do [CR0020] manually. Comment:
-//Must do [CR3170] manually. Comment:
-//Must do [CR0180] manually. Comment:
-//Must do [CR3160] manually. Comment:
-//Must do [CR0510] manually. Comment:
-//Must do [CR2070] manually. Comment:
-//Must do [CT6560, CT6760] manually. Comment:
-//Must do [CT6360] manually. Comment: make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS'
-//Must do [HA8660] manually. Comment:
+//Must do [SK12450] manually. Comment: Move to 'SKIN - DIAGNOSIS - MM' Data Class (Second level re-aligned to DIAGNOSIS from PATHOLOGY)
+//Must do [SK12030] manually. Comment: Move to 'SKIN - DIAGNOSIS - BCC, SCC & MM ' Data Class (Second level re-aligned to DIAGNOSIS from GENERAL)
+//Must do [SK12010] manually. Comment: Move to 'SKIN - SURGERY AND OTHER PROCEDURES - BCC, SCC & MM ' Data Class  (Second level re-aligned to SURGERY AND OTHER PROCEDURES from GENERAL)
+//Must do [CR0020] manually. Comment: format 'max an20'
+//Must do [CR0180] manually. Comment: Data Dictionary Name change to 'MORPHOLOGY (ICD-O DIAGNOSIS)'
+//Must do [CR3160] manually. Comment: format 'max an60'
+//Must do [CR0510] manually. Comment: Move to 'CORE - DIAGNOSIS' Data Class (Second level re-aligned to DIAGNOSIS from CANCER CARE PLAN)
+//Must do [CR2070] manually. Comment: description changed to 'The AJCC (Skin) or UICC edition number used for Tumour, Node and Metastasis (TNM) staging for cancer diagnosis.'
+//Must do [CT6560, CT6760] manually. Comment: section, name, description, national codes
+//Must do [CT6360] manually. Comment: make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS'. Yes, you have to introduce a typo.
+//Must do [HA8660] manually. Comment: data type 'Range 0.0 to 999.9  (to 1dp)'
 //Must do [HA8240, HA8700, HA8560, HA8710] manually. Comment: Changes not listed in SUBSTANTIAL/COSMETIC CHANGES but under Haematology! They missed this out...
-//Must do [SK12030] manually. Comment:
-//Must do [SK12450] manually. Comment:
-//Must do [SK12630] manually. Comment:
-//Must do [UG13100, UG13810] manually. Comment:
-//Must do [UR15100, UR15110] manually. Comment:
+//Must do [SK12030] manually. Comment: Move to 'SKIN - DIAGNOSIS - BCC, SCC & MM ' (Second level re-aligned to DIAGNOSIS from GENERAL)
+//Must do [SK12450] manually. Comment: Move to 'SKIN - DIAGNOSIS - MM ' (Second level re-aligned to DIAGNOSIS from PATHOLOGY
+//Must do [SK12630] manually. Comment: Description changed to 'Breslow thickness in mm, can be recorded to nearest 0.01mm where clinically appropriate'
+//Must do [UG13100, UG13810] manually. Comment: Move to 'UPPER GI - SURGICAL AND OTHER PROCEDURES' (second level realigned to '- SURGICAL AND OTHER PROCEDURES' from '-SURGICAL PROCEDURES')
+//Must do [UR15100, UR15110] manually. Comment: descriptions changed
+//Must do [UG14210, UG14230, UG13240, UG13590] manually. Comment: Script messed these up
 //
 //Unclear what to do with [SA11120, SA11170, SA11130, SA11140]
-//*/
+//"""
 //
 //println "# Errors:\n=======\n"
 //ErrorType.values().each {
 //    println "ErrorType $it: \n-- ${errorsInCOSD.get(it)?.join('\n-- ')}"
 //    println ''
 //}
+//
+//grailsApplication.SESSION_FACTORY_BEAN

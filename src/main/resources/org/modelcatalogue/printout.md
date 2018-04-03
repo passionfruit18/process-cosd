@@ -1,5 +1,5 @@
-/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/bin/java "-javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=51850:/Applications/IntelliJ IDEA.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/packager.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/tools.jar:/Users/james/Documents/work/metadata_consulting/gel/process-cosd/out/production/classes:/Users/james/Documents/work/metadata_consulting/gel/process-cosd/out/production/resources:/Users/james/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/2.4.10/4660c69a6fb68c1507d09e3de01e56bc87ffd85d/groovy-all-2.4.10.jar:/Users/james/.gradle/caches/modules-2/files-2.1/com.emmanuelrosa/frostedsheets/0.4.0/4fa593047eecb2ebc3b94ec23da4aee84271b826/frostedsheets-0.4.0.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml/3.14-beta1/b99f04deb089a65e395b3cac4d4e56f1debcb514/poi-ooxml-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/ooxml-schemas/1.3/8cae398233e86f0cccc0129709b7d0177fbec8f5/ooxml-schemas-1.3.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/3.14-beta1/4bfa85e2359dea4dd1d0ac08ec5cd8d87b6a1007/poi-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml-schemas/3.14-beta1/e44474add8ab7edb29a6721f225632c864634c22/poi-ooxml-schemas-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/com.github.virtuald/curvesapi/1.03/6b0977602901464b056959027fdf2396050f9dd2/curvesapi-1.03.jar:/Users/james/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.xmlbeans/xmlbeans/2.6.0/29e80d2dd51f9dcdef8f9ffaee0d4dc1c9bbfc87/xmlbeans-2.6.0.jar:/Users/james/.gradle/caches/modules-2/files-2.1/stax/stax-api/1.0.1/49c100caf72d658aca8e58bd74a4ba90fa2b0d70/stax-api-1.0.1.jar org.modelcatalogue.ProcessCosd
-objc[46832]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/bin/java (0x1016274c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1016ef4e0). One of the two will be used. Which one is undefined.
+/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/bin/java "-javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=65421:/Applications/IntelliJ IDEA.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/packager.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/lib/tools.jar:/Users/james/Documents/work/metadata_consulting/gel/process-cosd/out/production/classes:/Users/james/Documents/work/metadata_consulting/gel/process-cosd/out/production/resources:/Users/james/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/2.4.10/4660c69a6fb68c1507d09e3de01e56bc87ffd85d/groovy-all-2.4.10.jar:/Users/james/.gradle/caches/modules-2/files-2.1/com.emmanuelrosa/frostedsheets/0.4.0/4fa593047eecb2ebc3b94ec23da4aee84271b826/frostedsheets-0.4.0.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml/3.14-beta1/b99f04deb089a65e395b3cac4d4e56f1debcb514/poi-ooxml-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/ooxml-schemas/1.3/8cae398233e86f0cccc0129709b7d0177fbec8f5/ooxml-schemas-1.3.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/3.14-beta1/4bfa85e2359dea4dd1d0ac08ec5cd8d87b6a1007/poi-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml-schemas/3.14-beta1/e44474add8ab7edb29a6721f225632c864634c22/poi-ooxml-schemas-3.14-beta1.jar:/Users/james/.gradle/caches/modules-2/files-2.1/com.github.virtuald/curvesapi/1.03/6b0977602901464b056959027fdf2396050f9dd2/curvesapi-1.03.jar:/Users/james/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar:/Users/james/.gradle/caches/modules-2/files-2.1/org.apache.xmlbeans/xmlbeans/2.6.0/29e80d2dd51f9dcdef8f9ffaee0d4dc1c9bbfc87/xmlbeans-2.6.0.jar:/Users/james/.gradle/caches/modules-2/files-2.1/stax/stax-api/1.0.1/49c100caf72d658aca8e58bd74a4ba90fa2b0d70/stax-api-1.0.1.jar org.modelcatalogue.ProcessCosd
+objc[51005]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/bin/java (0x1059cb4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x105a934e0). One of the two will be used. Which one is undefined.
 # COSD Version: 7.0.6
 [Data item No., Data Item Section, Data Item Name, Data Item Description, Format, National Code, National code definition, Data Dictionary Element, Other collections, Schema Specification*]
 Data item No.:
@@ -10325,46 +10325,48 @@ org.modelcatalogue.ModChangesToEnums(BA3070, [06:Evidence of ALK rearrangement, 
 org.modelcatalogue.ModChangesToEnums(GY7280, [P:Positive , N:Negative, X:Not sent/Not assessable])
 org.modelcatalogue.ModChangesToEnums(HA8270, [1:CNS1 ( without blasts), 2:CNS2 (< 5 WBC in the CSF with blasts), 3:CNS3 (≥5 WBC in the CSF with blasts), 4:Testes, 9:Other])
 org.modelcatalogue.ModChangesToEnums(LU10090, [3:Failed analysis, 4:Not assessed, 5:Wild type/non-sensitising mutation , 6:Sensitising/activating mutation ])
-
-Class: org.modelcatalogue.ModManual
-org.modelcatalogue.ModManual([CT6210], )
-org.modelcatalogue.ModManual([SK12450], )
-org.modelcatalogue.ModManual([SK12030], )
-org.modelcatalogue.ModManual([SK12010], )
-org.modelcatalogue.ModManual([CR0020], )
-org.modelcatalogue.ModManual([CR3170], )
-org.modelcatalogue.ModManual([CR0180], )
-org.modelcatalogue.ModManual([CR3160], )
-org.modelcatalogue.ModManual([CR0510], )
-org.modelcatalogue.ModManual([CR2070], )
-org.modelcatalogue.ModManual([CT6560, CT6760], )
-org.modelcatalogue.ModManual([CT6360], make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS')
-org.modelcatalogue.ModManual([HA8660], )
-org.modelcatalogue.ModManual([HA8240, HA8700, HA8560, HA8710], Changes not listed in SUBSTANTIAL/COSMETIC CHANGES but under Haematology! They missed this out...)
-org.modelcatalogue.ModManual([SK12030], )
-org.modelcatalogue.ModManual([SK12450], )
-org.modelcatalogue.ModManual([SK12630], )
-org.modelcatalogue.ModManual([UG13100, UG13810], )
-org.modelcatalogue.ModManual([UR15100, UR15110], )
+org.modelcatalogue.ModChangesToEnums(SK12010, [NU:NURSE, TS:TRAINEE SPECIALIST DOCTOR, CS:CONSULTANT SURGEON (other than Plastic Surgeon), CD:CONSULTANT DERMATOLOGIST, CPS:CONSULTANT PLASTIC SURGEON, HP:HOSPITAL PRACTITIONER, SI:GP WITH SPECIAL INTEREST, GP:GENERAL PRACTITIONER, OO:OTHER])
+org.modelcatalogue.ModChangesToEnums(CR3170, [1:Male, 2:Female, 9:Indeterminate (Unable to be classified as either male or female) , X:Not Known (PERSON STATED GENDER CODE not recorded)])
 
 Class: org.modelcatalogue.ModChangesToSchemaSpec
 org.modelcatalogue.ModChangesToSchemaSpec(GY7220, Optional)
 org.modelcatalogue.ModChangesToSchemaSpec(CR3040, Optional)
 org.modelcatalogue.ModChangesToSchemaSpec(CR3050, Optional)
 
-Class: org.modelcatalogue.ModUnclearFromSpreadsheet
-org.modelcatalogue.ModUnclearFromSpreadsheet([SA11120, SA11170, SA11130, SA11140])
-
 Class: org.modelcatalogue.ModNewSectionInDiseaseGroup
-org.modelcatalogue.ModNewSectionInDiseaseGroup([CT6350, CT6750, CT6380, CT6390, CT6450, CT6470, CT6440, CT6220, CT6230, CT6240], CTYA, DIAGNOSIS)
+org.modelcatalogue.ModNewSectionInDiseaseGroup([HA8270], CTYA, DIAGNOSIS)
+org.modelcatalogue.ModNewSectionInDiseaseGroup([CT6350, CT6750, CT6380, CT6390, CT6450, CT6230, CT6240, SA11000, SA11010, HA8150], CTYA, DIAGNOSIS)
 org.modelcatalogue.ModNewSectionInDiseaseGroup([CT6130, CT6140], CTYA, SURGERY AND OTHER PROCEDURES)
-org.modelcatalogue.ModNewSectionInDiseaseGroup([CT6710, CT6720, CT6740, CT6770, CT6800, CT6250, CT6270, CT6280, CT6290, CT6330, CT6500, CT6510, CT6590], CTYA, STAGING)
+org.modelcatalogue.ModNewSectionInDiseaseGroup([CT6710, CT6740, CT6770, CT6800, CT6250, CT6330, CT6500, CT6510, CT6590, HA8720, HA8280, HA8290, HA8300], CTYA, STAGING)
 org.modelcatalogue.ModNewSectionInDiseaseGroup([CT6310, CT6360, CT6460, CT6530, CT6550, CT6580, CT6520], CTYA, LABORATORY RESULTS)
 org.modelcatalogue.ModNewSectionInDiseaseGroup([HA8720, HA8680, HA8280, HA8290, HA8300, HA8310], HAEMATOLOGY - STAGING, ANN ARBOR)
 org.modelcatalogue.ModNewSectionInDiseaseGroup([LU10070, LU10080], LUNG, SURGERY AND OTHER PROCEDURES)
 org.modelcatalogue.ModNewSectionInDiseaseGroup([UG14210, UG14230, UG13240, UG13590, UG13070, UG13080], UPPER GI, SURGICAL AND OTHER PROCEDURES)
 org.modelcatalogue.ModNewSectionInDiseaseGroup([UG14290, UG13090, UG13250], UPPER GI, SURGERY AND OTHER PROCEDURES)
 org.modelcatalogue.ModNewSectionInDiseaseGroup([UG13560, UG13580], UPPER GI, TREATMENT)
+
+Class: org.modelcatalogue.ModUnclearFromSpreadsheet
+org.modelcatalogue.ModUnclearFromSpreadsheet([SA11120, SA11170, SA11130, SA11140])
+
+Class: org.modelcatalogue.ModManual
+org.modelcatalogue.ModManual([SK12450], Move to 'SKIN - DIAGNOSIS - MM' Data Class (Second level re-aligned to DIAGNOSIS from PATHOLOGY))
+org.modelcatalogue.ModManual([SK12030], Move to 'SKIN - DIAGNOSIS - BCC, SCC & MM ' Data Class (Second level re-aligned to DIAGNOSIS from GENERAL))
+org.modelcatalogue.ModManual([SK12010], Move to 'SKIN - SURGERY AND OTHER PROCEDURES - BCC, SCC & MM ' Data Class  (Second level re-aligned to SURGERY AND OTHER PROCEDURES from GENERAL))
+org.modelcatalogue.ModManual([CR0020], format 'max an20')
+org.modelcatalogue.ModManual([CR0180], Data Dictionary Name change to 'MORPHOLOGY (ICD-O DIAGNOSIS)')
+org.modelcatalogue.ModManual([CR3160], format 'max an60')
+org.modelcatalogue.ModManual([CR0510], Move to 'CORE - DIAGNOSIS' Data Class (Second level re-aligned to DIAGNOSIS from CANCER CARE PLAN))
+org.modelcatalogue.ModManual([CR2070], description changed to 'The AJCC (Skin) or UICC edition number used for Tumour, Node and Metastasis (TNM) staging for cancer diagnosis.')
+org.modelcatalogue.ModManual([CT6560, CT6760], section, name, description, national codes)
+org.modelcatalogue.ModManual([CT6360], make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS'. Yes, you have to introduce a typo.)
+org.modelcatalogue.ModManual([HA8660], data type 'Range 0.0 to 999.9  (to 1dp)')
+org.modelcatalogue.ModManual([HA8240, HA8700, HA8560, HA8710], Changes not listed in SUBSTANTIAL/COSMETIC CHANGES but under Haematology! They missed this out...)
+org.modelcatalogue.ModManual([SK12030], Move to 'SKIN - DIAGNOSIS - BCC, SCC & MM ' (Second level re-aligned to DIAGNOSIS from GENERAL))
+org.modelcatalogue.ModManual([SK12450], Move to 'SKIN - DIAGNOSIS - MM ' (Second level re-aligned to DIAGNOSIS from PATHOLOGY)
+org.modelcatalogue.ModManual([SK12630], Description changed to 'Breslow thickness in mm, can be recorded to nearest 0.01mm where clinically appropriate')
+org.modelcatalogue.ModManual([UG13100, UG13810], Move to 'UPPER GI - SURGICAL AND OTHER PROCEDURES' (second level realigned to '- SURGICAL AND OTHER PROCEDURES' from '-SURGICAL PROCEDURES'))
+org.modelcatalogue.ModManual([UR15100, UR15110], descriptions changed)
+org.modelcatalogue.ModManual([UG14210, UG14230, UG13240, UG13590], Script messed these up)
 
 
 Data for modification script: 
@@ -10380,9 +10382,10 @@ MoveToCorePathology Class Names:
 'UROLOGY - PATHOLOGY - KIDNEY', 'UROLOGY - PATHOLOGY - PROSTATE', 'UROLOGY - PATHOLOGY - TESTICULAR',
 'UROLOGY- PATHOLOGY - PENIS']
 
-new ModNewSectionInDiseaseGroup(['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6470', 'CT6440', 'CT6220', 'CT6230', 'CT6240'], 'CTYA', 'DIAGNOSIS'),
+new ModNewSectionInDiseaseGroup(['HA8270'], 'CTYA', 'DIAGNOSIS'),
+new ModNewSectionInDiseaseGroup(['CT6350', 'CT6750', 'CT6380', 'CT6390', 'CT6450', 'CT6230', 'CT6240', 'SA11000', 'SA11010', 'HA8150'], 'CTYA', 'DIAGNOSIS'),
 new ModNewSectionInDiseaseGroup(['CT6130', 'CT6140'], 'CTYA', 'SURGERY AND OTHER PROCEDURES'),
-new ModNewSectionInDiseaseGroup(['CT6710', 'CT6720', 'CT6740', 'CT6770', 'CT6800', 'CT6250', 'CT6270', 'CT6280', 'CT6290', 'CT6330', 'CT6500', 'CT6510', 'CT6590'], 'CTYA', 'STAGING'),
+new ModNewSectionInDiseaseGroup(['CT6710', 'CT6740', 'CT6770', 'CT6800', 'CT6250', 'CT6330', 'CT6500', 'CT6510', 'CT6590', 'HA8720', 'HA8280', 'HA8290', 'HA8300'], 'CTYA', 'STAGING'),
 new ModNewSectionInDiseaseGroup(['CT6310', 'CT6360', 'CT6460', 'CT6530', 'CT6550', 'CT6580', 'CT6520'], 'CTYA', 'LABORATORY RESULTS'),
 new ModNewSectionInDiseaseGroup(['HA8720', 'HA8680', 'HA8280', 'HA8290', 'HA8300', 'HA8310'], 'HAEMATOLOGY - STAGING', 'ANN ARBOR'),
 new ModNewSectionInDiseaseGroup(['LU10070', 'LU10080'], 'LUNG', 'SURGERY AND OTHER PROCEDURES'),
@@ -10402,30 +10405,31 @@ new ModChangesToEnums('BA3070', ['06':'Evidence of ALK rearrangement', '07':'Evi
 new ModChangesToEnums('GY7280', ['P':'Positive ', 'N':'Negative', 'X':'Not sent/Not assessable']),
 new ModChangesToEnums('HA8270', ['1':'CNS1 ( without blasts)', '2':'CNS2 (< 5 WBC in the CSF with blasts)', '3':'CNS3 (≥5 WBC in the CSF with blasts)', '4':'Testes', '9':'Other']),
 new ModChangesToEnums('LU10090', ['3':'Failed analysis', '4':'Not assessed', '5':'Wild type/non-sensitising mutation ', '6':'Sensitising/activating mutation ']),
+new ModChangesToEnums('SK12010', ['NU':'NURSE', 'TS':'TRAINEE SPECIALIST DOCTOR', 'CS':'CONSULTANT SURGEON (other than Plastic Surgeon)', 'CD':'CONSULTANT DERMATOLOGIST', 'CPS':'CONSULTANT PLASTIC SURGEON', 'HP':'HOSPITAL PRACTITIONER', 'SI':'GP WITH SPECIAL INTEREST', 'GP':'GENERAL PRACTITIONER', 'OO':'OTHER']),
+new ModChangesToEnums('CR3170', ['1':'Male', '2':'Female', '9':'Indeterminate (Unable to be classified as either male or female) ', 'X':'Not Known (PERSON STATED GENDER CODE not recorded)']),
 
 Change GY7220's schema spec to Optional
 Change CR3040's schema spec to Optional
 Change CR3050's schema spec to Optional
 
-Must do [CT6210] manually. Comment: 
-Must do [SK12450] manually. Comment: 
-Must do [SK12030] manually. Comment: 
-Must do [SK12010] manually. Comment: 
-Must do [CR0020] manually. Comment: 
-Must do [CR3170] manually. Comment: 
-Must do [CR0180] manually. Comment: 
-Must do [CR3160] manually. Comment: 
-Must do [CR0510] manually. Comment: 
-Must do [CR2070] manually. Comment: 
-Must do [CT6560, CT6760] manually. Comment: 
-Must do [CT6360] manually. Comment: make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS'
-Must do [HA8660] manually. Comment: 
+Must do [SK12450] manually. Comment: Move to 'SKIN - DIAGNOSIS - MM' Data Class (Second level re-aligned to DIAGNOSIS from PATHOLOGY)
+Must do [SK12030] manually. Comment: Move to 'SKIN - DIAGNOSIS - BCC, SCC & MM ' Data Class (Second level re-aligned to DIAGNOSIS from GENERAL)
+Must do [SK12010] manually. Comment: Move to 'SKIN - SURGERY AND OTHER PROCEDURES - BCC, SCC & MM ' Data Class  (Second level re-aligned to SURGERY AND OTHER PROCEDURES from GENERAL)
+Must do [CR0020] manually. Comment: format 'max an20'
+Must do [CR0180] manually. Comment: Data Dictionary Name change to 'MORPHOLOGY (ICD-O DIAGNOSIS)'
+Must do [CR3160] manually. Comment: format 'max an60'
+Must do [CR0510] manually. Comment: Move to 'CORE - DIAGNOSIS' Data Class (Second level re-aligned to DIAGNOSIS from CANCER CARE PLAN)
+Must do [CR2070] manually. Comment: description changed to 'The AJCC (Skin) or UICC edition number used for Tumour, Node and Metastasis (TNM) staging for cancer diagnosis.'
+Must do [CT6560, CT6760] manually. Comment: section, name, description, national codes
+Must do [CT6360] manually. Comment: make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS'. Yes, you have to introduce a typo.
+Must do [HA8660] manually. Comment: data type 'Range 0.0 to 999.9  (to 1dp)'
 Must do [HA8240, HA8700, HA8560, HA8710] manually. Comment: Changes not listed in SUBSTANTIAL/COSMETIC CHANGES but under Haematology! They missed this out...
-Must do [SK12030] manually. Comment: 
-Must do [SK12450] manually. Comment: 
-Must do [SK12630] manually. Comment: 
-Must do [UG13100, UG13810] manually. Comment: 
-Must do [UR15100, UR15110] manually. Comment: 
+Must do [SK12030] manually. Comment: Move to 'SKIN - DIAGNOSIS - BCC, SCC & MM ' (Second level re-aligned to DIAGNOSIS from GENERAL)
+Must do [SK12450] manually. Comment: Move to 'SKIN - DIAGNOSIS - MM ' (Second level re-aligned to DIAGNOSIS from PATHOLOGY
+Must do [SK12630] manually. Comment: Description changed to 'Breslow thickness in mm, can be recorded to nearest 0.01mm where clinically appropriate'
+Must do [UG13100, UG13810] manually. Comment: Move to 'UPPER GI - SURGICAL AND OTHER PROCEDURES' (second level realigned to '- SURGICAL AND OTHER PROCEDURES' from '-SURGICAL PROCEDURES')
+Must do [UR15100, UR15110] manually. Comment: descriptions changed
+Must do [UG14210, UG14230, UG13240, UG13590] manually. Comment: Script messed these up
 
 Unclear what to do with [SA11120, SA11170, SA11130, SA11140]
 
