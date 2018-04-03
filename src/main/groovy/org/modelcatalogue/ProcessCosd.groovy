@@ -284,6 +284,10 @@ class ProcessCosd {
         newSectionInDiseaseGroupList.each {println "new ModNewSectionInDiseaseGroup(['${it.cosdIds.join("', '")}'], '$it.newSectionNamePart1', '$it.newSectionNamePart2'),"}
         println ''
 
+        List<ModRealignSecondLevel> realignSecondLevelList = modificationLists.modRealignSecondLevelList()
+        realignSecondLevelList.each {println "new ModRealignSecondLevel(['${it.cosdIds.join("', '")}'], '$it.oldSecondLevelSection', '$it.newSecondLevelSection'),"}
+        println ''
+
         List<ModChangesToEnums> changesToEnums = modificationLists.modChangesToEnumsList()
         changesToEnums.each{change ->
             println "new ModChangesToEnums('${change.cosdId}', ${listBroken((change.newEnums.collect{k,v -> "'$k':'$v'"}), 10)}),"

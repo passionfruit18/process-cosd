@@ -18,7 +18,8 @@
 //    boolean doDeletions = false
 //    boolean doMoveDataClassesToCore = false
 //    boolean doNewSectionsInDiseaseGroups = false
-//    boolean doChangesToEnums = true
+//    boolean doRealignSecondLevelSections = true
+//    boolean doChangesToEnums = false
 //}
 //
 //// DATA PROCESSED FROM SPREADSHEET
@@ -279,6 +280,17 @@
 //    String newSectionNamePart2
 //}
 //
+//@Immutable
+///**
+// * Change from data class SKIN - PATHOLOGY - MM to (find/create new data class) SKIN - DIAGNOSIS - MM
+// * for each cosdId/dataElement
+// * where oldSecondLevelSection is '- PATHOLOGY' and newSecondLevelSection is '- DIAGNOSIS'
+// */
+//class ModRealignSecondLevel implements Modification {
+//    List<String> cosdIds
+//    String oldSecondLevelSection
+//    String newSecondLevelSection
+//}
 //
 //@Immutable
 ///**
@@ -288,7 +300,18 @@
 //    String cosdId
 //    Map<String, String> newEnums
 //}
-//
+//void saveCatalogueElement(CatalogueElement ce) {
+//    try {ce.save(flush:true)
+//    }
+//    catch (IllegalArgumentException iae) {
+//        if (iae.message.matches("Unable to convert.*to JSON")) {
+//            // ignore these exceptions
+//        }
+//        else {
+//            throw iae
+//        }
+//    }
+//}
 //println "## New Sections for Disease Groups\n==================================\n"
 //// DATA PROCESSED FROM SPREADSHEET
 //List<ModNewSectionInDiseaseGroup> modNewSectionInDiseaseGroupList = [new ModNewSectionInDiseaseGroup(['HA8270'], 'CTYA', 'DIAGNOSIS'),
@@ -386,18 +409,86 @@
 //}
 //println ''
 //
-//void saveCatalogueElement(CatalogueElement ce) {
-//    try {ce.save(flush:true)
-//    }
-//    catch (IllegalArgumentException iae) {
-//        if (iae.message.matches("Unable to convert.*to JSON")) {
-//            // ignore these exceptions
-//        }
-//        else {
-//            throw iae
+//
+//println "## Realign Second Level Sections\n==================================\n"
+//
+//// DATA PROCESSED FROM SPREADSHEET
+//List<ModRealignSecondLevel> modRealignSecondLevelList = [new ModRealignSecondLevel(['SK12450'], '- PATHOLOGY', '- DIAGNOSIS'),
+//                                                         new ModRealignSecondLevel(['SK12030'], '- GENERAL', '- DIAGNOSIS'),
+//                                                         new ModRealignSecondLevel(['SK12010'], '- GENERAL', '- SURGERY AND OTHER PROCEDURES'),
+//                                                         new ModRealignSecondLevel(['CR0510'], '- CANCER CARE PLAN', '- DIAGNOSIS'),
+//                                                         new ModRealignSecondLevel(['SK12030'], '- GENERAL', '- DIAGNOSIS'),
+//                                                         new ModRealignSecondLevel(['SK12450'], '- PATHOLOGY', '- DIAGNOSIS'),
+//                                                         new ModRealignSecondLevel(['UG13100', 'UG13810'], '-SURGICAL PROCEDURES', '- SURGICAL AND OTHER PROCEDURES'),
+//]
+//// TODO: process these according to comment above class definition
+//
+//if (scriptConfig.doRealignSecondLevelSections) {
+//    DataElement de = null
+//    for (ModRealignSecondLevel modRealignSecondLevel: modRealignSecondLevelList) {
+//        for (String cosdId: modRealignSecondLevel.cosdIds) {
+//            de = cosd7des.find {getCosdId(it) == cosdId}
+//            if (de) {
+//                println "-- Data Element ${de.name} with cosdID ${cosdId}"
+//                List<Relationship> containingRs = de.getIncomingRelationshipsByType(RelationshipType.containmentType)
+//                containingRs.each {println "----- '${it.source.name}' contains data element"}
+//
+//
+//                // find the data class matching newSectionNamePart1
+//                String oldSecondLevel = "${modRealignSecondLevel.oldSecondLevelSection}"
+//                Relationship containingRelationship = containingRs.find({it?.source.name.matches(/.*${oldSecondLevel}.*/)})
+//                DataClass containingDC = (DataClass) containingRelationship?.source
+//                if (containingDC) {
+//                    println "-- found containingDC with name '${containingDC.name}' matching oldSecondLevel '${oldSecondLevel}'"
+//
+//                    String newSectionDataClassName = containingDC.name.replaceAll(/${oldSecondLevel}/, modRealignSecondLevel.newSecondLevelSection)
+//                    DataClass newSectionDataClass = DataClass.findByNameAndDataModel(newSectionDataClassName, dm)
+//
+//
+//                    if (newSectionDataClass) {
+//                        println "-- Found newSectionDataClass with name '${newSectionDataClassName}'"
+//
+//                    }
+//                    else {
+//                        println "-- Didn't find newSectionDataClass with name '${newSectionDataClassName}', creating new"
+//                        newSectionDataClass = new DataClass(name: newSectionDataClassName, dataModel: dm)
+//
+//                        saveCatalogueElement(newSectionDataClass)
+//
+//                        println "Adding ${newSectionDataClass.name} to the right parent"
+//                        DataClass parentDC = containingDC.getIncomingRelationshipsByType(RelationshipType.hierarchyType)[0].source
+//                        newSectionDataClass.addToChildOf(parentDC)
+//                        saveCatalogueElement(newSectionDataClass)
+//
+//                    }
+//                    println "-- Changing relationship to have newSectionDataClass as source"
+//                    containingRelationship.source = newSectionDataClass
+//
+//
+//
+//                    println ''
+//                }
+//                else {
+//                    println "-- No containing DC matching ${oldSecondLevel} found"
+//                }
+//
+//
+//
+//
+//
+//            }
+//            else {
+//                println "Data Element ${cosdId} not found"
+//            }
+//            println '==============\n'
 //        }
 //    }
 //}
+//else {
+//    println "Skipping modifications: realign second level sections"
+//}
+//println ''
+//
 //println "## Changes to Enums\n===================\n"
 //
 //
@@ -457,25 +548,17 @@
 //Change CR3040's schema spec to Optional
 //Change CR3050's schema spec to Optional
 //
-//Must do [SK12450] manually. Comment: Move to 'SKIN - DIAGNOSIS - MM' Data Class (Second level re-aligned to DIAGNOSIS from PATHOLOGY)
-//Must do [SK12030] manually. Comment: Move to 'SKIN - DIAGNOSIS - BCC, SCC & MM ' Data Class (Second level re-aligned to DIAGNOSIS from GENERAL)
-//Must do [SK12010] manually. Comment: Move to 'SKIN - SURGERY AND OTHER PROCEDURES - BCC, SCC & MM ' Data Class  (Second level re-aligned to SURGERY AND OTHER PROCEDURES from GENERAL)
 //Must do [CR0020] manually. Comment: format 'max an20'
 //Must do [CR0180] manually. Comment: Data Dictionary Name change to 'MORPHOLOGY (ICD-O DIAGNOSIS)'
 //Must do [CR3160] manually. Comment: format 'max an60'
-//Must do [CR0510] manually. Comment: Move to 'CORE - DIAGNOSIS' Data Class (Second level re-aligned to DIAGNOSIS from CANCER CARE PLAN)
 //Must do [CR2070] manually. Comment: description changed to 'The AJCC (Skin) or UICC edition number used for Tumour, Node and Metastasis (TNM) staging for cancer diagnosis.'
 //Must do [CT6560, CT6760] manually. Comment: section, name, description, national codes
 //Must do [CT6360] manually. Comment: make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS'. Yes, you have to introduce a typo.
 //Must do [HA8660] manually. Comment: data type 'Range 0.0 to 999.9  (to 1dp)'
 //Must do [HA8240, HA8700, HA8560, HA8710] manually. Comment: Changes not listed in SUBSTANTIAL/COSMETIC CHANGES but under Haematology! They missed this out...
-//Must do [SK12030] manually. Comment: Move to 'SKIN - DIAGNOSIS - BCC, SCC & MM ' (Second level re-aligned to DIAGNOSIS from GENERAL)
-//Must do [SK12450] manually. Comment: Move to 'SKIN - DIAGNOSIS - MM ' (Second level re-aligned to DIAGNOSIS from PATHOLOGY
 //Must do [SK12630] manually. Comment: Description changed to 'Breslow thickness in mm, can be recorded to nearest 0.01mm where clinically appropriate'
-//Must do [UG13100, UG13810] manually. Comment: Move to 'UPPER GI - SURGICAL AND OTHER PROCEDURES' (second level realigned to '- SURGICAL AND OTHER PROCEDURES' from '-SURGICAL PROCEDURES')
 //Must do [UR15100, UR15110] manually. Comment: descriptions changed
 //Must do [UG14210, UG14230, UG13240, UG13590] manually. Comment: Script messed these up
-//
 //Unclear what to do with [SA11120, SA11170, SA11130, SA11140]
 //"""
 //

@@ -34,8 +34,9 @@ class ModNewSectionInDiseaseGroup implements Modification {
 
 @Immutable
 /**
- * TODO: Use this
- * Not using this yet, but it could be for some of those which are currently ModManual e.g. from data class SKIN - PATHOLOGY - MM to SKIN - DIAGNOSIS - MM
+ * Change from data class SKIN - PATHOLOGY - MM to (find/create new data class) SKIN - DIAGNOSIS - MM
+ * for each cosdId/dataElement
+ * where oldSecondLevelSection is '- PATHOLOGY' and newSecondLevelSection is '- DIAGNOSIS'
  */
 class ModRealignSecondLevel implements Modification {
     List<String> cosdIds
@@ -117,6 +118,8 @@ class ModificationLists {
 
     List<ModMoveToCorePathology> modMoveToCorePathologyList() {modificationsGroupedByType.get(ModMoveToCorePathology).collect {(ModMoveToCorePathology) it}}
     List<ModNewSectionInDiseaseGroup> modNewSectionInDiseaseGroupList() {modificationsGroupedByType.get(ModNewSectionInDiseaseGroup).collect {(ModNewSectionInDiseaseGroup) it}}
+    List<ModRealignSecondLevel> modRealignSecondLevelList() {modificationsGroupedByType.get(ModRealignSecondLevel).collect {(ModRealignSecondLevel) it}}
+
 
     List<ModChangesToEnums> modChangesToEnumsList() {modificationsGroupedByType.get(ModChangesToEnums).collect {(ModChangesToEnums) it}}
     List<ModChangesToSchemaSpec> modChangesToSchemaSpecList() {modificationsGroupedByType.get(ModChangesToSchemaSpec).collect {(ModChangesToSchemaSpec) it}}
