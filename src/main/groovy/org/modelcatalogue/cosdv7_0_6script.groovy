@@ -353,7 +353,7 @@
 //                            saveCatalogueElement(newSectionDataClass)
 //
 //                            println "Adding ${newSectionDataClass.name} to the right parent"
-//
+//                            DataClass parentDC = containingDC.getIncomingRelationshipsByType(RelationshipType.hierarchyType)[0].source
 //                            newSectionDataClass.addToChildOf(parentDC)
 //                            saveCatalogueElement(newSectionDataClass)
 //
