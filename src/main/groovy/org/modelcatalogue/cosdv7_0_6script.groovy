@@ -18,7 +18,7 @@
 //    boolean doDeletions = false
 //    boolean doMoveDataClassesToCore = false
 //    boolean doNewSectionsInDiseaseGroups = false
-//    boolean doRealignSecondLevelSections = true
+//    boolean doRealignSecondLevelSections = false
 //    boolean doChangesToEnums = false
 //}
 //
