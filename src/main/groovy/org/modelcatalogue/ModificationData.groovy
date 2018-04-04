@@ -30,9 +30,9 @@ class ModificationData {
      Data Element CT6280 not found (ANN ARBOR SYMPTOMS) (HA8290)
      Data Element CT6290 not found (ANN ARBOR EXTRANODALITY) (HA8300)
 
-     These were put into a separate modification group.
+     These were put into a separate modification group that uses their HA8*** ids to find them.
 
-     Similarly
+     Similarly:
 
      Data Element CT6470 not found (SARCOMA TUMOUR SITE (BONE)) (SA11000)
      Data Element CT6440 not found (SARCOMA TUMOUR SUBSITE (BONE)) (SA11010)
@@ -187,7 +187,7 @@ class ModificationData {
                     modifications: [new ModMoveToCorePathology(['LUNG - PATHOLOGY '])]),
 
             new ModificationGroup(ids: ['SA11120', 'SA11170', 'SA11130', 'SA11140'],
-                    modifications: [new ModUnclearFromSpreadsheet(['SA11120', 'SA11170', 'SA11130', 'SA11140'])]),
+                    modifications: [new ModMoveToCorePathology(['SARCOMA - PATHOLOGY', 'SARCOMA - PATHOLOGY - BONE'])]),
 
             new ModificationGroup(ids: ['SA11100', 'SA11220'],
                     modifications: [new ModMoveToCorePathology(['SARCOMA - PATHOLOGY - SOFT TISSUE'])]),
@@ -295,7 +295,7 @@ class ModificationData {
             new ModificationGroup(ids: ['UR15100', 'UR15110'],
                     modifications: [new ModManual(['UR15100', 'UR15110'], "descriptions changed")]),
             new ModificationGroup(ids: ['UG14210', 'UG14230', 'UG13240', 'UG13590'],
-                    modifications: [new ModManual(['UG14210', 'UG14230', 'UG13240', 'UG13590'], "Script messed these up")])
+                    modifications: [new ModManual(['UG14210', 'UG14230', 'UG13240', 'UG13590'], "Script messed these data class names up")])
 
     ]
 }

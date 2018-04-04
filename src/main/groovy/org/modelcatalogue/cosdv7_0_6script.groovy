@@ -221,12 +221,12 @@
 //                                         'CTYA -  RENAL PATHOLOGY (Paediatric Kidney)', 'GYNAECOLOGY - PATHOLOGY', 'GYNAECOLOGY - PATHOLOGY - CERVICAL',
 //                                         'GYNAECOLOGY - PATHOLOGY - ENDOMETRIAL', 'GYNAECOLOGY - PATHOLOGY - FALLOPIAN TUBE, OVARIAN EPITHELIAL and PRIMARY PERITONEAL', 'GYNAECOLOGY - PATHOLOGY - NODES',
 //                                         'GYNAECOLOGY - PATHOLOGY -ENDOMETRIAL', 'HEAD & NECK -PATHOLOGY - GENERAL and SALIVARY', 'HEAD & NECK -PATHOLOGY - SALIVARY',
-//                                         'HEAD & NECK -PATHOLOGY - VARIOUS', 'LUNG - PATHOLOGY ', 'SARCOMA - PATHOLOGY - SOFT TISSUE',
-//                                         'SKIN - GENERAL - BCC, SCC & MM ', 'SKIN - PATHOLOGY - BCC & SCC', 'SKIN - PATHOLOGY - MM',
-//                                         'SKIN - PATHOLOGY - SCC', 'SKIN - PATHOLOGY - SCC & MM', 'UPPER GI -  PATHOLOGY - LIVER METS',
-//                                         'UPPER GI - PATHOLOGY - OESOPHAGEAL AND STOMACH', 'UPPER GI -PATHOLOGY - OESOPHAGEAL, OG JUNCTION, PANCREAS, BILE DUCT, LCC, LIVER HCC AND LIVER METS', 'UROLOGY - PATHOLOGY - BLADDER',
-//                                         'UROLOGY - PATHOLOGY - KIDNEY', 'UROLOGY - PATHOLOGY - PROSTATE', 'UROLOGY - PATHOLOGY - TESTICULAR',
-//                                         'UROLOGY- PATHOLOGY - PENIS']
+//                                         'HEAD & NECK -PATHOLOGY - VARIOUS', 'LUNG - PATHOLOGY ', 'SARCOMA - PATHOLOGY',
+//                                         'SARCOMA - PATHOLOGY - BONE', 'SARCOMA - PATHOLOGY - SOFT TISSUE', 'SKIN - GENERAL - BCC, SCC & MM ',
+//                                         'SKIN - PATHOLOGY - BCC & SCC', 'SKIN - PATHOLOGY - MM', 'SKIN - PATHOLOGY - SCC',
+//                                         'SKIN - PATHOLOGY - SCC & MM', 'UPPER GI -  PATHOLOGY - LIVER METS', 'UPPER GI - PATHOLOGY - OESOPHAGEAL AND STOMACH',
+//                                         'UPPER GI -PATHOLOGY - OESOPHAGEAL, OG JUNCTION, PANCREAS, BILE DUCT, LCC, LIVER HCC AND LIVER METS', 'UROLOGY - PATHOLOGY - BLADDER', 'UROLOGY - PATHOLOGY - KIDNEY',
+//                                         'UROLOGY - PATHOLOGY - PROSTATE', 'UROLOGY - PATHOLOGY - TESTICULAR', 'UROLOGY- PATHOLOGY - PENIS']
 //
 //println "## Move DataClasses to Core\n===========================\n"
 //if (scriptConfig.doMoveDataClassesToCore) {
@@ -558,8 +558,7 @@
 //Must do [HA8240, HA8700, HA8560, HA8710] manually. Comment: Changes not listed in SUBSTANTIAL/COSMETIC CHANGES but under Haematology! They missed this out...
 //Must do [SK12630] manually. Comment: Description changed to 'Breslow thickness in mm, can be recorded to nearest 0.01mm where clinically appropriate'
 //Must do [UR15100, UR15110] manually. Comment: descriptions changed
-//Must do [UG14210, UG14230, UG13240, UG13590] manually. Comment: Script messed these up
-//Unclear what to do with [SA11120, SA11170, SA11130, SA11140]
+//Must do [UG14210, UG14230, UG13240, UG13590] manually. Comment: Script messed these data class names up
 //"""
 //
 //println "# Errors:\n=======\n"
@@ -567,5 +566,3 @@
 //    println "ErrorType $it: \n-- ${errorsInCOSD.get(it)?.join('\n-- ')}"
 //    println ''
 //}
-//
-//grailsApplication.SESSION_FACTORY_BEAN
