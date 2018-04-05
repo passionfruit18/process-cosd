@@ -1,7 +1,10 @@
 //import org.modelcatalogue.core.*
 //import groovy.transform.Immutable
 //import org.hibernate.*
+//import org.modelcatalogue.core.ElementService
+//import org.modelcatalogue.core.publishing.CloningContext
 //
+//ElementService elementService = ctx.getBean('elementService')
 ////SessionFactory sessionFactory = ctx.getBean('sessionFactory')
 ////Session currentSession = sessionFactory.getCurrentSession()
 //
@@ -14,12 +17,20 @@
 //}
 //
 //Object scriptConfig = new Object() {
-//    boolean doAdditionChecks = false
 //    boolean doDeletions = false
+//
+//    boolean doAdditionChecks = false
+//
 //    boolean doMoveDataClassesToCore = false
 //    boolean doNewSectionsInDiseaseGroups = false
 //    boolean doRealignSecondLevelSections = false
 //    boolean doChangesToEnums = false
+//
+//    boolean deleteEmptyDataClasses = false
+//    boolean findDataElementsWithMultipleDataClasses = false
+//
+//    boolean createDuplicates = false
+//    boolean doDeDupes = false
 //}
 //
 //// DATA PROCESSED FROM SPREADSHEET
@@ -300,17 +311,44 @@
 //    String cosdId
 //    Map<String, String> newEnums
 //}
+//
+//@Immutable
+///**
+// * Data element with COSD id #originalCosdId will have to be duplicated
+// * and the duplicate will have to be given the COSD id #alternateCosdId
+// * and the containment relationship from data class with name #alternateDataClassName should have destination
+// * data element #alternateCosdId
+// * instead of data element #originalCosdId
+// */
+//class ModCreateDuplicates implements Modification {
+//    String originalCosdId
+//    String alternateCosdId
+//    String alternateDataClassName
+//}
+//
+///**
+// * Tries to save, ignoring Unable to convert to JSON exceptions, until success
+// *(or some other exception)
+// */
+////@Transactional
 //void saveCatalogueElement(CatalogueElement ce) {
-//    try {ce.save(flush:true)
-//    }
-//    catch (IllegalArgumentException iae) {
-//        if (iae.message.matches("Unable to convert.*to JSON")) {
-//            // ignore these exceptions
+//    boolean success = false
+//    while (!success) {
+//        try {
+//            ce.save(flush:true)
+//            success = true
 //        }
-//        else {
-//            throw iae
+//        catch (IllegalArgumentException iae) {
+//            if (iae.message.matches("Unable to convert.*to JSON")) {
+//                // ignore these exceptions
+//                println "Ignoring exception ${iae.message}"
+//            }
+//            else {
+//                throw iae
+//            }
 //        }
 //    }
+//
 //}
 //println "## New Sections for Disease Groups\n==================================\n"
 //// DATA PROCESSED FROM SPREADSHEET
@@ -559,7 +597,194 @@
 //Must do [SK12630] manually. Comment: Description changed to 'Breslow thickness in mm, can be recorded to nearest 0.01mm where clinically appropriate'
 //Must do [UR15100, UR15110] manually. Comment: descriptions changed
 //Must do [UG14210, UG14230, UG13240, UG13590] manually. Comment: Script messed these data class names up
+//
 //"""
+//
+//
+//
+//println "# Delete dataclasses with nothing in them\n=========================================\n"
+//if (scriptConfig.deleteEmptyDataClasses) {
+//    List<DataClass> toCleanUp = DataClass.findAllByDataModel(dm)
+//    boolean deleted = false
+//    for (DataClass dc: toCleanUp) {
+//        List<Relationship> children = dc.getOutgoingRelationshipsByType(RelationshipType.hierarchyType)
+//        List<Relationship> contained = dc.getOutgoingRelationshipsByType(RelationshipType.containmentType)
+//        if (children.size() == 0 && contained.size() == 0) {
+//            println "Data Class ${dc.name} has no children or contained data element, deleting"
+//            deleteCatalogueElement(dc)
+//            deleted = true
+//        }
+//    }
+//    if (!deleted) {
+//        println "No empty data classes to remove"
+//    }
+//}
+//else {
+//    println "Skipping deleting empty data classes"
+//}
+//println ''
+//
+//println '# Find Data Elements with multiple data classes\n===============================================\n'
+//
+//if (scriptConfig.findDataElementsWithMultipleDataClasses) {
+//    List<DataElement> allDataElements = DataElement.findAllByDataModel(dm)
+//    for (DataElement de: allDataElements) {
+//        List<Relationship> containing = de.getIncomingRelationshipsByType(RelationshipType.containmentType)
+//        if (containing.size() > 1) {
+//            println "Data Element '${de.name}', COSD id ${getCosdId(de)} has more than one containing data class, namely ${containing.size()}"
+//        }
+//        if (containing.size() < 1) {
+//            println "Data Element '${de.name}', COSD id ${getCosdId(de)} has less than one containing data class"
+//        }
+//    }
+//}
+//else {
+//    println "skipping"
+//}
+//println ''
+//
+//
+//println "## Create Duplicates\n========================\n"
+//// DATA PROCESSED FROM SPREADSHEET
+//List<ModCreateDuplicates> modCreateDuplicatesList = [
+//        new ModCreateDuplicates('HA8300', 'CT6290', 'CTYA - STAGING - HODGKIN LYMPHOMA'),
+//        new ModCreateDuplicates('HA8280', 'CT6270', 'CTYA - STAGING - HODGKIN LYMPHOMA'),
+//        new ModCreateDuplicates('HA8720', 'CT6720', 'CTYA - STAGING - HODGKIN LYMPHOMA'),
+//        new ModCreateDuplicates('HA8290', 'CT6280', 'CTYA - STAGING - HODGKIN LYMPHOMA'),
+//        new ModCreateDuplicates('HA8270', 'CT6210', 'CTYA - DIAGNOSIS - ACUTE LYMPHOBLASTIC LEUKAEMIA and ACUTE MYELOID LEUKAEMIA'),
+//        new ModCreateDuplicates('SK12730', 'CR6200', 'CORE - MOLECULAR AND BIOMARKERS - SOMATIC TESTING FOR TARGETED THERAPY AND PERSONALISED MEDICINE'),
+//        new ModCreateDuplicates('BA3030', 'CR0350', 'CORE - IMAGING'),
+//        new ModCreateDuplicates('UG14540', 'BA3020', 'CNS - IMAGING'),
+//        new ModCreateDuplicates('SK12530', 'UR15240', 'UROLOGY - PATHOLOGY - PROSTATE'),
+//        new ModCreateDuplicates('CT6650', 'UR15160', 'UROLOGY - PATHOLOGY - KIDNEY'),
+//        new ModCreateDuplicates('SA11000', 'CT6470', 'CTYA - DIAGNOSIS - OSTEOSARCOMA and EWINGS'),
+//        new ModCreateDuplicates('SA11010', 'CT6440', 'CTYA - DIAGNOSIS - OSTEOSARCOMA and EWINGS'),
+//        new ModCreateDuplicates('CO5000', 'BR4025', 'BREAST - REFERRALS'),
+//        new ModCreateDuplicates('CO5000', 'GY7030', 'GYNAECOLOGY - REFERRAL'),
+//        new ModCreateDuplicates('HA8150', 'CT6220', 'CTYA - DIAGNOSIS - ACUTE LYMPHOBLASTIC LEUKAEMIA and ACUTE MYELOID LEUKAEMIA'),
+//]
+//// if you're doing it manually:
+//// clone data element.
+//// move it to the right class.
+//// modelCatalogueId is COSD id.
+//// Modify 'Data Item No' extension.
+//// Remove the data class relationship from the original data element
+//
+//
+//if (scriptConfig.createDuplicates) {
+//    for (ModCreateDuplicates mcd: modCreateDuplicatesList) {
+//        println "Attempting mcd ${mcd}"
+//        String originalCosdId = mcd.originalCosdId
+//        String alternateCosdId = mcd.alternateCosdId
+//        String alternateDataClassName = mcd.alternateDataClassName
+//
+//        DataElement de = cosd7des.find({getCosdId(it) == originalCosdId})
+//
+//        if (de) {
+//            println "Original data element name ${de.name} found"
+//
+//            DataElement duplicateDe = DataElement.findAllByNameAndDataModel(de.name, dm).find{getCosdId(it) == alternateCosdId}
+//
+//            if (duplicateDe) {
+//                println "Duplicate DE with id ${alternateCosdId} already exists"
+//            }
+//            else {
+//
+//                duplicateDe = new DataElement()
+//                duplicateDe = (DataElement) elementService.cloneElement(de, CloningContext.create(dm, dm))
+//
+//
+//            }
+//            /*
+//            // copy name, description, status, ext. And dataType.
+//
+//            duplicateDe.name = de.name
+//
+//            duplicateDe.description = de.description
+//
+//            duplicateDe.status = de.status
+//            println de.status
+//            println de.dataType.name // fails to get dataType on second round for some reason.
+//
+//            println duplicateDe
+//            duplicateDe.dataType = de.dataType
+//
+//            saveCatalogueElement(duplicateDe)
+//
+//            duplicateDe.ext = de.ext
+//*/
+//            duplicateDe.dataModel = dm
+//            // modelCatalogueId is COSD id.
+//            duplicateDe.modelCatalogueId = alternateCosdId
+//
+//            // save just to make sure
+//            saveCatalogueElement(duplicateDe)
+//
+//            // Modify 'Data Item No' extension.
+//            duplicateDe.ext['Data Item No'] =  alternateCosdId
+//
+//            println "Duplicate DE has cosd id ${getCosdId(duplicateDe)}, should be ${alternateCosdId}"
+//
+//            // Switch alternateDataClass's containment relationship to point to duplicateDe
+//            List<Relationship> containers = de.getIncomingRelationshipsByType(RelationshipType.containmentType)
+//            Relationship alternateDataClassR = containers?.find {it.source.name == alternateDataClassName}
+//            if (alternateDataClassR) {
+//                println "Set data class ${alternateDataClassR.source.name} to point to duplicate DE"
+//                alternateDataClassR.destination = duplicateDe
+//                alternateDataClassR.save(flush:true)
+//            }
+//            else {
+//                println "No data class named ${alternateDataClassName} containing original data element ${de.name} found (perhaps already re-pointed it)"
+//                DataClass containing = duplicateDe.getIncomingRelationshipsByType(RelationshipType.containmentType)[0]?.source
+//                if (containing) {
+//                    duplicateDe.addToContainedIn(containing)
+//                    println "Adding to contained in"
+//                }
+//
+//
+//            }
+//
+//
+//            // save
+//
+//            saveCatalogueElement(duplicateDe)
+//
+//
+//        }
+//        else {
+//            println "Data Element with cosd id ${originalCosdId} not found"
+//        }
+//
+//
+//
+//
+//    }
+//}
+//else {
+//    println "skipping"
+//}
+//
+//println "## Do DeDupes\n=============\n"
+//
+//if (scriptConfig.doDeDupes) {
+//    String corePathology = 'CORE - PATHOLOGY DETAILS'
+//    Map<String,String> toDeDupes = ['INVESTIGATION RESULT DATE': 'CR0780', 'SERVICE REPORT IDENTIFIER': 'CR0950']
+//    toDeDupes.each{String toDeDupeName, String cosdId ->
+//        DataElement toDeDupe = DataElement.findByNameAndDataModel(toDeDupeName, dm)
+//        toDeDupe.ext['Data Item No'] = cosdId
+//        List<Relationship> containingRs = toDeDupe.getIncomingRelationshipsByType(RelationshipType.containmentType)
+//        containingRs.each {r ->
+//            if (r.source.name != corePathology) {
+//                println "${r.source.name} not core pathology"
+//                r.delete(flush:true)
+//            }
+//        }
+//    }
+//
+//}
+//else {
+//    println "skipping"
+//}
 //
 //println "# Errors:\n=======\n"
 //ErrorType.values().each {

@@ -73,6 +73,20 @@ class ModManual implements Modification {
     String comment = ''
 }
 
+@Immutable
+/**
+ * Data element with COSD id #originalCosdId will have to be duplicated
+ * and the duplicate will have to be given the COSD id #alternateCosdId
+ * and the containment relationship from data class with name #alternateDataClassName should have destination
+ * data element #alternateCosdId
+ * instead of data element #originalCosdId
+ */
+class ModCreateDuplicates implements Modification {
+    String originalCosdId
+    String alternateCosdId
+    String alternateDataClassName
+}
+
 
 
 @Immutable
@@ -125,9 +139,11 @@ class ModificationLists {
     List<ModChangesToSchemaSpec> modChangesToSchemaSpecList() {modificationsGroupedByType.get(ModChangesToSchemaSpec).collect {(ModChangesToSchemaSpec) it}}
 
     List<ModManual> modManualList() {modificationsGroupedByType.get(ModManual).collect {(ModManual) it}}
+    List<ModCreateDuplicates> modCreateDuplicatesList() {modificationsGroupedByType.get(ModCreateDuplicates).collect {(ModCreateDuplicates) it}}
 
     List<ModUnclearFromSpreadsheet> modUnclearFromSpreadsheetList() {modificationsGroupedByType.get(ModUnclearFromSpreadsheet).collect {(ModUnclearFromSpreadsheet) it}}
     List<ModNotLookedAtSpreadsheetYet> modNotLookedAtSpreadsheetYetList() {modificationsGroupedByType.get(ModNotLookedAtSpreadsheetYet).collect {(ModNotLookedAtSpreadsheetYet) it}}
+
 
     ModificationLists(Map<Class<Modification>, List<Modification>> modificationsGroupedByType) {
         this.modificationsGroupedByType = modificationsGroupedByType

@@ -295,7 +295,31 @@ class ModificationData {
             new ModificationGroup(ids: ['UR15100', 'UR15110'],
                     modifications: [new ModManual(['UR15100', 'UR15110'], "descriptions changed")]),
             new ModificationGroup(ids: ['UG14210', 'UG14230', 'UG13240', 'UG13590'],
-                    modifications: [new ModManual(['UG14210', 'UG14230', 'UG13240', 'UG13590'], "Script messed these data class names up")])
+                    modifications: [new ModManual(['UG14210', 'UG14230', 'UG13240', 'UG13590'], "Script messed these data class names up")]),
+
+            new ModificationGroup(ids: ['HA8300', 'HA8280', 'HA8720', 'HA8290', 'HA8270', 'SK12730', 'BA3030', 'UG14540', 'SK12530', 'CT6650', 'SA11000', 'SA11010', 'CO5000', 'HA8150'],
+                    modifications:[
+                            new ModCreateDuplicates('HA8300', 'CT6290', 'CTYA - STAGING - HODGKIN LYMPHOMA'),
+                            new ModCreateDuplicates('HA8280', 'CT6270', 'CTYA - STAGING - HODGKIN LYMPHOMA'),
+                            new ModCreateDuplicates('HA8720', 'CT6720', 'CTYA - STAGING - HODGKIN LYMPHOMA'),
+                            new ModCreateDuplicates('HA8290', 'CT6280', 'CTYA - STAGING - HODGKIN LYMPHOMA'),
+
+                            new ModCreateDuplicates('HA8270', 'CT6210', 'CTYA - DIAGNOSIS - ACUTE LYMPHOBLASTIC LEUKAEMIA and ACUTE MYELOID LEUKAEMIA'),
+                            new ModCreateDuplicates('SK12730', 'CR6200', 'CORE - MOLECULAR AND BIOMARKERS - SOMATIC TESTING FOR TARGETED THERAPY AND PERSONALISED MEDICINE'),
+
+                            new ModCreateDuplicates('BA3030', 'CR0350', 'CORE - IMAGING'),
+                            new ModCreateDuplicates('UG14540', 'BA3020', 'CNS - IMAGING'),
+                            new ModCreateDuplicates('SK12530', 'UR15240', 'UROLOGY - PATHOLOGY - PROSTATE'),
+                            new ModCreateDuplicates('CT6650', 'UR15160', 'UROLOGY - PATHOLOGY - KIDNEY'),
+
+                            new ModCreateDuplicates('SA11000', 'CT6470', 'CTYA - DIAGNOSIS - OSTEOSARCOMA and EWINGS'),
+                            new ModCreateDuplicates('SA11010', 'CT6440', 'CTYA - DIAGNOSIS - OSTEOSARCOMA and EWINGS'),
+
+                            new ModCreateDuplicates('CO5000', 'BR4025', 'BREAST - REFERRALS'),
+                            new ModCreateDuplicates('CO5000', 'GY7030', 'GYNAECOLOGY - REFERRAL'),
+
+                            new ModCreateDuplicates('HA8150', 'CT6220', 'CTYA - DIAGNOSIS - ACUTE LYMPHOBLASTIC LEUKAEMIA and ACUTE MYELOID LEUKAEMIA'),
+                    ]),
 
     ]
 }

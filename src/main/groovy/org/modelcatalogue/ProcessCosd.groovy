@@ -325,6 +325,10 @@ class ProcessCosd {
         }
         println ''
 
+        List<ModCreateDuplicates> createDuplicatesList = modificationLists.modCreateDuplicatesList()
+        createDuplicatesList.each {println "new ModCreateDuplicates('$it.originalCosdId', '$it.alternateCosdId', '$it.alternateDataClassName'),"}
+        println ''
+
         List<ModUnclearFromSpreadsheet> unclears = modificationLists.modUnclearFromSpreadsheetList()
         unclears.each {println "Unclear what to do with ${it.cosdIds}"}
         println ''
@@ -391,6 +395,6 @@ class ProcessCosd {
                 workbookPath: 'org/modelcatalogue/COSD_Dataset_v8_0_1_Final.xls',
                 handPickedDeletedItemIds: [],
                 handPickedCompletelyNewItemIds: [])
-        processCOSD(cosd_8_0_1_config)
+//        processCOSD(cosd_8_0_1_config)
     }
 }
