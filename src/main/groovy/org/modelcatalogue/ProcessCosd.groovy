@@ -31,18 +31,20 @@ class COSDEntry {
     String dataItemNo
     String dataItemSection
     static COSDEntry fromRow(Row row) {
-        new COSDEntry(dataItemNo: row?.getCell(HeadersMap.dataItemNo)?.stringCellValue,
-                dataItemSection: row?.getCell(HeadersMap.dataItemSection)?.stringCellValue)
+        new COSDEntry(dataItemNo: row?.getCell(HeadersMap.dataItemNoIndex)?.stringCellValue,
+                dataItemSection: row?.getCell(HeadersMap.dataItemSectionIndex)?.stringCellValue)
     }
     String newObjRep() {
-        "new COSDEntry(dataItemNo: '${dataItemNo}', dataItemSection: '${dataItemSection}')"
+        "new COSDEntry(dataItemNoIndex: '${dataItemNo}', dataItemSectionIndex: '${dataItemSection}')"
     }
 }
 
-
+/**
+ * Same for COSD v7.0.6 and v8.0.1, so no need to generalize yet...
+ */
 class HeadersMap {
-    static int dataItemNo = 0
-    static int dataItemSection = 1
+    static int dataItemNoIndex = 0
+    static int dataItemSectionIndex = 1
 }
 
 
@@ -69,7 +71,10 @@ class ProcessCosd {
      * Orange Foreground color hexString 'FFFF:CCCC:9999' or Yellow 'FFFF:FFFF:0', or White 'FFFF:FFFF:FFFF', AND NOT RED FONT 'FFFF:0:0', for modifications in Substantial Changes.
      * Yellow or White for modifications in Cosmetic Changes.
      *
-     * COSD 8.0.1: Substantial Changes: Modifications: Have a white foreground. Some cosmetic change modifications have a green foreground!.
+     * COSD 8.0.1: Substantial Changes: Modifications: Have a white foreground.
+     * Some cosmetic change modifications have a green foreground:
+     * There are four entries in cosmetic changes where the data item no cell is green, but these are actually modifications, not completely new entries.
+     * These can be identified as not completely new by their data item section cell which is not green.
      */
     static void processCOSD(ProcessCOSDConfig config) {
         println "# COSD Version: ${config.cosdVersion}"
@@ -85,10 +90,12 @@ class ProcessCosd {
         
         Closure c = { Row row ->
             println row
-            Cell c = row.getCell(HeadersMap.dataItemNo)
+            Cell c = row.getCell(HeadersMap.dataItemNoIndex)
             HSSFCellStyle cs = c?.getCellStyle()
             HSSFFont font = cs?.getFont(workbook.getWorkbook())
             HSSFColor fontColor = font?.getHSSFColor((HSSFWorkbook) workbook.getWorkbook())
+
+            HSSFCellStyle sectionCellStyle = (HSSFCellStyle) row.getCell(HeadersMap.dataItemSectionIndex)?.getCellStyle()
 
             println "${c?.stringCellValue}:\n" +
                     "Foreground color: ${cs?.fillForegroundColorColor?.hexString},\n" +
@@ -99,7 +106,8 @@ class ProcessCosd {
             if (fontColor?.getHexString() == config.deletedFontColor || cs?.fillForegroundColorColor?.hexString == config.deletedForegroundHex) {
                 deletedItemIds << c.stringCellValue
             }
-            if (cs?.fillForegroundColorColor?.hexString == config.newEntryForegroundColorHex) {
+            if (c?.stringCellValue?.matches(/[A-Z]{1,4}[0-9]{1,10}\s*/) && cs?.fillForegroundColorColor?.hexString == config.newEntryForegroundColorHex
+                    && (sectionCellStyle)?.fillForegroundColorColor?.hexString == config.newEntryForegroundColorHex) { // second check handles case for a few COSD v8.0.1 cosmetic changes entries
                 completelyNewItems << COSDEntry.fromRow(row)
             }
             if (c?.stringCellValue?.matches(/[A-Z]{1,4}[0-9]{1,10}\s*/)) { // e.g. CO12345
@@ -122,6 +130,12 @@ class ProcessCosd {
         println "Completely new item ids: ${completelyNewItemIds.collect {"'$it'"}.sort()}\n" +
                 "size: ${completelyNewItemIds.size()}\n" +
                 "setSize: ${completelyNewItemIds.toSet().size()}\n"
+
+        println "new item Groups"
+        completelyNewItemIds.groupBy{it}.each{k,v ->
+            println "$k: $v"
+        }
+        println ''
 
         List<String> handpickedCompletelyNewIds = config.handPickedCompletelyNewItemIds
         println "handpicked Completely New Ids: ${handpickedCompletelyNewIds.collect{"'$it'"}.sort()}\n" +
@@ -146,8 +160,13 @@ class ProcessCosd {
         List<String> justModifiedSetCalc = ((allChangedIds.toSet() - deletedItemIds.toSet()) - completelyNewItemIds.toSet()).toList()
         println "Just modified: $justModified\n" +
                 "size: ${justModified.size()}, should equal allChanged.size - deletedItems.size - completelyNew.size = ${allChangedIds.size() - deletedItemIds.size() - completelyNewItemIds.size()}\n" +
+                "Just modified set calc: ${justModifiedSetCalc}\n" +
                 "justModifiedSetCalc size: ${justModifiedSetCalc.size()}\n"
 
+        println "justModified groups"
+        justModified.groupBy{it}.each{k,v ->
+            println "$k: $v"
+        }
 
 
         // compare handpicked deleted item ids and program picked
@@ -189,7 +208,7 @@ class ProcessCosd {
         List<Row> currentRowSection = []
         while (substantialRowIterator.hasNext() || cosmeticRowIterator.hasNext()) {
             Row row = substantialRowIterator.hasNext() ? substantialRowIterator.next() : cosmeticRowIterator.next()
-            Cell c = row.getCell(HeadersMap.dataItemNo)
+            Cell c = row.getCell(HeadersMap.dataItemNoIndex)
             HSSFCellStyle cs = c?.getCellStyle()
             HSSFFont font = cs?.getFont(workbook.getWorkbook())
             HSSFColor fontColor = font?.getHSSFColor((HSSFWorkbook) workbook.getWorkbook())
@@ -223,7 +242,7 @@ class ProcessCosd {
             List<Row> section ->
                 section.collect {
                     Row row ->
-                        Cell c = row.getCell(HeadersMap.dataItemNo)
+                        Cell c = row.getCell(HeadersMap.dataItemNoIndex)
                         c?.stringCellValue
                 }
         }
@@ -361,11 +380,17 @@ class ProcessCosd {
         )
 
         processCOSD(cosd_7_0_6_config)
-        println "======\n\n======"
-        ProcessCOSDConfig cosd_8_0_1_config = new ProcessCOSDConfig(cosdVersion: "8.0.1", workbookPath: 'org/modelcatalogue/COSD_Dataset_v8_0_1_Final.xls', handPickedDeletedItemIds: [], handPickedCompletelyNewItemIds: [])
-//        processCOSD(cosd_8_0_1_config)
+
 
         categorizeModificationsv7_0_6()
         modificationScriptFromDatav7_0_6()
+
+        println "======\n\n======"
+        ProcessCOSDConfig cosd_8_0_1_config = new ProcessCOSDConfig(
+                cosdVersion: "8.0.1",
+                workbookPath: 'org/modelcatalogue/COSD_Dataset_v8_0_1_Final.xls',
+                handPickedDeletedItemIds: [],
+                handPickedCompletelyNewItemIds: [])
+        processCOSD(cosd_8_0_1_config)
     }
 }
