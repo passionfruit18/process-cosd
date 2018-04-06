@@ -8,7 +8,13 @@
 ////SessionFactory sessionFactory = ctx.getBean('sessionFactory')
 ////Session currentSession = sessionFactory.getCurrentSession()
 //
-//println "COSD 7.0.6 check newly added items, do deletions, modifications using data from ProcessCosd"
+//println "COSD 8.0.1 check newly added items, do deletions, modifications using data from ProcessCosd"
+//
+//// Script copied from v7.0.6 script. Replaced references to 7.0.6 with 8.0.1.
+//// Have a section for renaming e.g. Gynaecology -> Gynaecological in Data Class/Data Element names,
+//// Plan to use different deletion and addition data.
+//// Not sure what will happen with the modifications.
+//
 //println "# Check Additions\n=================\n"
 //
 //class COSDEntry {
@@ -17,6 +23,9 @@
 //}
 //
 //Object scriptConfig = new Object() {
+//
+//    boolean doRenamingOlogical = false
+//
 //    boolean doDeletions = false
 //
 //    boolean doAdditionChecks = false
@@ -33,42 +42,30 @@
 //    boolean doDeDupes = false
 //}
 //
-//// DATA PROCESSED FROM SPREADSHEET
-//List<COSDEntry> newlyAddedItems = [new COSDEntry(dataItemNo: 'CR6000', dataItemSection: 'CORE - IMAGING (ULTRASOUND)'), new COSDEntry(dataItemNo: 'CR6230', dataItemSection: 'CORE - DIAGNOSIS'), new COSDEntry(dataItemNo: 'CR6490', dataItemSection: 'CORE - DIAGNOSIS'),
-//                                   new COSDEntry(dataItemNo: 'CR6400', dataItemSection: 'CORE - DIAGNOSIS'), new COSDEntry(dataItemNo: 'CR6430', dataItemSection: 'CORE - PERSON OBSERVATION'), new COSDEntry(dataItemNo: 'CR6440', dataItemSection: 'CORE - PERSON OBSERVATION'),
-//                                   new COSDEntry(dataItemNo: 'CR6450', dataItemSection: 'CORE - PERSON OBSERVATION'), new COSDEntry(dataItemNo: 'CR6460', dataItemSection: 'CORE - PERSON OBSERVATION'), new COSDEntry(dataItemNo: 'CR6470', dataItemSection: 'CORE - CANCER CARE PLAN'),
-//                                   new COSDEntry(dataItemNo: 'CR6100', dataItemSection: 'CORE - MOLECULAR AND BIOMARKERS - GERMLINE TESTING FOR CANCER PREDISPOSITION'), new COSDEntry(dataItemNo: 'CR6110', dataItemSection: 'CORE - MOLECULAR AND BIOMARKERS - GERMLINE TESTING FOR CANCER PREDISPOSITION'), new COSDEntry(dataItemNo: 'CR6120', dataItemSection: 'CORE - MOLECULAR AND BIOMARKERS - GERMLINE TESTING FOR CANCER PREDISPOSITION'),
-//                                   new COSDEntry(dataItemNo: 'CR6130', dataItemSection: 'CORE - MOLECULAR AND BIOMARKERS - GERMLINE TESTING FOR CANCER PREDISPOSITION'), new COSDEntry(dataItemNo: 'CR6140', dataItemSection: 'CORE - MOLECULAR AND BIOMARKERS - GERMLINE TESTING FOR CANCER PREDISPOSITION'), new COSDEntry(dataItemNo: 'CR6150', dataItemSection: 'CORE - MOLECULAR AND BIOMARKERS - GERMLINE TESTING FOR CANCER PREDISPOSITION'),
-//                                   new COSDEntry(dataItemNo: 'CR6160', dataItemSection: 'CORE - MOLECULAR AND BIOMARKERS - SOMATIC TESTING FOR TARGETED THERAPY AND PERSONALISED MEDICINE'), new COSDEntry(dataItemNo: 'CR6170', dataItemSection: 'CORE - MOLECULAR AND BIOMARKERS - SOMATIC TESTING FOR TARGETED THERAPY AND PERSONALISED MEDICINE'), new COSDEntry(dataItemNo: 'CR6180', dataItemSection: 'CORE - MOLECULAR AND BIOMARKERS - SOMATIC TESTING FOR TARGETED THERAPY AND PERSONALISED MEDICINE'),
-//                                   new COSDEntry(dataItemNo: 'CR6190', dataItemSection: 'CORE - MOLECULAR AND BIOMARKERS - SOMATIC TESTING FOR TARGETED THERAPY AND PERSONALISED MEDICINE'), new COSDEntry(dataItemNo: 'CR6200', dataItemSection: 'CORE - MOLECULAR AND BIOMARKERS - SOMATIC TESTING FOR TARGETED THERAPY AND PERSONALISED MEDICINE'), new COSDEntry(dataItemNo: 'CR6480', dataItemSection: 'CORE - SURGERY AND OTHER PROCEDURES'),
-//                                   new COSDEntry(dataItemNo: 'CR6300', dataItemSection: 'CORE - SURGERY AND OTHER PROCEDURES'), new COSDEntry(dataItemNo: 'CR6010', dataItemSection: 'CORE - SURGERY AND OTHER PROCEDURES'), new COSDEntry(dataItemNo: 'CR6310', dataItemSection: 'CORE - SURGERY AND OTHER PROCEDURES'),
-//                                   new COSDEntry(dataItemNo: 'CR6220', dataItemSection: 'CORE - PATHOLOGY DETAILS'), new COSDEntry(dataItemNo: 'CR6490', dataItemSection: 'CORE - PATHOLOGY DETAILS'), new COSDEntry(dataItemNo: 'CR6410', dataItemSection: 'CORE - PATHOLOGY DETAILS'),
-//                                   new COSDEntry(dataItemNo: 'CR6490', dataItemSection: 'CORE - PATHOLOGY DETAILS'), new COSDEntry(dataItemNo: 'CR6420', dataItemSection: 'CORE - PATHOLOGY DETAILS'), new COSDEntry(dataItemNo: 'BA3200', dataItemSection: 'CNS - SURGERY & OTHER PROCEDURES'),
-//                                   new COSDEntry(dataItemNo: 'BA3210', dataItemSection: 'CNS - SURGERY & OTHER PROCEDURES'), new COSDEntry(dataItemNo: 'CO5400', dataItemSection: 'COLORECTAL - DIAGNOSIS'), new COSDEntry(dataItemNo: 'CT6990', dataItemSection: 'CTYA - DIAGNOSIS'),
-//                                   new COSDEntry(dataItemNo: 'CT7020', dataItemSection: 'CTYA - DIAGNOSIS'), new COSDEntry(dataItemNo: 'CT7200', dataItemSection: 'CTYA - DIAGNOSIS - MIXED PHENOTYPE ACUTE LEUKAEMIA'), new COSDEntry(dataItemNo: 'CT7240', dataItemSection: 'CTYA - DIAGNOSIS - PAEDIATRIC MYELODYSPLASIA'),
-//                                   new COSDEntry(dataItemNo: 'CT7160', dataItemSection: 'CTYA - DIAGNOSIS - ACUTE MYELOID LEUKAEMIA'), new COSDEntry(dataItemNo: 'CT7170', dataItemSection: 'CTYA - DIAGNOSIS - ACUTE MYELOID LEUKAEMIA'), new COSDEntry(dataItemNo: 'CT7180', dataItemSection: 'CTYA - DIAGNOSIS - ACUTE MYELOID LEUKAEMIA'),
-//                                   new COSDEntry(dataItemNo: 'CT7030', dataItemSection: 'CTYA - DIAGNOSIS - LOW GRADE GLIOMA'), new COSDEntry(dataItemNo: 'CT7400', dataItemSection: 'CTYA - DIAGNOSIS - LOW GRADE GLIOMA'), new COSDEntry(dataItemNo: 'CT7260', dataItemSection: 'CTYA - DIAGNOSIS - PAEDIATRIC MYELODYSPLASIA'),
-//                                   new COSDEntry(dataItemNo: 'CT7270', dataItemSection: 'CTYA - DIAGNOSIS - PAEDIATRIC MYELODYSPLASIA'), new COSDEntry(dataItemNo: 'CT7380', dataItemSection: 'CTYA - DIAGNOSIS - PAEDIATRIC MYELODYSPLASIA'), new COSDEntry(dataItemNo: 'CT7310', dataItemSection: 'CTYA - DIAGNOSIS - PAEDIATRIC MYELODYSPLASIA'),
-//                                   new COSDEntry(dataItemNo: 'CT7150', dataItemSection: 'CTYA - ACUTE LYMPHOBLASTIC LEUKAEMIA '), new COSDEntry(dataItemNo: 'CT7070', dataItemSection: 'CTYA - DIAGNOSIS - NEUROBLASTOMA '), new COSDEntry(dataItemNo: 'CT7000', dataItemSection: 'CTYA - SURGERY AND OTHER PROCEDURES'),
-//                                   new COSDEntry(dataItemNo: 'CT7010', dataItemSection: 'CTYA - SURGERY AND OTHER PROCEDURES'), new COSDEntry(dataItemNo: 'CT7110', dataItemSection: 'CTYA - SURGERY AND OTHER PROCEDURES'), new COSDEntry(dataItemNo: 'CT7190', dataItemSection: 'CTYA - SURGERY AND OTHER PROCEDURES - ALL/AML/MPAL'),
-//                                   new COSDEntry(dataItemNo: 'CT7390', dataItemSection: 'CTYA - SURGERY AND OTHER PROCEDURES - CNS'), new COSDEntry(dataItemNo: 'CT7370', dataItemSection: 'CTYA - SURGERY AND OTHER PROCEDURES - STEM CELL TRANSPLANTATION'), new COSDEntry(dataItemNo: 'CT7120', dataItemSection: 'CTYA - ACUTE LYMPHOBLASTIC LEUKAEMIA - RESPONSE'),
-//                                   new COSDEntry(dataItemNo: 'CT7130', dataItemSection: 'CTYA - ACUTE LYMPHOBLASTIC LEUKAEMIA - RESPONSE'), new COSDEntry(dataItemNo: 'CT7140', dataItemSection: 'CTYA - ACUTE LYMPHOBLASTIC LEUKAEMIA - RESPONSE'), new COSDEntry(dataItemNo: 'CT7050', dataItemSection: 'CTYA - STAGING - NEUROBLASTOMA '),
-//                                   new COSDEntry(dataItemNo: 'CT7060', dataItemSection: 'CTYA - STAGING - NEUROBLASTOMA'), new COSDEntry(dataItemNo: 'CT7040', dataItemSection: 'CTYA - LABORATORY RESULTS - GENERAL'), new COSDEntry(dataItemNo: 'CT7320', dataItemSection: 'CTYA - LABORATORY RESULTS - PAEDIATRIC MYELODYSPLASIA '),
-//                                   new COSDEntry(dataItemNo: 'CT7330', dataItemSection: 'CTYA - LABORATORY RESULTS - PAEDIATRIC MYELODYSPLASIA '), new COSDEntry(dataItemNo: 'CT7340', dataItemSection: 'CTYA - LABORATORY RESULTS - PAEDIATRIC MYELODYSPLASIA '), new COSDEntry(dataItemNo: 'CT7350', dataItemSection: 'CTYA - LABORATORY RESULTS - PAEDIATRIC MYELODYSPLASIA '),
-//                                   new COSDEntry(dataItemNo: 'CT7360', dataItemSection: 'CTYA - LABORATORY RESULTS - PAEDIATRIC MYELODYSPLASIA '), new COSDEntry(dataItemNo: 'CT7080', dataItemSection: 'CTYA - LABORATORY RESULTS - NEUROBLASTOMA '), new COSDEntry(dataItemNo: 'CT7090', dataItemSection: 'CTYA - LABORATORY RESULTS - NEUROBLASTOMA '),
-//                                   new COSDEntry(dataItemNo: 'GY7460', dataItemSection: 'GYNAECOLOGY - SURGERY & OTHER PROCEDURES'), new COSDEntry(dataItemNo: 'GY7450', dataItemSection: 'GYNAECOLOGY - PATHOLOGY'), new COSDEntry(dataItemNo: 'LU10300', dataItemSection: 'LUNG - DIAGNOSIS - NLCA'),
-//                                   new COSDEntry(dataItemNo: 'LU10310', dataItemSection: 'LUNG - DIAGNOSIS - NLCA'), new COSDEntry(dataItemNo: 'LU10340', dataItemSection: 'LUNG - IMAGING - NLCA'), new COSDEntry(dataItemNo: 'LU10350', dataItemSection: 'LUNG - IMAGING - NLCA'),
-//                                   new COSDEntry(dataItemNo: 'LU10360', dataItemSection: 'LUNG - SURGERY AND OTHER PROCEDURES - NLCA'), new COSDEntry(dataItemNo: 'LU10420', dataItemSection: 'LUNG - SURGERY AND OTHER PROCEDURES - LCCOP'), new COSDEntry(dataItemNo: 'LU10370', dataItemSection: 'LUNG - SURGERY AND OTHER PROCEDURES - NLCA'),
-//                                   new COSDEntry(dataItemNo: 'LU10390', dataItemSection: 'LUNG - SURGERY AND OTHER PROCEDURES - LCCOP'), new COSDEntry(dataItemNo: 'SK12710', dataItemSection: 'SKIN - DIAGNOSIS - MM '), new COSDEntry(dataItemNo: 'SK12720', dataItemSection: 'SKIN - DIAGNOSIS - MM '),
-//                                   new COSDEntry(dataItemNo: 'SK12730', dataItemSection: 'SKIN - DIAGNOSIS - MM '), new COSDEntry(dataItemNo: 'SK12740', dataItemSection: 'SKIN - DIAGNOSIS - MM '), new COSDEntry(dataItemNo: 'SK12700', dataItemSection: 'SKIN - SURGERY AND OTHER PROCEDURES - BCC, SCC & MM '),
-//                                   new COSDEntry(dataItemNo: 'SK12510', dataItemSection: 'SKIN - STAGING '), new COSDEntry(dataItemNo: 'UR15400', dataItemSection: 'UROLOGY - STAGING - TESTICULAR')]
+//// DATA PROCESSED FROM SPREADSHEET v8.0.1. CR6980 occurs twice
+//List<COSDEntry> newlyAddedItems = [new COSDEntry(dataItemNo: 'CR6500', dataItemSection: 'CORE - DIAGNOSTIC DETAILS'), new COSDEntry(dataItemNo: 'CR6510', dataItemSection: 'CORE - NON PRIMARY CANCER PATHWAY ROUTE'), new COSDEntry(dataItemNo: 'CR6520', dataItemSection: 'CORE - NON PRIMARY CANCER PATHWAY ROUTE'),
+//                                   new COSDEntry(dataItemNo: 'CR6900', dataItemSection: 'CORE - NON PRIMARY CANCER PATHWAY ROUTE'), new COSDEntry(dataItemNo: 'CR6840', dataItemSection: 'CORE - DEMOGRAPHICS'), new COSDEntry(dataItemNo: 'CR6780', dataItemSection: 'CORE - IMAGING'),
+//                                   new COSDEntry(dataItemNo: 'CR6830', dataItemSection: 'CORE - DIAGNOSIS'), new COSDEntry(dataItemNo: 'CR6960', dataItemSection: 'CORE - DIAGNOSIS'), new COSDEntry(dataItemNo: 'CR6910', dataItemSection: 'CORE - DIAGNOSIS'),
+//                                   new COSDEntry(dataItemNo: 'CR7030', dataItemSection: 'CORE - DIAGNOSIS'), new COSDEntry(dataItemNo: 'CR7000', dataItemSection: 'CORE - DIAGNOSIS'), new COSDEntry(dataItemNo: 'CR7010', dataItemSection: 'CORE - DIAGNOSIS'),
+//                                   new COSDEntry(dataItemNo: 'CR7020', dataItemSection: 'CORE - DIAGNOSIS'), new COSDEntry(dataItemNo: 'CR6750', dataItemSection: 'CORE - CLINICAL NURSE SPECIALIST + RISK FACTOR ASSESSMENT'), new COSDEntry(dataItemNo: 'CR6760', dataItemSection: 'CORE - CLINICAL NURSE SPECIALIST + RISK FACTOR ASSESSMENT'),
+//                                   new COSDEntry(dataItemNo: 'CR6770', dataItemSection: 'CORE - CLINICAL NURSE SPECIALIST + RISK FACTOR ASSESSMENT'), new COSDEntry(dataItemNo: 'CR6700', dataItemSection: 'CORE - CLINICAL TRIALS'), new COSDEntry(dataItemNo: 'CR6710', dataItemSection: 'CORE - CLINICAL TRIALS'),
+//                                   new COSDEntry(dataItemNo: 'CR6800', dataItemSection: 'CORE - STAGING'), new COSDEntry(dataItemNo: 'CR6810', dataItemSection: 'CORE - STAGING'), new COSDEntry(dataItemNo: 'CR6980', dataItemSection: 'CORE - STAGING'),
+//                                   new COSDEntry(dataItemNo: 'CR6540', dataItemSection: 'CORE - TREATMENT'), new COSDEntry(dataItemNo: 'CR6980', dataItemSection: 'CORE - PATHOLOGY DETAILS'), new COSDEntry(dataItemNo: 'CR6820', dataItemSection: 'CORE - PATHOLOGY DETAILS'),
+//                                   new COSDEntry(dataItemNo: 'CO5410', dataItemSection: 'COLORECTAL - PATHOLOGY'), new COSDEntry(dataItemNo: 'BR4130', dataItemSection: 'BREAST - DIAGNOSIS'), new COSDEntry(dataItemNo: 'HN9200', dataItemSection: 'HEAD & NECK - PRE TREATMENT ASSESSMENT'),
+//                                   new COSDEntry(dataItemNo: 'LV16000', dataItemSection: 'LIVER - DIAGNOSIS'), new COSDEntry(dataItemNo: 'LV16010', dataItemSection: 'LIVER - DIAGNOSIS'), new COSDEntry(dataItemNo: 'LV16020', dataItemSection: 'LIVER - DIAGNOSIS'),
+//                                   new COSDEntry(dataItemNo: 'LV16030', dataItemSection: 'LIVER - DIAGNOSIS'), new COSDEntry(dataItemNo: 'LV16130', dataItemSection: 'LIVER - STAGING'), new COSDEntry(dataItemNo: 'LV16310', dataItemSection: 'LIVER - TREATMENT - LIVER METS & LIVER HCC'),
+//                                   new COSDEntry(dataItemNo: 'LV16320', dataItemSection: 'LIVER - TREATMENT - LIVER METS & LIVER HCC'), new COSDEntry(dataItemNo: 'LV16200', dataItemSection: 'LIVER - SURGERY AND OTHER PROCEDURES'), new COSDEntry(dataItemNo: 'LV16210', dataItemSection: 'LIVER - SURGERY AND OTHER PROCEDURES'),
+//                                   new COSDEntry(dataItemNo: 'UR15410', dataItemSection: 'UROLOGICAL - DIAGNOSIS - PROSTATE'), new COSDEntry(dataItemNo: 'UR15420', dataItemSection: 'UROLOGICAL - TREATMENT - PROSTATE'), new COSDEntry(dataItemNo: 'UR15430', dataItemSection: 'UROLOGICAL - TREATMENT - PROSTATE'),
+//                                   new COSDEntry(dataItemNo: 'LV16100', dataItemSection: 'LIVER - STAGING'), new COSDEntry(dataItemNo: 'LV16110', dataItemSection: 'LIVER - STAGING'), new COSDEntry(dataItemNo: 'LV16120', dataItemSection: 'LIVER - STAGING'),
+//                                   new COSDEntry(dataItemNo: 'LV16300', dataItemSection: 'LIVER - TREATMENT - LIVER METS & LIVER HCC')]
+//
 //
 //List<String> newlyAddedIds = newlyAddedItems.collect{it.dataItemNo}
 ////List<String> newlyAddedIds = ['CR6000', 'CR6230', 'CR6490', 'CR6400', 'CR6430', 'CR6440', 'CR6450', 'CR6460', 'CR6470', 'CR6100', 'CR6110', 'CR6120', 'CR6130', 'CR6140', 'CR6150', 'CR6160', 'CR6170', 'CR6180', 'CR6190', 'CR6200', 'CR6480', 'CR6300', 'CR6010', 'CR6310', 'CR6220', 'CR6490', 'CR6410', 'CR6490', 'CR6420', 'BA3200', 'BA3210', 'CO5400', 'CT6990', 'CT7020', 'CT7200', 'CT7240', 'CT7160', 'CT7170', 'CT7180', 'CT7030', 'CT7400', 'CT7260', 'CT7270', 'CT7380', 'CT7310', 'CT7150', 'CT7070', 'CT7000', 'CT7010', 'CT7110', 'CT7190', 'CT7390', 'CT7370', 'CT7120', 'CT7130', 'CT7140', 'CT7050', 'CT7060', 'CT7040', 'CT7320', 'CT7330', 'CT7340', 'CT7350', 'CT7360', 'CT7080', 'CT7090', 'GY7460', 'GY7450', 'LU10300', 'LU10310', 'LU10340', 'LU10350', 'LU10360', 'LU10420', 'LU10370', 'LU10390', 'SK12710', 'SK12720', 'SK12730', 'SK12740', 'SK12700', 'SK12510', 'UR15400']
 //
-//DataModel dm = DataModel.findByNameAndSemanticVersion('Cancer Outcomes and Services Dataset', '7.0.6')
+//DataModel dm = DataModel.findByNameAndSemanticVersion('Cancer Outcomes and Services Dataset', '8.0.1')
 //
-//List<DataElement> cosd7des = DataElement.executeQuery("from DataElement de where de.dataModel=:dataModel",
+//List<DataElement> cosd8des = DataElement.executeQuery("from DataElement de where de.dataModel=:dataModel",
 //        [dataModel: dm])
 //enum ErrorType {
 //    NO_COSD_ID,
@@ -89,7 +86,7 @@
 //String getCosdId(CatalogueElement ce) {
 //    ce?.ext['Data Item No'] ?: ce?.ext['Data item No.']
 //}
-//List<String> cosd7deIds = cosd7des.collect {
+//List<String> cosd8deIds = cosd8des.collect {
 //
 //    String id = getCosdId(it)
 //    if (!id) {printError("$it does not have COSD id", ErrorType.NO_COSD_ID, errorsInCOSD)}
@@ -126,7 +123,7 @@
 //if (scriptConfig.doAdditionChecks) {
 //    println "## Check all data elements were added by COSD id\n================================================\n"
 //    newlyAddedIds.each {id ->
-//        if (!(id in cosd7deIds)) {
+//        if (!(id in cosd8deIds)) {
 //            printError("Data Element id $id was not added", ErrorType.DATA_ELEMENT_NOT_ADDED, errorsInCOSD)
 //        }
 //    }
@@ -188,10 +185,30 @@
 //boolean doDeletions = scriptConfig.doDeletions
 //println "# Do Deletions: ${doDeletions ? 'Yes' : 'No'}\n====================\n"
 //
-//// DATA PROCESSED FROM SPREADSHEET
-//List<String> itemsToDeleteIds = ['CR0400', 'CR3030', 'CR0530', 'CR3060', 'CR0850', 'CR3070', 'BR4030', 'BR4040', 'BR4060', 'BR4070', 'BR4080', 'BR4090', 'BR4100', 'BR4110', 'BR4130', 'BA3130', 'BA3140', 'BA3110', 'BA3120', 'CO5010', 'CO5020', 'CO5030', 'CO5040', 'CO5060', 'CO5070', 'CO5080', 'CO5090', 'CO5100', 'CO5110', 'CO5120', 'CO5130', 'CO5140', 'CO5150', 'CO5005', 'CO5180', 'CO5230', 'CO5250', 'CT6150', 'CT6320', 'CT6730', 'CT6300', 'GY7330', 'GY7390', 'GY7210', 'GY7250', 'HA8020', 'HA8230', 'HA8690', 'HN9230', 'HN9220', 'HN9210', 'HN9200', 'HN9220', 'HN9200', 'LU10000', 'LU10020', 'LU10010', 'LU10030', 'SA11160', 'SK12020', 'SK12510', 'UG13293', 'UG13235', 'UG13110', 'UG13150', 'UG14190', 'UG13030', 'UG14410', 'UG13320']
+//// DATA PROCESSED FROM SPREADSHEET v8.0.1.
+//List<String> itemsToDeleteIds = ['CR0440',
+//                                 'CR1580',
+//                                 'CR1540',
+//                                 'CR6000', 'BR4050',
+//                                 'CR0420',
+//                                 'GY7220',
+//                                 'BR4170', 'BA3160', 'GY7150', 'HN9380', 'SA11120',
+//                                 'BA3040', 'BA3060',
+//                                 'CT6210', 'CT6220', 'CT6230', 'CT6270', 'CT6720', 'CT6280', 'CT6290', 'CT7320', // duplicates
+//                                 'CT6380', 'CT6390', 'CT6470', 'CT6440', // also duplicates.
+//                                 'CT6400', 'CT6410',
+//                                 'CT6590',
+//                                 'CT6110',
+//                                 'HA8120', // also a duplicate
+//                                 'HN9140', 'HN9150',
+//                                 'LU10190',
+//                                 'SK12030', 'SK12450',
+//                                 'UG13630', 'UG14530', 'UG14540', 'UG14550', 'UG13250', 'UG13070', 'UG13080', 'UG13580',
+//                                 'UG14520', 'UG14570', 'UG13590', 'UG13560'
+//]
+//
 //itemsToDeleteIds.each {id ->
-//    if (id in cosd7deIds) {
+//    if (id in cosd8deIds) {
 //        println "Item to delete $id found in data model"
 //    }
 //    else {
@@ -200,7 +217,7 @@
 //    }
 //}
 //
-//List<DataElement> dataElementsToDelete = cosd7des.findAll {de ->
+//List<DataElement> dataElementsToDelete = cosd8des.findAll {de ->
 //    getCosdId(de) in itemsToDeleteIds
 //}
 //
@@ -368,7 +385,7 @@
 //    DataElement de = null
 //    for (ModNewSectionInDiseaseGroup modNewSection: modNewSectionInDiseaseGroupList) {
 //        for (String cosdId: modNewSection.cosdIds) {
-//            de = cosd7des.find {getCosdId(it) == cosdId}
+//            de = cosd8des.find {getCosdId(it) == cosdId}
 //            if (de) {
 //                println "-- Data Element ${de.name} with cosdID ${cosdId}"
 //                List<Relationship> containingRs = de.getIncomingRelationshipsByType(RelationshipType.containmentType)
@@ -465,7 +482,7 @@
 //    DataElement de = null
 //    for (ModRealignSecondLevel modRealignSecondLevel: modRealignSecondLevelList) {
 //        for (String cosdId: modRealignSecondLevel.cosdIds) {
-//            de = cosd7des.find {getCosdId(it) == cosdId}
+//            de = cosd8des.find {getCosdId(it) == cosdId}
 //            if (de) {
 //                println "-- Data Element ${de.name} with cosdID ${cosdId}"
 //                List<Relationship> containingRs = de.getIncomingRelationshipsByType(RelationshipType.containmentType)
@@ -552,7 +569,7 @@
 //
 //    for (ModChangesToEnums modChangesToEnums: modChangesToEnumsList) {
 //        String cosdId = modChangesToEnums.cosdId
-//        DataElement de = cosd7des.find({getCosdId(it) == cosdId})
+//        DataElement de = cosd8des.find({getCosdId(it) == cosdId})
 //        if (de) {
 //            println "Data Element ${de.name} found with id ${cosdId}"
 //            // WRONG:
@@ -577,30 +594,6 @@
 //    println "Skipping Changes to Enums"
 //}
 //println ''
-//
-//println """
-//## Things which must be done manually:
-//======================================
-//
-//Change GY7220's schema spec to Optional
-//Change CR3040's schema spec to Optional
-//Change CR3050's schema spec to Optional
-//
-//Must do [CR0020] manually. Comment: format 'max an20'
-//Must do [CR0180] manually. Comment: Data Dictionary Name change to 'MORPHOLOGY (ICD-O DIAGNOSIS)'
-//Must do [CR3160] manually. Comment: format 'max an60'
-//Must do [CR2070] manually. Comment: description changed to 'The AJCC (Skin) or UICC edition number used for Tumour, Node and Metastasis (TNM) staging for cancer diagnosis.'
-//Must do [CT6560, CT6760] manually. Comment: section, name, description, national codes
-//Must do [CT6360] manually. Comment: make data class 'CTYA -LABORATORY RESULTS - RHABDOMYOSARCOMA and OTHER SOFT TISSUE SARCOMAS'. Yes, you have to introduce a typo.
-//Must do [HA8660] manually. Comment: data type 'Range 0.0 to 999.9  (to 1dp)'
-//Must do [HA8240, HA8700, HA8560, HA8710] manually. Comment: Changes not listed in SUBSTANTIAL/COSMETIC CHANGES but under Haematology! They missed this out...
-//Must do [SK12630] manually. Comment: Description changed to 'Breslow thickness in mm, can be recorded to nearest 0.01mm where clinically appropriate'
-//Must do [UR15100, UR15110] manually. Comment: descriptions changed
-//Must do [UG14210, UG14230, UG13240, UG13590] manually. Comment: Script messed these data class names up
-//
-//"""
-//
-//
 //
 //println "# Delete dataclasses with nothing in them\n=========================================\n"
 //if (scriptConfig.deleteEmptyDataClasses) {
@@ -678,7 +671,7 @@
 //        String alternateCosdId = mcd.alternateCosdId
 //        String alternateDataClassName = mcd.alternateDataClassName
 //
-//        DataElement de = cosd7des.find({getCosdId(it) == originalCosdId})
+//        DataElement de = cosd8des.find({getCosdId(it) == originalCosdId})
 //
 //        if (de) {
 //            println "Original data element name ${de.name} found"
