@@ -73,8 +73,8 @@ class ProcessCosd {
      *
      * COSD 8.0.1: Substantial Changes: Modifications: Have a white foreground.
      * Some cosmetic change modifications have a green foreground:
-     * There are four entries in cosmetic changes where the data item no cell is green, but these are actually modifications, not completely new entries.
-     * These can be identified as not completely new by their data item section cell which is not green.
+     * There are four entries in cosmetic changes where the "data item no" cell is green, but these are actually modifications, not completely new entries.
+     * These can be identified as not completely new by their "data item section cell" which is not green.
      */
     static void processCOSD(ProcessCOSDConfig config) {
         println "# COSD Version: ${config.cosdVersion}"
@@ -107,7 +107,7 @@ class ProcessCosd {
                 deletedItemIds << c.stringCellValue
             }
             if (c?.stringCellValue?.matches(/[A-Z]{1,4}[0-9]{1,10}\s*/) && cs?.fillForegroundColorColor?.hexString == config.newEntryForegroundColorHex
-                    && (sectionCellStyle)?.fillForegroundColorColor?.hexString == config.newEntryForegroundColorHex) { // second check handles case for a few COSD v8.0.1 cosmetic changes entries
+                    && (sectionCellStyle)?.fillForegroundColorColor?.hexString == config.newEntryForegroundColorHex) { // second check makes sure the few COSD v8.0.1 cosmetic changes LV entries which are really modifications are not counted
                 completelyNewItems << COSDEntry.fromRow(row)
             }
             if (c?.stringCellValue?.matches(/[A-Z]{1,4}[0-9]{1,10}\s*/)) { // e.g. CO12345
@@ -133,7 +133,9 @@ class ProcessCosd {
 
         println "new item Groups"
         completelyNewItemIds.groupBy{it}.each{k,v ->
-            println "$k: $v"
+            if (v.size() > 1) {
+                println "$k: $v"
+            }
         }
         println ''
 
@@ -163,9 +165,11 @@ class ProcessCosd {
                 "Just modified set calc: ${justModifiedSetCalc}\n" +
                 "justModifiedSetCalc size: ${justModifiedSetCalc.size()}\n"
 
-        println "justModified groups"
+        println "justModified duplicates"
         justModified.groupBy{it}.each{k,v ->
-            println "$k: $v"
+            if (v.size() > 1) {
+                println "$k: $v"
+            }
         }
 
 
@@ -190,12 +194,12 @@ class ProcessCosd {
 
     /**
      * Go through 7.0.6 spreadsheet and find modifications and printout/produce machine-readable/source-code representations of templates for ModificationGroups
-     * Won't work for 8.0.1 as there some cosmetic changes which are just modifications have a green foreground for the first cell of the row.
+     * Works for 8.0.1 as well now by catching the green/not green row and foregroundColor 0:0:0 (alternate white)
      */
-    static void categorizeModificationsv7_0_6() {
+    static void categorizeModifications(ProcessCOSDConfig processCOSDConfig) {
         
-        println "# Categorize Modifications v7.0.6"
-        InputStream is = ProcessCosd.class.getClassLoader().getResourceAsStream('org/modelcatalogue/COSD_Dataset_v7_0_6_Final.xls')
+        println "# Categorize Modifications v${processCOSDConfig.getCosdVersion()}"
+        InputStream is = ProcessCosd.class.getClassLoader().getResourceAsStream(processCOSDConfig.workbookPath)
         FrostedWorkbook workbook = FrostedWorkbook.readXLS(is)
 
         FrostedSheet substantialChangesSheet = workbook[SUBSTANTIAL_CHANGES]
@@ -213,6 +217,8 @@ class ProcessCosd {
             HSSFFont font = cs?.getFont(workbook.getWorkbook())
             HSSFColor fontColor = font?.getHSSFColor((HSSFWorkbook) workbook.getWorkbook())
 
+            HSSFCellStyle sectionCellStyle = (HSSFCellStyle) row.getCell(HeadersMap.dataItemSectionIndex)?.getCellStyle()
+
             if (c?.stringCellValue == 'Data item No.') {
                 rowSections << currentRowSection.collect()
                 currentRowSection = []
@@ -223,8 +229,10 @@ class ProcessCosd {
                       ||
                       foregroundColor =='FFFF:FFFF:0' // yellow
                       ||
-                      (foregroundColor == 'FFFF:FFFF:FFFF' && // white
-                                c?.stringCellValue?.matches(/\s*[A-Z]{1,3}[0-9]{1,10}\s*/)))
+                      ((foregroundColor == 'FFFF:FFFF:FFFF' ||foregroundColor == '0:0:0') && // white
+                                c?.stringCellValue?.matches(/\s*[A-Z]{1,3}[0-9]{1,10}\s*/))
+                      ||
+                       (foregroundColor == '0:8080:0' && sectionCellStyle?.fillForegroundColorColor?.hexString != '0:8080:0')) // captures the few COSD v8.0.1 cosmetic changes LV entries which have first cell green but are really modifications
                    && !(fontColor?.getHexString() == 'FFFF:0:0')) {
                    currentRowSection << row
                }
@@ -383,11 +391,14 @@ class ProcessCosd {
         // this is two off the program-found ids because CR6490 is repeated twice.
         )
 
-        processCOSD(cosd_7_0_6_config)
+        boolean processCosd7 = false
+        boolean processCosd8 = true
 
-
-        categorizeModificationsv7_0_6()
-        modificationScriptFromDatav7_0_6()
+        if (processCosd7) {
+            processCOSD(cosd_7_0_6_config)
+            categorizeModifications(cosd_7_0_6_config)
+            modificationScriptFromDatav7_0_6()
+        }
 
         println "======\n\n======"
         ProcessCOSDConfig cosd_8_0_1_config = new ProcessCOSDConfig(
@@ -395,6 +406,10 @@ class ProcessCosd {
                 workbookPath: 'org/modelcatalogue/COSD_Dataset_v8_0_1_Final.xls',
                 handPickedDeletedItemIds: [],
                 handPickedCompletelyNewItemIds: [])
-//        processCOSD(cosd_8_0_1_config)
+
+        if (processCosd8) {
+            processCOSD(cosd_8_0_1_config)
+            categorizeModifications(cosd_8_0_1_config)
+        }
     }
 }
