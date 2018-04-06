@@ -408,9 +408,5 @@ class ModificationData {
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
             new ModificationGroup(ids: ['LU10370'],
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['LV16100', 'LV16110', 'LV16120'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['LV16300'],
-                    modifications: [new ModNotLookedAtSpreadsheetYet()]),
     ]
 }

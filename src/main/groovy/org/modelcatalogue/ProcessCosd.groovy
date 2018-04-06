@@ -12,7 +12,7 @@ import org.apache.poi.ss.usermodel.Row
  * Configuration for processing COSD spreadsheet
  */
 class ProcessCOSDConfig {
-    String cosdVersion
+    COSDVersion cosdVersion
     String workbookPath
     List<String> handPickedDeletedItemIds
     List<String> handPickedCompletelyNewItemIds
@@ -35,8 +35,12 @@ class COSDEntry {
                 dataItemSection: row?.getCell(HeadersMap.dataItemSectionIndex)?.stringCellValue)
     }
     String newObjRep() {
-        "new COSDEntry(dataItemNoIndex: '${dataItemNo}', dataItemSectionIndex: '${dataItemSection}')"
+        "new COSDEntry(dataItemNo: '${dataItemNo}', dataItemSection: '${dataItemSection}')"
     }
+}
+
+enum COSDVersion {
+    V8_0_1, V7_0_6
 }
 
 /**
@@ -72,9 +76,7 @@ class ProcessCosd {
      * Yellow or White for modifications in Cosmetic Changes.
      *
      * COSD 8.0.1: Substantial Changes: Modifications: Have a white foreground.
-     * Some cosmetic change modifications have a green foreground:
-     * There are four entries in cosmetic changes where the "data item no" cell is green, but these are actually modifications, not completely new entries.
-     * These can be identified as not completely new by their "data item section cell" which is not green.
+     *
      */
     static void processCOSD(ProcessCOSDConfig config) {
         println "# COSD Version: ${config.cosdVersion}"
@@ -95,8 +97,6 @@ class ProcessCosd {
             HSSFFont font = cs?.getFont(workbook.getWorkbook())
             HSSFColor fontColor = font?.getHSSFColor((HSSFWorkbook) workbook.getWorkbook())
 
-            HSSFCellStyle sectionCellStyle = (HSSFCellStyle) row.getCell(HeadersMap.dataItemSectionIndex)?.getCellStyle()
-
             println "${c?.stringCellValue}:\n" +
                     "Foreground color: ${cs?.fillForegroundColorColor?.hexString},\n" +
                     "Font color: ${fontColor?.getHexString()}"
@@ -106,8 +106,7 @@ class ProcessCosd {
             if (fontColor?.getHexString() == config.deletedFontColor || cs?.fillForegroundColorColor?.hexString == config.deletedForegroundHex) {
                 deletedItemIds << c.stringCellValue
             }
-            if (c?.stringCellValue?.matches(/[A-Z]{1,4}[0-9]{1,10}\s*/) && cs?.fillForegroundColorColor?.hexString == config.newEntryForegroundColorHex
-                    && (sectionCellStyle)?.fillForegroundColorColor?.hexString == config.newEntryForegroundColorHex) { // second check makes sure the few COSD v8.0.1 cosmetic changes LV entries which are really modifications are not counted
+            if (c?.stringCellValue?.matches(/[A-Z]{1,4}[0-9]{1,10}\s*/) && cs?.fillForegroundColorColor?.hexString == config.newEntryForegroundColorHex) {
                 completelyNewItems << COSDEntry.fromRow(row)
             }
             if (c?.stringCellValue?.matches(/[A-Z]{1,4}[0-9]{1,10}\s*/)) { // e.g. CO12345
@@ -117,7 +116,6 @@ class ProcessCosd {
         }
         substantialChangesSheet.each c
         cosmeticChangesSheet.each c
-
 
 
         // remove empty strings
@@ -230,9 +228,7 @@ class ProcessCosd {
                       foregroundColor =='FFFF:FFFF:0' // yellow
                       ||
                       ((foregroundColor == 'FFFF:FFFF:FFFF' ||foregroundColor == '0:0:0') && // white
-                                c?.stringCellValue?.matches(/\s*[A-Z]{1,3}[0-9]{1,10}\s*/))
-                      ||
-                       (foregroundColor == '0:8080:0' && sectionCellStyle?.fillForegroundColorColor?.hexString != '0:8080:0')) // captures the few COSD v8.0.1 cosmetic changes LV entries which have first cell green but are really modifications
+                                c?.stringCellValue?.matches(/\s*[A-Z]{1,3}[0-9]{1,10}\s*/)))
                    && !(fontColor?.getHexString() == 'FFFF:0:0')) {
                    currentRowSection << row
                }
@@ -347,7 +343,7 @@ class ProcessCosd {
         println ''
     }
     static void main(String... args) {
-        ProcessCOSDConfig cosd_7_0_6_config = new ProcessCOSDConfig(cosdVersion: "7.0.6", workbookPath: 'org/modelcatalogue/COSD_Dataset_v7_0_6_Final.xls',
+        ProcessCOSDConfig cosd_7_0_6_config = new ProcessCOSDConfig(cosdVersion: COSDVersion.V7_0_6, workbookPath: 'org/modelcatalogue/COSD_Dataset_v7_0_6_Final.xls',
         handPickedDeletedItemIds: ["CR0400", "CR3030",
                                    "CR0530", "CR3060",
                                    "CR0850", "CR3070",
@@ -402,7 +398,7 @@ class ProcessCosd {
 
         println "======\n\n======"
         ProcessCOSDConfig cosd_8_0_1_config = new ProcessCOSDConfig(
-                cosdVersion: "8.0.1",
+                cosdVersion: COSDVersion.V8_0_1,
                 workbookPath: 'org/modelcatalogue/COSD_Dataset_v8_0_1_Final.xls',
                 handPickedDeletedItemIds: [],
                 handPickedCompletelyNewItemIds: [])
