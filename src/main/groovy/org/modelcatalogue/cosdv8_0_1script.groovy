@@ -8,14 +8,12 @@
 ////SessionFactory sessionFactory = ctx.getBean('sessionFactory')
 ////Session currentSession = sessionFactory.getCurrentSession()
 //
-//println "COSD 8.0.1 check newly added items, do deletions, modifications using data from ProcessCosd"
+//println "COSD 8.0.1 check newly added items, do deletions, modifications using data from ProcessCosd\n===================================\n"
 //
 //// Script copied from v7.0.6 script. Replaced references to 7.0.6 with 8.0.1.
 //// Have a section for renaming e.g. Gynaecology -> Gynaecological in Data Class/Data Element names,
 //// Plan to use different deletion and addition data.
 //// Not sure what will happen with the modifications.
-//
-//println "# Check Additions\n=================\n"
 //
 //class COSDEntry {
 //    String dataItemNo
@@ -42,6 +40,55 @@
 //    boolean doDeDupes = false
 //}
 //
+//
+//DataModel dm = DataModel.findByNameAndSemanticVersion('Cancer Outcomes and Services Dataset', '8.0.1')
+//
+//List<DataElement> cosd8des = DataElement.executeQuery("from DataElement de where de.dataModel=:dataModel",
+//        [dataModel: dm])
+//
+//println "Renaming e.g. Gynaecology to Gynaecological\n===========================================\n"
+//if (scriptConfig.doRenamingOlogical) {
+//    List<String> prefixes = ['GYNAECO', 'HAEMATO', 'URO']
+//    for (String prefix: prefixes) {
+//        String xxxLOGY = prefix + 'LOGY'
+//        String xxxLOGICAL = prefix + 'LOGICAL'
+//        // find all data classes/data elements with xxxLOGY in their name and replace that with xxxLOGICAL
+//        // make sure it's the right case for data classes.
+//        // Data Classes:
+//        List<DataClass> dataClassesToBeRenamed = DataClass.executeQuery(
+//                "from DataClass dc where dc.dataModel=:dataModel and dc.name like :xxxLOGYWild",
+//                [dataModel: dm, xxxLOGYWild: "%${xxxLOGY}%"]) // finds regardless of case
+//        dataClassesToBeRenamed.each {
+//            println "Renaming ${it.name} to"
+//            println it.name.replaceAll(xxxLOGY, xxxLOGICAL).replaceAll(camelize(xxxLOGY), camelize(xxxLOGICAL))
+//            println ''
+//            it.name = it.name.replaceAll(xxxLOGY, xxxLOGICAL).replaceAll(camelize(xxxLOGY), camelize(xxxLOGICAL))
+//            saveCatalogueElement(it)
+//
+//        }
+//        // Data Elements:
+//        List<DataElement> dataElementsToBeRenamed = DataElement.executeQuery(
+//                "from DataElement de where de.dataModel = :dataModel and de.name like :xxxLOGYWild",
+//                [dataModel: dm, xxxLOGYWild: "%${xxxLOGY}%"])
+//        dataElementsToBeRenamed.each {
+//            println "Renaming ${it.name} to"
+//            println it.name.replaceAll(xxxLOGY, xxxLOGICAL).replaceAll(camelize(xxxLOGY), camelize(xxxLOGICAL))
+//            println ''
+//            it.name = it.name.replaceAll(xxxLOGY, xxxLOGICAL).replaceAll(camelize(xxxLOGY), camelize(xxxLOGICAL))
+//            saveCatalogueElement(it)
+//        }
+//
+//
+//
+//
+//    }
+//}
+//else {
+//    println "skipping"
+//}
+//
+//println "# Check Additions\n=================\n"
+//
 //// DATA PROCESSED FROM SPREADSHEET v8.0.1. CR6980 occurs twice
 //List<COSDEntry> newlyAddedItems = [new COSDEntry(dataItemNo: 'CR6500', dataItemSection: 'CORE - DIAGNOSTIC DETAILS'), new COSDEntry(dataItemNo: 'CR6510', dataItemSection: 'CORE - NON PRIMARY CANCER PATHWAY ROUTE'), new COSDEntry(dataItemNo: 'CR6520', dataItemSection: 'CORE - NON PRIMARY CANCER PATHWAY ROUTE'),
 //                                   new COSDEntry(dataItemNo: 'CR6900', dataItemSection: 'CORE - NON PRIMARY CANCER PATHWAY ROUTE'), new COSDEntry(dataItemNo: 'CR6840', dataItemSection: 'CORE - DEMOGRAPHICS'), new COSDEntry(dataItemNo: 'CR6780', dataItemSection: 'CORE - IMAGING'),
@@ -63,10 +110,6 @@
 //List<String> newlyAddedIds = newlyAddedItems.collect{it.dataItemNo}
 ////List<String> newlyAddedIds = ['CR6000', 'CR6230', 'CR6490', 'CR6400', 'CR6430', 'CR6440', 'CR6450', 'CR6460', 'CR6470', 'CR6100', 'CR6110', 'CR6120', 'CR6130', 'CR6140', 'CR6150', 'CR6160', 'CR6170', 'CR6180', 'CR6190', 'CR6200', 'CR6480', 'CR6300', 'CR6010', 'CR6310', 'CR6220', 'CR6490', 'CR6410', 'CR6490', 'CR6420', 'BA3200', 'BA3210', 'CO5400', 'CT6990', 'CT7020', 'CT7200', 'CT7240', 'CT7160', 'CT7170', 'CT7180', 'CT7030', 'CT7400', 'CT7260', 'CT7270', 'CT7380', 'CT7310', 'CT7150', 'CT7070', 'CT7000', 'CT7010', 'CT7110', 'CT7190', 'CT7390', 'CT7370', 'CT7120', 'CT7130', 'CT7140', 'CT7050', 'CT7060', 'CT7040', 'CT7320', 'CT7330', 'CT7340', 'CT7350', 'CT7360', 'CT7080', 'CT7090', 'GY7460', 'GY7450', 'LU10300', 'LU10310', 'LU10340', 'LU10350', 'LU10360', 'LU10420', 'LU10370', 'LU10390', 'SK12710', 'SK12720', 'SK12730', 'SK12740', 'SK12700', 'SK12510', 'UR15400']
 //
-//DataModel dm = DataModel.findByNameAndSemanticVersion('Cancer Outcomes and Services Dataset', '8.0.1')
-//
-//List<DataElement> cosd8des = DataElement.executeQuery("from DataElement de where de.dataModel=:dataModel",
-//        [dataModel: dm])
 //enum ErrorType {
 //    NO_COSD_ID,
 //    DATA_ELEMENT_NOT_ADDED,
