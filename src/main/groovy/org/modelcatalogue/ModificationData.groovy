@@ -328,85 +328,92 @@ class ModificationData {
      * Produced from categorizeModifications method, which analysed the spreadsheet, and then edited by hand
      */
     static final List<ModificationGroup> COSD_v8_0_6_substantial_and_cosmetic_change_modifications = [
-            new ModificationGroup(ids: ['CR1590'],
+
+            new ModificationGroup(ids: ['CR1590', 'CR6970'], // Enum changes. Actually, CR1590 is the same as CR6970 in the catalogue and this needs to be duplicated after the change is made, and go under section CORE - NON PRIMARY CANCER PATHWAY ROUTE.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR6970', 'CT7020'],
+            new ModificationGroup(ids: ['CT7020'], // New DataClass CORE - DIAGNOSIS - ADDITIONAL ITEMS.  And Enum changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR2050'],
+            new ModificationGroup(ids: ['CR2050'], // Enum changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR1290'],
+            new ModificationGroup(ids: ['CR1290'], // Enum changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR1260'],
+            new ModificationGroup(ids: ['CR1260'], // Enum changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR1340'],
+            new ModificationGroup(ids: ['CR1340'], // Enum changed. Do description change later.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR0680'],
+            new ModificationGroup(ids: ['CR0680'], // Enum changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CO5290'],
+            new ModificationGroup(ids: ['CO5290'], // Description and Enum changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['GY7000'],
+            new ModificationGroup(ids: ['GY7000'], // Enum changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR0020'],
+            new ModificationGroup(ids: ['CR0020'], // Format changed.
+
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR0030'],
+            new ModificationGroup(ids: ['CR0030'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR1410'],
+            new ModificationGroup(ids: ['CR1410'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR1400'],
+            new ModificationGroup(ids: ['CR1400'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR0300'],
+            new ModificationGroup(ids: ['CR0300'], // Moved to new DataClass. Changed name. Changed NHSDD element.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR1550'],
+            new ModificationGroup(ids: ['CR1550'], // Moved to DataClass.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT7190'],
+            new ModificationGroup(ids: ['CT7190'], // Moved to new DataClass.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR0310'],
+            new ModificationGroup(ids: ['CR0310'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR6230'],
+            new ModificationGroup(ids: ['CR6230'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT6060', 'CT6070', 'CT6080', 'CT6090', 'CT6100', 'CT6990'],
+            new ModificationGroup(ids: ['CT6060', 'CT6070', 'CT6080', 'CT6090', 'CT6100', 'CT6990'], // All moved to DataClass.
+
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR3090'],
+            new ModificationGroup(ids: ['CR3090'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR6140'],
+            new ModificationGroup(ids: ['CR6140'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR6200'],
+            new ModificationGroup(ids: ['CR6200'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR0520', 'CR0540', 'CR0560', 'CR0580', 'CR0620', 'CR0630', 'CR0640', 'CR0610', 'CR2070'],
+            new ModificationGroup(ids: ['CR0520', 'CR0540', 'CR0560', 'CR0580', 'CR0620', 'CR0630', 'CR0640', 'CR0610', 'CR2070'], // All (TNM Categories and stage groupings), description and format, BUT one, just name and description changed.
+
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR1340'],
+            new ModificationGroup(ids: ['CR1340'], // Description changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR1450'],
+            new ModificationGroup(ids: ['CR1450'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT6130', 'CT6140', 'CT7370'],
+            new ModificationGroup(ids: ['CT6130', 'CT6140', 'CT7370'], // Moved to new DataClass.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT7040', 'UR15020', 'CT6580', 'CT6520'],
+            new ModificationGroup(ids: ['CT7040', 'UR15020', 'CT6580', 'CT6520'], // Moved to new DataClasses. One wasn't from CTYA as they claimed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR0950', 'CR6220'],
+            new ModificationGroup(ids: ['CR0950', 'CR6220'], // Format changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR0980', 'CR0800'],
+            new ModificationGroup(ids: ['CR0980', 'CR0800'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CR0910', 'CR0920', 'CR0930', 'CR0940'],
+            new ModificationGroup(ids: ['CR0910', 'CR0920', 'CR0930', 'CR0940'], // Description and format changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT6420'],
+            new ModificationGroup(ids: ['CT6420'], // Moved DataClass.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['BR4010'],
+            new ModificationGroup(ids: ['BR4010'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT7030', 'CT7400', 'CT6560', 'CT6760', 'CT7390', 'CT6530', 'CT6550'],
+
+            new ModificationGroup(ids: ['CT7030', 'CT7400', 'CT6560', 'CT6760', 'CT7390', 'CT6530', 'CT6550'], // Moved to new DataClasses.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT7200', 'CT7240', 'CT7160', 'CT7170', 'CT7180', 'CT7260', 'CT7270', 'CT7380', 'CT7310', 'CT7150', 'CT6250', 'CT6710', 'CT7110'],
+            new ModificationGroup(ids: ['CT7200', 'CT7240', 'CT7160', 'CT7170', 'CT7180', 'CT7260', 'CT7270', 'CT7380', 'CT7310', 'CT7150', 'CT6250', 'CT6710', 'CT7110'], // Moved to new DataClasses.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['HA8360'],
+            new ModificationGroup(ids: ['HA8360'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT7330', 'CT6240', 'CT7340', 'CT7350', 'CT7360', 'CT7120', 'CT7130', 'CT7140', 'CT6260'],
+            new ModificationGroup(ids: ['CT7330', 'CT6240', 'CT7340', 'CT7350', 'CT7360', 'CT7120', 'CT7130', 'CT7140', 'CT6260'], // Moved DataClasses.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['CT6350', 'CT6750', 'CT6450', 'CT6370', 'CT6360', 'CT6460'],
+
+            new ModificationGroup(ids: ['CT6350', 'CT6750', 'CT6450', 'CT6370', 'CT6360', 'CT6460'], // Moved DataClasses.
+
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['SK12730'],
+            new ModificationGroup(ids: ['SK12730'], // Name and description and DDElement changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['LU10310'],
+            new ModificationGroup(ids: ['LU10310'], // format changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
-            new ModificationGroup(ids: ['LU10370'],
+            new ModificationGroup(ids: ['LU10370'], // format changed.
                     modifications: [new ModNotLookedAtSpreadsheetYet()]),
     ]
 }
